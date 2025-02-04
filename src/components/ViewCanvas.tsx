@@ -1,11 +1,14 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { View } from "@react-three/drei";
+import { View, Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { Bubbles } from './Bubbles'
 import { BlendTeaCan } from './BlendTeaCan'
+import { Jar } from './Jar'
+
+
 
 
 const Loader = dynamic(
@@ -39,6 +42,12 @@ export function ViewCanvas({}: Props) {
           <View.Port />
         </Suspense>
         <Bubbles />
+        <Jar />
+        <directionalLight intensity={3} position={[0, 2, 3]}/>
+
+        <Environment preset="city" />
+
+
 
        
       </Canvas>
