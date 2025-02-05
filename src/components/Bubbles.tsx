@@ -18,6 +18,7 @@ export function Bubbles({
   repeat = true,
 }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
+  
 
   // An array that holds all of our bubbles' speeds
   const bubbleSpeed = useRef(new Float32Array(count));

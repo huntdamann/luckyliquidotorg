@@ -24,7 +24,7 @@ export default function Home() {
    <>
    <RemoveScroll>
    <AuroraBackground>
-   <div id="header" className="fixed opacity-0 top-10 uppercase text-3xl text-honeygold"><h1>Lucky</h1></div>
+   <div id="header" className="fixed font-juju opacity-0 top-10 uppercase text-4xl text-honeygold"><h1>Lucky</h1></div>
    <div className="p-3 text-center text-honeygold w-[17rem] text-2xl flex flex-col justify-center items-center">
     
     <span id="title" className='opacity-0 font-main text-5xl w-[20rem]'>"It's actually good!"</span>

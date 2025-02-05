@@ -25,15 +25,16 @@ export function Jar(props) {
         receiveShadow
         geometry={nodes.Jar.geometry}
         material={materials['Smooh Glass']}
-        position={[0, 0.1, 0]}
+        position={[0, -0.1, 0]}
         rotation={[1.579, 0.152, -0.28]}
         scale={[0.387, 0.279, 0.020]}
       >
         <MeshTransmissionMaterial
           thickness={0.2}
-          roughness={0}
-          transmission={0.7}
-          ior={0}
+          roughness={0.1}
+          transmission={0.8}
+                    
+          ior={0.1}
           chromaticAberration={0.02}
           backside={true}
        />

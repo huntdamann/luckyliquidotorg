@@ -32,7 +32,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        main: ["var(--font-main)"]
+        main: ["var(--font-main)"],
+        juju: ["var(--font-juju)"]
       }
       
     },
