@@ -10,6 +10,7 @@ import useMediaQuery from '../hooks/useMediaQuery'
 export function Jar(props) {
   const { nodes, materials } = useGLTF('/assets/jar.glb')
   const { viewport } = useThree();
+  const isDesktop = useMediaQuery('(min-width: 460px)');
 
 
   
@@ -30,7 +31,7 @@ export function Jar(props) {
         position={[0, -0.1, 0]}
         rotation={[1.579, 0.152, -0.28]}
         // scale={[0.387, 0.079, 0.020]}
-        scale={[0.187, 0.079, 0.01]}
+        scale={[ isDesktop? 0.187 : 0.387,0.079, isDesktop? 0.01 : 0.020]}
       >
         <MeshTransmissionMaterial
           thickness={0.2}
