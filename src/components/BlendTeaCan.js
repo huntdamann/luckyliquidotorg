@@ -1,8 +1,11 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import useMediaQuery from '../hooks/useMediaQuery'
 
 export function BlendTeaCan(props) {
   const { nodes, materials } = useGLTF('/assets/sham.glb')
+  const isDesktop = useMediaQuery('(min-width: 460px)');
+
   return (
     <group {...props} dispose={null}>
       <mesh

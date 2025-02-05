@@ -5,6 +5,8 @@ import localFont from "next/font/local";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {RemoveScroll} from 'react-remove-scroll';
+import useMediaQuery from '../hooks/useMediaQuery'
+
 
 gsap.registerPlugin(useGSAP);
 
@@ -20,6 +22,9 @@ export default function Home() {
     gsap.to('#header', {y: 0, delay: 2, opacity: 1})
     gsap.to('#construction', {y: 0, opacity: 1, delay: 4})
   })
+
+  const isDesktop = useMediaQuery('(min-width: 460px)');
+
   return (
    <>
    <RemoveScroll>
@@ -28,7 +33,7 @@ export default function Home() {
    <div className="p-3 text-center text-honeygold w-[17rem] text-2xl flex flex-col justify-center items-center">
     
     <span id="title" className='opacity-0 font-main text-5xl w-[20rem]'>"It's actually good!"</span>
-    <span id="construction" className="mt-[14rem] font-mono">Our site is currently under construction. </span>
+    <span id="construction" className='lg:mt-[29rem] mt-[14rem] font-mono'>Our site is currently under construction. </span>
    </div>
    {/* Call to action button */}
 

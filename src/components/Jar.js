@@ -4,6 +4,8 @@ import React, { useRef } from 'react'
 import { useGLTF, MeshTransmissionMaterial, Float } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
+import useMediaQuery from '../hooks/useMediaQuery'
+
 
 export function Jar(props) {
   const { nodes, materials } = useGLTF('/assets/jar.glb')
@@ -27,7 +29,8 @@ export function Jar(props) {
         material={materials['Smooh Glass']}
         position={[0, -0.1, 0]}
         rotation={[1.579, 0.152, -0.28]}
-        scale={[0.387, 0.279, 0.020]}
+        // scale={[0.387, 0.079, 0.020]}
+        scale={[0.187, 0.079, 0.01]}
       >
         <MeshTransmissionMaterial
           thickness={0.2}
