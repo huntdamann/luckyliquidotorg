@@ -1,10 +1,12 @@
 
+import React, { lazy } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import {RemoveScroll} from 'react-remove-scroll';
 
 import { ViewCanvas } from '../components/ViewCanvas'
+import { getPageFiles } from "next/dist/server/get-page-files";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
   title: "LuckyLiquid",
   description: "Homemade Tea Beverages",
 };
+
 
 export default function RootLayout({
   children,
