@@ -41,8 +41,8 @@ export default function Home() {
    </div>
    <div className="p-3 text-center text-[#01a237] w-[17rem] text-2xl flex flex-col justify-center items-center">
     
-    <span id="title" className='opacity-0 font-main text-5xl w-[20rem] lg:mt-[-7rem]'>"It's actually good!"</span>
-    <span id="construction" className='lg:mt-[18rem] mt-[14rem] font-mono opacity-0'>Our site is currently under construction. </span>
+    <span id="title" className='opacity-0 font-main drop-shadow-[0_3.3px_1.2px_rgba(0,0,0,0.8)] text-5xl w-[20rem] lg:mt-[-7rem]'>"It's actually good!"</span>
+    <span id="construction" className='lg:mt-[18rem] mt-[14rem] drop-shadow-[0_1.3px_1.2px_rgba(0,0,0,0.8)] font-mono stroke-black opacity-0'>Our site is currently under construction. </span>
    </div>
    {/* Call to action button */}
 
