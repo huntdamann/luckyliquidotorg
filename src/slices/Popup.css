@@ -1,0 +1,7 @@
+.triangle::before {
+
+    color: red;
+    position: fixed;
+    z-index: 99;
+    border: solid;
+}

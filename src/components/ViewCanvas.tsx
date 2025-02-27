@@ -5,7 +5,6 @@ import { View, Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { Bubbles } from './Bubbles'
-import { BlendTeaCan } from './BlendTeaCan'
 import { Jar } from './Jar'
 
 

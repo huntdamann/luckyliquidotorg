@@ -2,9 +2,10 @@
 
 import React, { useRef } from 'react'
 import { useGLTF, MeshTransmissionMaterial, Float } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
+import { useThree, meshPhysicalMaterial } from '@react-three/fiber'
 import { useControls } from 'leva'
 import useMediaQuery from '../hooks/useMediaQuery'
+import { MeshPhysicalMaterial } from 'three'
 
 
 export function Jar(props) {
@@ -33,15 +34,14 @@ export function Jar(props) {
         // scale={[0.387, 0.079, 0.020]}
         scale={[ isDesktop? 0.133 : 0.387,0.079, isDesktop? 0.007 : 0.020]}
       >
-        <MeshTransmissionMaterial
-          thickness={0.2}
-          roughness={0.1}
-          transmission={0.8}
-                    
-          ior={0.1}
-          chromaticAberration={0.02}
-          backside={true}
-       />
+        <meshPhysicalMaterial color="green" metalness={0.8} roughness={0.1} envMapIntensity={0.9} clearcoat={1} 
+        
+        transparent={true}
+        opacity={0.5}
+        reflectivity={0.2}
+        ior={0.5}
+        
+        />
       </mesh>
       </Float>
 

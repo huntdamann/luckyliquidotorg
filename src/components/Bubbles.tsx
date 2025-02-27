@@ -4,6 +4,9 @@ import React from "react";
 import * as THREE from "three";
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useGLTF } from '@react-three/drei'
+
+
 import gsap from "gsap";
 
 // Using Object3D as a container to efficiently set and update positions for each bubble instance
@@ -11,7 +14,7 @@ const o = new THREE.Object3D();
 
 // Customizations in case you want to use this in other scenes.
 export function Bubbles({
-  count = 100,
+  count = 30,
   speed = 5,
   bubbleSize = 0.05,
   opacity = 0.6,
@@ -32,6 +35,11 @@ export function Bubbles({
     transparent: true,
     opacity,
   });
+
+
+  //Import Clover asset
+    const { nodes, materials } = useGLTF('/assets/clover.glb')
+  
 
   // Runs once to create and place our bubbles
   useEffect(() => {
