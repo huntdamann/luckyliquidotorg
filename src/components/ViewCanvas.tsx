@@ -81,7 +81,6 @@ export function ViewCanvas({}: Props) {
         <PerformanceMonitor onDecline={() => degrade(true)} />
         <color attach="background" args={['#d1a054']} />
 
-        <Suspense fallback={<Loader />}>
           <View.Port />
         
         <Bvh>
@@ -107,7 +106,6 @@ export function ViewCanvas({}: Props) {
 
 
 
-        </Suspense>
        
       </Canvas>
     </>

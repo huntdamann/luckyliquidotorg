@@ -119,7 +119,8 @@ export function Bubbles({
     <instancedMesh
       ref={meshRef}
       args={[undefined, undefined, count]}
-      position={[0, 0, 0]}
+      position={[2, 0, 0]}
+      scale={[2,2,2]}
       material={material}
       geometry={geometry}
     ></instancedMesh>
