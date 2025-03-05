@@ -72,13 +72,13 @@ export default function Home() {
    <>
 
     <RemoveScroll>
-    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-50 flex flex-col bg-transparent  h-[100vh] items-center justify-center gap-2">
+    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-20 flex flex-col bg-transparent  h-[100vh] items-center justify-center gap-2">
 
 
 
 
    
-   <div id="header" className="fixed font-juju opacity-0 top-10 uppercase text-4xl text-honeygold">
+   <div id="header" className="fixed font-juju opacity-0 top-10 left-[30%] lg:left-[43%] uppercase text-4xl text-honeygold">
     <Image width={150} height={100} alt="LuckyLiquid Beverage" src={Lucky} />
    </div>
    <div className="p-3 text-center text-[#01a237] w-[17rem] text-2xl flex flex-col justify-center items-center">

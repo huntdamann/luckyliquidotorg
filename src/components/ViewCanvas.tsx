@@ -85,7 +85,7 @@ export function ViewCanvas({}: Props) {
           <View.Port />
         
         <Bvh>
-          <group scale={0.12} position={[0,0,3.2]} rotation={[0,-0.7,0]}>
+          <group scale={0.12} position={[0.1,-0.2,3.9]} rotation={[0,-0.7,0]}>
 
 
           <Scene />
