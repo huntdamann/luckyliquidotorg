@@ -70,10 +70,9 @@ export default function Home() {
 
   return (
    <>
-   <RemoveScroll>
 
-    
-    <section className="flex flex-col bg-gradient-to-b from-honeygold from-80% to-[#01a237]  h-[100vh] items-center justify-center gap-2">
+    <RemoveScroll>
+    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-50 flex flex-col bg-transparent  h-[100vh] items-center justify-center gap-2">
 
 
 

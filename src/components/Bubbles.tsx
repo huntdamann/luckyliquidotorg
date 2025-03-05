@@ -4,8 +4,10 @@ import React from "react";
 import * as THREE from "three";
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, Bvh, Instance, Instances} from '@react-three/drei'
 
+
+import { data } from './store'
 
 import gsap from "gsap";
 
@@ -39,6 +41,17 @@ export function Bubbles({
 
   //Import Clover asset
     const { nodes, materials } = useGLTF('/assets/clover.glb')
+
+    // console.log(nodes)
+    // console.log(material)
+
+    const geometryTwo = nodes.clovermmGroup0_phong1_0
+
+    
+    console.log(o)
+
+
+
   
 
   // Runs once to create and place our bubbles
@@ -69,7 +82,6 @@ export function Bubbles({
     mesh.instanceMatrix.needsUpdate = true;
     return () => {
       mesh.geometry.dispose();
-      (mesh.material as THREE.Material).dispose();
     };
   }, [count, minSpeed, maxSpeed]);
 
