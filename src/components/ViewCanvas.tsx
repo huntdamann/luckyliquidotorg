@@ -1,9 +1,11 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { View, useGLTF, Environment, Bvh, Instance, Instances } from "@react-three/drei";
+import { View, useGLTF, Environment, Bvh, Instance, Instances, Html, useProgress } from "@react-three/drei";
 import { Suspense, useEffect, useReducer, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+
 import { Bubbles } from './Bubbles'
 import { Jar } from './Jar'
 import { Clover } from "./Clover";
@@ -14,6 +16,7 @@ import Env from './Env'
 import { OrbitControls, PerformanceMonitor, AccumulativeShadows, RandomizedLight } from "@react-three/drei";
 import { PerspectiveCamera } from "three";
 import { data } from './store'
+import Lucky from '../../static/lucky-logo-demo.png'
 
 import { GUI } from 'lil-gui'
 
@@ -23,10 +26,13 @@ import { GUI } from 'lil-gui'
 
 
 
-const Loader = dynamic(
-  () => import("@react-three/drei").then((mod) => mod.Loader),
-  { ssr: false },
-);
+function Loader() {
+  const { active, progress, errors, item, loaded, total } = useProgress();
+  return <Html center>
+          <Image width={150} height={100} alt="LuckyLiquid Beverage" src={Lucky} />
+
+    {progress} % loaded</Html>;
+}
 
 type Props = {};
 
@@ -51,6 +57,8 @@ export function ViewCanvas({}: Props) {
 // })
   return (
     <>
+
+   
       <Canvas
         style={{
           position: "fixed",
@@ -73,9 +81,9 @@ export function ViewCanvas({}: Props) {
         <PerformanceMonitor onDecline={() => degrade(true)} />
         <color attach="background" args={['#d1a054']} />
 
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <View.Port />
-        </Suspense>
+        
         <Bvh>
           <group scale={0.12} position={[0,0,3.2]} rotation={[0,-0.7,0]}>
 
@@ -93,15 +101,35 @@ export function ViewCanvas({}: Props) {
 
 
         <Env perfSucks={perfSucks} />
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         {/* <gridHelper args={[20,20]} /> */}
 
 
 
 
+        </Suspense>
        
       </Canvas>
-      <Loader />
     </>
   );
+}
+
+
+function Loading() {
+
+
+  const { progress, active } = useProgress();
+
+  return (
+    <>
+     {/* Loading overlay */}
+     {active && (
+      <Html center>
+        <div style={{fontSize: '100px', color: '#fff'}}>
+          Hi... {Math.round(progress)}%
+        </div>
+      </Html>
+    )}
+    </>
+  )
 }

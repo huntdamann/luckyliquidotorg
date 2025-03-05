@@ -93,7 +93,12 @@ export default function Home() {
 
 
     <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 absolute animate-bounce z-40 bottom-3">
-    <FontAwesomeIcon className="opacity-0" ref={chevronRef} icon={faChevronUp} />
+      <div  ref={chevronRef} className="flex flex-col text-green-600 opacity-0">
+        <span>Click Here</span>
+       
+            <FontAwesomeIcon className=" text-green-600 " icon={faChevronUp} />
+
+      </div>
     </button>
    </section>
 
