@@ -37,6 +37,7 @@ export function Preloader({}: Props) {
         <>
 
         <div className="overlay">
+            <Image className="z-[999] left-[40%] top-[50vw] absolute" width={100} height={100} src={Lucky} alt="Lucky Logo" />
             <div className="bar">
 
             </div>

@@ -23,7 +23,7 @@ export function PreScreen({}: Props) {
     useGSAP(() => {
        
         gsap.to(".bar2", 1, { delay: 3 , opacity: 1, height: 0, stagger: {amount: 0.5}, ease: "power4.inOut", zIndex: -999})
-        gsap.to(".overlay2", 1, {zIndex: -1, delay: 5})
+        gsap.to(".overlay2", 1, {zIndex: -1, delay: 5, opacity: 1})
        
       })
 

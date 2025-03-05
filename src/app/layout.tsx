@@ -54,6 +54,8 @@ export default function RootLayout({
         <PreScreen />
 
         <Suspense fallback={<Preloader />}>
+        {/* <PreScreen /> */}
+
         {children}
         <ViewCanvas />
         </Suspense>
