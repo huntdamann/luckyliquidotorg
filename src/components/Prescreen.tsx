@@ -18,14 +18,12 @@ type Props = {};
 export function PreScreen({}: Props) {
 
 
-    const overRef = useRef(null)
-    const barRef = useRef(null)
     const [animationComplete, setAnimationComplete] = useState(false)
 
     useGSAP(() => {
        
-        gsap.to(barRef.current, 1, {opacity: 1, height: 0, stagger: {amount: 0.5}, ease: "power4.inOut", zIndex: -999})
-        gsap.to(overRef.current, 1, {zIndex: -1})
+        gsap.to(".bar2", 1, { delay: 3 , opacity: 1, height: 0, stagger: {amount: 0.5}, ease: "power4.inOut", zIndex: -999})
+        gsap.to(".overlay2", 1, {zIndex: -1, delay: 5})
        
       })
 
@@ -43,35 +41,35 @@ export function PreScreen({}: Props) {
     return(
         <>
 
-        <div ref={overRef} className="overlay2">
-            <div ref={barRef} className="bar2">
+        <div className="overlay2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
-            <div ref={barRef} className="bar2">
+            <div className="bar2">
 
             </div>
         </div>

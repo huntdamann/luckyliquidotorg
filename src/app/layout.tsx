@@ -1,16 +1,14 @@
 
 import React, { lazy, Suspense } from "react";
-import { useProgress } from "@react-three/drei";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import {RemoveScroll} from 'react-remove-scroll';
 import { Preloader } from '../components/Preloader'
 
 
 import { ViewCanvas } from '../components/ViewCanvas'
 import { getPageFiles } from "next/dist/server/get-page-files";
-import { PreScreen } from "@/components/Prescreen";
+import { PreScreen } from "../components/Prescreen";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
