@@ -52,7 +52,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
             
             {/* Dark Overlay */}
-            <section ref={refOut} className=" text-white bg-black fixed w-full h-screen opacity-0">
+            <section ref={refOut} className=" text-white fixed w-full h-screen opacity-0">
                 <button id="cancel" onClick={() => setter(!refNo) } className=" fixed bottom-[15%] left-[40%]">No, thanks</button>
             </section>
 
