@@ -45,14 +45,14 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
                 
 
-                <button className=" shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] p-1  ">Sign up</button>
+                <button className=" shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] p-1  "><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHDIve2VdrZBGBCTDY7Cx4jjgvlo5WjRfDWuy9-dv6lb9lwg/viewform?usp=dialog">Sign up</a></button>
                 <div className='triangle'></div>
 
             </div>
 
             
             {/* Dark Overlay */}
-            <section ref={refOut} className=" text-white bg-black absolute top-0 w-full h-screen opacity-0">
+            <section ref={refOut} className=" text-white bg-black fixed w-full h-screen opacity-0">
                 <button id="cancel" onClick={() => setter(!refNo) } className=" fixed bottom-[15%] left-[40%]">No, thanks</button>
             </section>
 

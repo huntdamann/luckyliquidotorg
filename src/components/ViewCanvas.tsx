@@ -7,9 +7,9 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import { Bubbles } from './Bubbles'
-import { Jar } from './Jar'
+
 import { Clover } from "./Clover";
-import Torus from './Torus'
+
 import React from "react";
 import Scene from './Scene'
 import Env from './Env'
@@ -77,15 +77,14 @@ export function ViewCanvas({}: Props) {
           fov: 26,
         }}
       >
-        {/* Detect Performance issues */}
-        <PerformanceMonitor onDecline={() => degrade(true)} />
+       
         <color attach="background" args={['#d1a054']} />
 
           <View.Port />
         
         <Bvh>
+          <Suspense fallback={null}>
           <group scale={0.12} position={[0.1,-0.2,3.9]} rotation={[0,-0.7,0]}>
-
 
           <Scene />
           <Bubbles />
@@ -93,6 +92,7 @@ export function ViewCanvas({}: Props) {
           <RandomizedLight amount={3} radius={6} ambient={0.5} intensity={1} position={[0, 0, 0]} bias={0.001} />
         </AccumulativeShadows> */}
           </group>
+          </Suspense>
 
           
          

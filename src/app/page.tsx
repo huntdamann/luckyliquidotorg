@@ -11,6 +11,7 @@ import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Popup from '../slices/Popup'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons"
+import { ViewCanvas } from '../components/ViewCanvas'
 
 gsap.registerPlugin(useGSAP);
 
@@ -72,6 +73,8 @@ export default function Home() {
   return (
    <>
 
+
+    <ViewCanvas />
     <RemoveScroll>
     <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-20 flex flex-col bg-transparent  h-[100vh] items-center justify-center gap-2">
 

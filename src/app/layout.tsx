@@ -6,7 +6,6 @@ import "./globals.css";
 import { Preloader } from '../components/Preloader'
 
 
-import { ViewCanvas } from '../components/ViewCanvas'
 import { getPageFiles } from "next/dist/server/get-page-files";
 import { PreScreen } from "../components/Prescreen";
 const geistSans = localFont({
@@ -51,14 +50,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${LeckerliOne.variable} ${Julius.variable} antialiased`}
       >
         
+
+    
         <PreScreen />
 
-        <Suspense fallback={<Preloader />}>
-        {/* <PreScreen /> */}
-
         {children}
-        <ViewCanvas />
-        </Suspense>
       </body>
      
     </html>
