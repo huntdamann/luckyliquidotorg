@@ -12,13 +12,14 @@ import { Clover } from "./Clover";
 
 import React from "react";
 import Scene from './Scene'
+import Model from './Model'
 import Env from './Env'
 import { OrbitControls, PerformanceMonitor, AccumulativeShadows, RandomizedLight } from "@react-three/drei";
 import { PerspectiveCamera } from "three";
 import { data } from './store'
 import Lucky from '../../static/lucky-logo-demo.png'
 
-import { GUI } from 'lil-gui'
+import { useControls } from 'leva'
 
 
 
@@ -26,17 +27,17 @@ import { GUI } from 'lil-gui'
 
 
 
-function Loader() {
-  const { active, progress, errors, item, loaded, total } = useProgress();
-  return <Html center>
-          <Image width={150} height={100} alt="LuckyLiquid Beverage" src={Lucky} />
 
-    {progress} % loaded</Html>;
-}
+
+
 
 type Props = {};
 
 export function ViewCanvas({}: Props) {
+
+
+  const modelRef = useRef<any>()
+  
 
 
   /**
@@ -46,17 +47,14 @@ export function ViewCanvas({}: Props) {
     const cameraRef = useRef<PerspectiveCamera>(null);
     const [perfSucks, degrade] = useState(false)
 
+    const { model } = useControls({ model: 10})
+    const { scale } = useControls({ scale: 1 })
+    const { position } = useControls({ position: [0, 0, 0]})
 
 
-// useEffect(() => {
-
-//   const gui = new GUI()
-
-//   gui.add(jarGUIRef.current.rotation, 'x', 0, Math.PI * 2)
-
-// })
   return (
     <>
+
 
    
       <Canvas
@@ -66,38 +64,43 @@ export function ViewCanvas({}: Props) {
           left: "50%",
           transform: "translateX(-50%)",
           overflow: "hidden",
-          // pointerEvents: "none",
           zIndex: 0,
         }}
         shadows
         dpr={[1, perfSucks?  1.5 : 2]}
         gl={{ antialias: true }}
         camera={{
-          position: [50, 3, 20],
+          position: [0, 10, 10],
           fov: 26,
+          
         }}
       >
+       <PerformanceMonitor />
+
        
         <color attach="background" args={['#d1a054']} />
 
           <View.Port />
         
-        <Bvh>
+        {/* <Bvh> */}
+          <group ref={modelRef} scale={0.39} position={[-0.4,-3,-2]} rotation={[0,-0.7,0]}>
           <Suspense fallback={null}>
-          <group scale={0.12} position={[0.1,-0.2,3.9]} rotation={[0,-0.7,0]}>
 
-          <Scene />
-          <Bubbles />
-          {/* <AccumulativeShadows frames={100} alphaTest={0.45} opacity={0.8} color="red" scale={25} position={[0, -0.0005, 0]}>
-          <RandomizedLight amount={3} radius={6} ambient={0.5} intensity={1} position={[0, 0, 0]} bias={0.001} />
-        </AccumulativeShadows> */}
-          </group>
+            <Model scale={scale} position={position} />
+             
+
           </Suspense>
+
+          <Bubbles />
+          
+          </group>
 
           
          
-        </Bvh>
+        {/* </Bvh> */}
 
+
+        {/* <Environment frames={perfSucks ? 1 : Infinity} preset="city" resolution={256} background blur={0.8} /> */}
 
         <Env perfSucks={perfSucks} />
         {/* <OrbitControls makeDefault /> */}
@@ -113,21 +116,5 @@ export function ViewCanvas({}: Props) {
 }
 
 
-function Loading() {
 
-
-  const { progress, active } = useProgress();
-
-  return (
-    <>
-     {/* Loading overlay */}
-     {active && (
-      <Html center>
-        <div style={{fontSize: '100px', color: '#fff'}}>
-          Hi... {Math.round(progress)}%
-        </div>
-      </Html>
-    )}
-    </>
-  )
-}
+  

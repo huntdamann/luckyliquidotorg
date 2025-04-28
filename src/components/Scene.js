@@ -23,13 +23,7 @@ export default function Scene(props) {
   const meshRef2 = useRef();
   const meshRef3 = useRef();
 
- // Rotate the mesh slowly on every frame
-//  useFrame(({ clock }) => {
-//   if (meshRef.current) {
-//     meshRef.current.rotation.z += 0.01; // Slow rotation around the Y axis
-//   }
- 
-// });
+
 
 const { nodes, materials } = useGLTF('/static/lucky2.glb')
   return (
