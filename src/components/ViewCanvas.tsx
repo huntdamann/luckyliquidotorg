@@ -47,9 +47,9 @@ export function ViewCanvas({}: Props) {
     const cameraRef = useRef<PerspectiveCamera>(null);
     const [perfSucks, degrade] = useState(false)
 
-    const { model } = useControls({ model: 10})
-    const { scale } = useControls({ scale: 1 })
-    const { position } = useControls({ position: [0, 0, 0]})
+    // const { model } = useControls({ model: 10})
+    // const { scale } = useControls({ scale: 1 })
+    // const { position } = useControls({ position: [0, 0, 0]})
 
 
   return (
@@ -71,7 +71,7 @@ export function ViewCanvas({}: Props) {
         gl={{ antialias: true }}
         camera={{
           position: [0, 10, 10],
-          fov: 26,
+          fov: 40,
           
         }}
       >
@@ -83,10 +83,10 @@ export function ViewCanvas({}: Props) {
           <View.Port />
         
         {/* <Bvh> */}
-          <group ref={modelRef} scale={0.39} position={[-0.4,-3,-2]} rotation={[0,-0.7,0]}>
+          <group ref={modelRef} scale={0.5} position={[0.3,-3.5,-3]} rotation={[0,-0.7,0]}>
           <Suspense fallback={null}>
 
-            <Model scale={scale} position={position} />
+            <Model />
              
 
           </Suspense>
