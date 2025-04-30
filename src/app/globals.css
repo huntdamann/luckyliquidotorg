@@ -82,5 +82,12 @@ body {
   }
 }
 
+@media (max-width: 375px) {
+
+  #button-handle {
+    bottom: 3rem;
+  }
+}
+
 
 

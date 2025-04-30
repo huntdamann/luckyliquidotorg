@@ -75,7 +75,6 @@ export function ViewCanvas({}: Props) {
           
         }}
       >
-       <PerformanceMonitor />
 
        
         <color attach="background" args={['#d1a054']} />

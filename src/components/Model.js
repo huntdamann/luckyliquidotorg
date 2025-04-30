@@ -12,6 +12,8 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/lucky_draco-opt.glb')
   return (
     <group {...props} dispose={null}>
+
+      
       <mesh
         castShadow
         receiveShadow
@@ -20,6 +22,19 @@ export default function Model(props) {
         position={[0.372, 18.672, -3.723]}
         scale={22.669}
       />
+        <Caustics
+            backfaces
+            color={[1, 0.8, 0.8]}
+            focus={[0, -1.2, 0]}
+            lightSource={[-1.2, 3, -2]}
+            frustum={1.75}
+            intensity={0.003}
+            worldRadius={0.26 / 10}
+            ior={0.9}
+            backfaceIor={1.26}
+           >
+
+            
       <mesh
         castShadow
         receiveShadow
@@ -27,7 +42,21 @@ export default function Model(props) {
         material={materials['Material.002']}
         position={[-1.365, 3.971, -0.414]}
         rotation={[-Math.PI / 2, 0, -1.125]}
-      />
+      >
+
+        <MeshTransmissionMaterial
+            backside
+            backsideThickness={0.1}
+            thickness={0.05}
+            chromaticAberration={0.05}
+            anisotropicBlur={1}
+            clearcoat={1}
+            clearcoatRoughness={1}
+            envMapIntensity={2}
+          />
+
+      </mesh>
+      </Caustics>
       <mesh
         castShadow
         receiveShadow
