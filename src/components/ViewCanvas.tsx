@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { View, useGLTF, Environment, Bvh, Instance, Instances, Html, useProgress } from "@react-three/drei";
+import { View, useGLTF, Environment, Bvh, Instance, Instances, Html, BakeShadows, AdaptiveDpr } from "@react-three/drei";
 import { Suspense, useEffect, useReducer, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -106,9 +106,8 @@ export function ViewCanvas({}: Props) {
         {/* <gridHelper args={[20,20]} /> */}
 
 
-
-
-       
+        <AdaptiveDpr />
+        <BakeShadows />
       </Canvas>
     </>
   );

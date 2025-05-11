@@ -25,7 +25,7 @@ export default function Scene(props) {
 
 
 
-const { nodes, materials } = useGLTF('/static/lucky2.glb')
+const { nodes, materials } = useGLTF('/static/lucky2.glb', true)
   return (
     <group  {...props} dispose={null}>
       <group position={[-0.359, 2.457, -0.331]} rotation={[-Math.PI / 2, 0, -1.125]}>
