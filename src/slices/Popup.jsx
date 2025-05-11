@@ -33,7 +33,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
         <>
 
             {/* Pop up Container */}
-            <div id="popup-container" ref={refPop} className="border gap-[3rem] text-center opacity-0 rounded-xl bg-white absolute p-[3rem] justify-between  items-center   border-green-700 flex flex-col min-h-[20rem]">
+            <div id="popup-container" ref={refPop} className="border gap-[3rem] text-center opacity-0 rounded-xl bg-white absolute p-[3rem] justify-between  items-center   border-green-700 flex flex-col min-h-[20rem] top-[10rem]">
 
                 <Image alt='Picture' src={Lucky} width={150} height={150}></Image>
                     
@@ -45,16 +45,18 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
                 
 
-                <button className=" shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] p-1  "><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHDIve2VdrZBGBCTDY7Cx4jjgvlo5WjRfDWuy9-dv6lb9lwg/viewform?usp=dialog">Sign up</a></button>
+                <button className=" text-honeygold shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] p-1  "><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHDIve2VdrZBGBCTDY7Cx4jjgvlo5WjRfDWuy9-dv6lb9lwg/viewform?usp=dialog">Sign up</a></button>
                 <div className='triangle'></div>
 
+
+                 {/* Dark Overlay */}
+            <section ref={refOut} className=" text-green-600">
+                <button id="cancel" onClick={() => setter(!refNo) }>No, thanks</button>
+            </section>
             </div>
 
             
-            {/* Dark Overlay */}
-            <section ref={refOut} className=" text-white fixed w-full h-screen opacity-0">
-                <button id="cancel" onClick={() => setter(!refNo) } className=" fixed bottom-[15%] left-[40%]">No, thanks</button>
-            </section>
+           
 
         
         

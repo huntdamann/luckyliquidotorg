@@ -76,7 +76,7 @@ export default function Home() {
 
     <ViewCanvas />
     <RemoveScroll>
-    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-20 flex flex-col bg-transparent  h-[100vh] items-center justify-center gap-2">
+    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-20 flex flex-col h-[100vh] items-center justify-center gap-2">
 
 
 
