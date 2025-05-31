@@ -20,7 +20,7 @@ gsap.registerPlugin(useGSAP);
 export default function Home() {
 
   const paperWindowRef = useRef(null);
-  const paperFrontRef = useRef<HTMLElement | null>(null);
+  const paperFrontRef = useRef<HTMLDivElement | null>(null);
   const paperBackRef = useRef(null);
   const isDesktop = useMediaQuery('(min-width: 460px)');
 
