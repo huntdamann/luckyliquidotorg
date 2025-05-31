@@ -8,9 +8,10 @@ import gsap from "gsap";
 import {RemoveScroll} from 'react-remove-scroll';
 import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
+import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Popup from '../slices/Popup'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons"
+
 import { ViewCanvas } from '../components/ViewCanvas'
 
 gsap.registerPlugin(useGSAP);
@@ -18,96 +19,185 @@ gsap.registerPlugin(useGSAP);
 
 export default function Home() {
 
+  const paperWindowRef = useRef(null);
+  const paperFrontRef = useRef(null);
+  const paperBackRef = useRef(null);
   const isDesktop = useMediaQuery('(min-width: 460px)');
-  const [openPopUp, setOpenPopUp] = useState(false);
 
-  const popupRef = useRef(null);
-  const overlayRef = useRef(null);
-  const buttonRef = useRef(null);
-  const exitRef = useRef(null);
-  const chevronRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
+  const [pageHeight, setPageHeight] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
 
-  useGSAP(() => {
-    gsap.from('#header', {y:-320, delay: 2 })
-    gsap.from('#title', {opacity: 0})
-    gsap.from('#construction', {y:300, opacity: 0, delay: 4})
-    gsap.from(chevronRef.current, {opacity: 0, delay: 4.5})
-    gsap.to('#title', {opacity: 1, delay: 3})
-    gsap.to('#header', {y: 0, delay: 2, opacity: 1})
-    gsap.to('#construction', {y: isDesktop? -200 : 0, opacity: 1, delay: 4})
-    gsap.to(chevronRef.current, {opacity: 1,delay: 4.5})
-  })
+
 
   useEffect(() => {
-    if(openPopUp) {
-      gsap.to(popupRef.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
-      gsap.to(overlayRef.current, {zIndex: 800, opacity: 0.8, duration: 1, ease:"power3.out"})
-      gsap.to(buttonRef.current, { opacity: 0, y: -50, duration: 0.3, ease:"sine.out"})
 
-    } else {
-      gsap.to(popupRef.current, {
-        
-        opacity: 0,
-        duration: 0.5,
-        ease: "sine.in",
-        zIndex: -1,
-      })
-      gsap.to(overlayRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        ease:'power3.in',
-        zIndex: -1,
-
-      })
-      gsap.to(buttonRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power3.in",
-        zIndex: 40,
-
-      })
+    if (paperFrontRef.current) {
+      const height = paperFrontRef.current.offsetHeight;
+      setPageHeight(height);
+      console.log(height);
     }
-  }, [openPopUp])
+
+
+  }, [])
+
+  // Update transform origin
+
+  useEffect(() => {
+
+
+    const scrollTop = window.scrollY;
+
+    const equation = (scrollTop + 1800) / pageHeight * 100;
+
+    if (paperFrontRef.current) {
+      paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
+    }
+  }, [pageHeight])
+
+
+  const openMenu = () => {
+    setOpen(true);
+    setClose(false)
+    console.log('opening....');
+
+  }
+  const closeMenu = () => {
+    setOpen(false);
+    setClose(true);
+    console.log('closing....');
+
+  }
+
+  // const isDesktop = useMediaQuery('(min-width: 460px)');
+  // const [openPopUp, setOpenPopUp] = useState(false);
+
+  // const popupRef = useRef(null);
+  // const overlayRef = useRef(null);
+  // const buttonRef = useRef(null);
+  // const exitRef = useRef(null);
+  // const chevronRef = useRef(null);
+
+  // useGSAP(() => {
+  //   gsap.from('#leadlogo', {y:-320, opacity: 0, delay: 7 })
+    
+  //   gsap.to('#leadlogo', {y: 0,  opacity: 1})
+   
+  // })
+
+  // useEffect(() => {
+  //   if(openPopUp) {
+  //     gsap.to(popupRef.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
+  //     gsap.to(overlayRef.current, {zIndex: 800, opacity: 0.8, duration: 1, ease:"power3.out"})
+  //     gsap.to(buttonRef.current, { opacity: 0, y: -50, duration: 0.3, ease:"sine.out"})
+
+  //   } else {
+  //     gsap.to(popupRef.current, {
+        
+  //       opacity: 0,
+  //       duration: 0.5,
+  //       ease: "sine.in",
+  //       zIndex: -1,
+  //     })
+  //     gsap.to(overlayRef.current, {
+  //       opacity: 0,
+  //       duration: 0.5,
+  //       ease:'power3.in',
+  //       zIndex: -1,
+
+  //     })
+  //     gsap.to(buttonRef.current, {
+  //       opacity: 1,
+  //       duration: 0.3,
+  //       ease: "power3.in",
+  //       zIndex: 40,
+
+  //     })
+  //   }
+  // }, [openPopUp])
 
 
   return (
    <>
 
+<header id="paper-back">
+  <nav className="text-white">
+    <div onClick={close? openMenu: closeMenu} className="close"></div>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Our Work</a>
+    <a href="#">Delivery</a>
+  </nav>
+</header>
 
-    <ViewCanvas />
-    <RemoveScroll>
-    <section className=" absolute left-[15%] md:left-[35%] lg:left-[40%] z-20 flex flex-col h-[100vh] items-center justify-center gap-2">
+    {/* Hero Section */}
+    <div id="paper-window" className={open? 'tilt' : ''}>
+  <div ref={paperFrontRef} id="paper-front" >
+    <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
+    <div id="container">
+    <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
 
+      <Image id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
+      <Image alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
-
-
-   
-   <div id="header" className="fixed font-juju opacity-0 top-10 left-[30%] lg:left-[43%] uppercase text-4xl text-honeygold">
-    <Image width={150} height={100} alt="LuckyLiquid Beverage" src={Lucky} />
-   </div>
-   <div className="p-3 text-center text-[#01a237] w-[17rem] text-2xl flex flex-col justify-center items-center">
-    
-    <span id="title" className='opacity-0 font-main drop-shadow-[0_3.3px_1.2px_rgba(0,0,0,0.8)] text-5xl w-[20rem] lg:mt-[-7rem]'>"It's actually good!"</span>
-    <span id="construction" className='lg:mt-[18rem] mt-[12rem] sm:mt-[10rem] drop-shadow-[0_1.3px_1.2px_rgba(0,0,0,0.8)] font-mono stroke-black opacity-0'>Our site is currently under construction. </span>
-   </div>
-   {/* Call to action button */}
-
-  
-    <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
-
-
-    <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 absolute animate-bounce z-40 bottom-3">
-      <div  ref={chevronRef} className="flex flex-col text-green-600 opacity-0">
-        <span>Click Here</span>
-       
-            <FontAwesomeIcon className=" text-green-600 " icon={faChevronUp} />
+      <div className="text-3xl font-[900] flex flex-col">
+      <span>Brewed Different.</span>
+      <span>Tastes Like Winning.</span>
 
       </div>
-    </button>
-    
-   </section>
+      
+      <button className="border border-black bg-black font-juju text-white p-[0.5rem] w-[7em]"><span>Shop Now</span></button>
 
-   </RemoveScroll>
+    </section>
+      
+    </div>
+
+
+  </div>
+  {/* Socials */}
+
+  <section>
+
+  </section>
+  <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
+    
+    
+    <div>
+      <h3 className="font-main">Lucky</h3>
+      <ul className="font-juju">
+        <li>About Us</li>
+        <li>Leadership</li>
+
+        <li>Accessbility</li>
+        <li>Terms of Service
+        </li>
+        <li>Privacy Policy</li>
+
+      </ul>
+      </div>
+      <div>
+        <h3 className="font-main">Help</h3>
+        <ul className="font-juju">
+          <li>FAQs</li>
+          <li>Contact</li>
+
+          <li>Order Tracking</li>
+          <li>Shipping Policy</li>
+
+          <li>Return Policy</li>
+
+
+
+        </ul>
+      </div>
+    
+  </footer>
+
+  
+</div>
+
+   
  
    </>
   );
