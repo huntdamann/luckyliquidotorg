@@ -105,10 +105,11 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   font-size: 33px;
   nav {
     padding: 120px 34px;
-    a {
+    li {
       display: block;
       margin-bottom: 25px;
       text-decoration: none;
@@ -117,6 +118,8 @@ body {
   }
 }
 
+
+
 /* //prevents the scrolling when the menu is open */
 #paper-window {
   height: 100vh;
@@ -124,7 +127,7 @@ body {
   position: relative; 
   overflow-x: hidden;
   overflow-y: scroll;
-  z-index: 2;
+  z-index: 10;
   
   
   &.tilt {
@@ -143,8 +146,21 @@ body {
   box-shadow: 0 0 20px rgba(black, 0.7);
   transform-origin: center 70%;
   transition: all 0.3s ease;
-  height: 100%;
+  height: 100vh;
   
+}
+
+
+#product-showcase {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+  border: 1px red solid;
+  background: linear-gradient(#d1a054, white)
 }
 
 /* //actual content */
@@ -218,4 +234,8 @@ body {
     }
     &:before { transform: translateY(-50%) rotate(45deg); }
     &:after { transform: translateY(-50%) rotate(-45deg); }
+}
+
+#secondlogo {
+  margin-left: 2em;
 }

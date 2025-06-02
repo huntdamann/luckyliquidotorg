@@ -19,11 +19,14 @@ export function PreScreen({}: Props) {
 
 
     const [animationComplete, setAnimationComplete] = useState(false)
+    const timelineRef = useRef(gsap.timeline())
 
     useGSAP(() => {
+
+
        
-        gsap.to(".bar2", 1, { delay: 3 , opacity: 1, height: 0, stagger: {amount: 0.5}, ease: "power4.inOut", zIndex: -999})
-        gsap.to(".overlay2", 1, {zIndex: -1, delay: 5, opacity: 1})
+        timelineRef.current.to(".bar2", 1, { delay: 1 , opacity: 1, height: 0, stagger: {amount: 0.5}, ease: "power4.inOut", zIndex: -999})
+        timelineRef.current.to(".overlay2", 1, {zIndex: -1, delay:3, opacity: 1})
        
       })
 

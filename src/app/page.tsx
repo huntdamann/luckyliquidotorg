@@ -10,6 +10,7 @@ import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Popup from '../slices/Popup'
+import SocialPanel from '../slices/SocialPanel'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { ViewCanvas } from '../components/ViewCanvas'
@@ -26,6 +27,11 @@ export default function Home() {
 
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [homeTouch, setHomeTouch] = useState(false)
+  const [aboutUsTouch, setAboutTouch] = useState(false)
+  const [followUsTouch, setFollowTouch] = useState(false)
+  const [orderTouch, setOrderTouch] = useState(false)
+
   const [pageHeight, setPageHeight] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -70,6 +76,122 @@ export default function Home() {
 
   }
 
+  const openHome = () => {
+    setHomeTouch(true);
+  }
+  const closeHome = () => {
+    setHomeTouch(false);
+  }
+  const openAbout = () => {
+    setAboutTouch(true);
+  }
+  const closeAbout = () => {
+    setAboutTouch(false);
+  }
+  const openFollow = () => {
+    setFollowTouch(true);
+  }
+  const closeFollow = () => {
+    setFollowTouch(false);
+  }
+  const openDelivery = () => {
+    setOrderTouch(true);
+  }
+  const closeDelivery = () => {
+    setOrderTouch(false);
+  }
+
+
+
+  // Menu Selection Logic **Each time selected animation runs on shown list items** 
+
+  useEffect(() => {
+    if (homeTouch && !aboutUsTouch && !followUsTouch && !orderTouch) {
+      gsap.to('#ourstory', {opacity: 0});
+      gsap.to('#followus', {opacity: 0})
+      gsap.to('#delivery', {opacity: 0})
+      gsap.to('#about-selections', {autoAlpha: 1, delay: 0.4})
+
+    }
+    else if (!homeTouch && !aboutUsTouch && !followUsTouch && !orderTouch) {
+
+      gsap.to('#ourstory', {opacity: 1});
+      gsap.to('#followus', {opacity: 1})
+      gsap.to('#delivery', {opacity: 1})
+      gsap.to('#about-selections', {autoAlpha: 0})
+
+    }
+  })
+
+  useEffect (() => {
+    if (aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
+      gsap.to('#ourstory', {y: -75})
+      gsap.to('#followus', {opacity: 0})
+      gsap.to('#delivery', {opacity: 0})
+      gsap.to('#home', {opacity: 0})
+
+
+
+    }
+
+    else if (!aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
+      gsap.to('#ourstory', {y: 0})
+      gsap.to('#followus', {opacity: 1})
+      gsap.to('#delivery', {opacity: 1})
+      gsap.to('#home', {opacity: 1})
+
+    }
+  })
+  useEffect (() => {
+    if (followUsTouch && !aboutUsTouch && !homeTouch && !orderTouch) {
+      gsap.to('#followus', {y: -193})
+      gsap.to('#ourstory', {opacity: 0})
+      gsap.to('#delivery', {opacity: 0})
+      gsap.to('#home', {opacity: 0})
+
+
+
+    }
+
+    else if (!followUsTouch && !homeTouch && !aboutUsTouch && !orderTouch) {
+      gsap.to('#followus', {y: 0})
+      gsap.to('#ourstory', {opacity: 1})
+      gsap.to('#delivery', {opacity: 1})
+      gsap.to('#home', {opacity: 1})
+
+    }
+  })
+  useEffect (() => {
+    if (orderTouch && !aboutUsTouch && !homeTouch && !followUsTouch) {
+      gsap.to('#delivery', {y: -273})
+      gsap.to('#ourstory', {opacity: 0})
+      gsap.to('#followus', {opacity: 0})
+      gsap.to('#home', {opacity: 0})
+
+
+
+    }
+
+    else if (!followUsTouch && !homeTouch && !aboutUsTouch && !orderTouch) {
+      gsap.to('#delivery', {y: 0})
+      gsap.to('#ourstory', {opacity: 1})
+      gsap.to('#followus', {opacity: 1})
+      gsap.to('#home', {opacity: 1})
+
+    }
+  })
+
+
+  useGSAP (() => {
+
+
+
+    gsap.to('#leadlogo', {opacity: 1, delay: 2.5, y: 10})
+    gsap.to('#secondlogo', {opacity: 1, delay: 3})
+    gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
+    gsap.from('#slogan2', { opacity: 0, delay: 3.5, x: -100})
+    
+  }, [])
   // const isDesktop = useMediaQuery('(min-width: 460px)');
   // const [openPopUp, setOpenPopUp] = useState(false);
 
@@ -124,10 +246,33 @@ export default function Home() {
 <header id="paper-back">
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Our Work</a>
-    <a href="#">Delivery</a>
+    <ul>
+    <li id="home" onClick={homeTouch ? closeHome : openHome}>About Lucky
+      <div id="about-selections" className={`opacity-0 ${homeTouch ? 'flex' : 'hidden'} flex-col gap-[-10px]  w-[30%]`}>
+        <a className="text-[16px]" href="#">Our Story</a>
+        <a className="text-[16px]" href="#">Lucky Team</a>
+
+        
+      </div>
+    </li>
+    <li onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">Shop
+
+      <div id="">
+        <a className="text-[16px]" href="#">Lucky Honey Gold</a>
+      </div>
+    </li>
+    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Follow Us</li>
+
+    <li  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Order Now
+    <div id="">
+        <a className="text-[16px]" href="#">Local Delivery (DFW)</a>
+
+      </div>
+    </li>
+    </ul>
+    
+   
+   
   </nav>
 </header>
 
@@ -138,12 +283,12 @@ export default function Home() {
     <div id="container">
     <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
 
-      <Image id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
-      <Image alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
+      <Image className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
+      <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
       <div className="text-3xl font-[900] flex flex-col">
-      <span>Brewed Different.</span>
-      <span>Tastes Like Winning.</span>
+      <span id="slogan">Brewed Different.</span>
+      <span id="slogan2">Tastes Like Winning.</span>
 
       </div>
       
@@ -153,14 +298,17 @@ export default function Home() {
       
     </div>
 
+    {/* Product Showcase */}
+    <section id="product-showcase">
+        <h2>Honey Gold</h2>
+        <div>
+          <span className="border border-red-600 p-1">Product Goes Here</span>
+        </div>
+        <span>Try it!</span>
+      </section>
 
-  </div>
-  {/* Socials */}
 
-  <section>
-
-  </section>
-  <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
+      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
     
     
     <div>
@@ -194,6 +342,19 @@ export default function Home() {
     
   </footer>
 
+
+  </div>
+
+  
+  {/* Socials */}
+  <SocialPanel />
+
+  <section>
+
+  </section>
+
+ 
+  
   
 </div>
 
