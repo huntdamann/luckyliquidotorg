@@ -307,6 +307,8 @@ export default function Home() {
         <span>Try it!</span>
       </section>
 
+      <ViewCanvas />
+
 
       <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
     

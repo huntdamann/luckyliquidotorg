@@ -59,10 +59,7 @@ export function ViewCanvas({}: Props) {
    
       <Canvas
         style={{
-          position: "fixed",
-          top: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
+        
           overflow: "hidden",
           zIndex: 0,
         }}
@@ -81,27 +78,24 @@ export function ViewCanvas({}: Props) {
 
           <View.Port />
         
-        {/* <Bvh> */}
           <group ref={modelRef} scale={0.5} position={[0.3,-3.5,-3]} rotation={[0,-0.7,0]}>
           <Suspense fallback={null}>
 
-            <Model />
+          <Bubbles />
              
 
           </Suspense>
 
-          <Bubbles />
+         
           
           </group>
 
           
          
-        {/* </Bvh> */}
 
 
-        {/* <Environment frames={perfSucks ? 1 : Infinity} preset="city" resolution={256} background blur={0.8} /> */}
+        <Environment frames={perfSucks ? 1 : Infinity} preset="city" resolution={256} background blur={0.8} />
 
-        <Env perfSucks={perfSucks} />
         {/* <OrbitControls makeDefault /> */}
         {/* <gridHelper args={[20,20]} /> */}
 
