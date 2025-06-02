@@ -286,7 +286,7 @@ export default function Home() {
       <Image className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
       <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
-      <div className="text-3xl font-[900] flex flex-col">
+      <div className="text-3xl text-black font-[900] flex flex-col">
       <span id="slogan">Brewed Different.</span>
       <span id="slogan2">Tastes Like Winning.</span>
 
