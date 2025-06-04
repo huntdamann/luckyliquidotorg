@@ -74,6 +74,8 @@ export function ViewCanvas({}: Props) {
       >
 
        
+
+       
         <color attach="background" args={['#d1a054']} />
 
           <View.Port />

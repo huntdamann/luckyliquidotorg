@@ -2,7 +2,7 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faInstagram, faBluesky, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faBluesky, faTiktok} from '@fortawesome/free-brands-svg-icons';
 
 config.autoAddCss = false;
 

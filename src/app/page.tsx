@@ -9,9 +9,11 @@ import {RemoveScroll} from 'react-remove-scroll';
 import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
+import Mockup from '../../public/assets/bottle-mockup.png'
 import Popup from '../slices/Popup'
 import SocialPanel from '../slices/SocialPanel'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClover } from "@fortawesome/free-solid-svg-icons";
 
 import { ViewCanvas } from '../components/ViewCanvas'
 
@@ -308,6 +310,46 @@ export default function Home() {
       </section>
 
       <ViewCanvas />
+      <section className="bg-black">
+        <div className="banner">
+
+           <span>Get Lucky!</span>                                            
+        </div>
+      </section>
+
+      {/* Call to action Shop  */}
+
+      <section className="flex flex-col p-[2rem] justify-evenly h-[100%] overflow-hidden bg-honeygold">
+        <div className="h-full flex flex-col gap-2">
+        <div className="border border-red-500 relative rounded-md h-[50%]">
+          <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
+
+          </Image>
+          <div className="absolute z-50 bottom-0 text-white">
+          <span >Shop Now</span>
+
+
+            <FontAwesomeIcon className="text-green-600" icon={faClover} />
+          </div>
+
+        </div>
+        <div className="border border-red-500 relative rounded-md h-[50%]">
+          <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
+
+          </Image>
+          <div className="absolute z-50 bottom-0 text-white">
+          <span >Shop Now</span>
+
+
+            <FontAwesomeIcon className="text-green-600" icon={faClover} />
+          </div>
+          
+
+        </div>
+        
+        </div>
+        
+      </section>
 
 
       <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
