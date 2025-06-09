@@ -5,11 +5,13 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {RemoveScroll} from 'react-remove-scroll';
 import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Mockup from '../../public/assets/bottle-mockup.png'
+import Mockup2 from '../../public/assets/test_mockup.png'
 import Popup from '../slices/Popup'
 import SocialPanel from '../slices/SocialPanel'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,13 +24,17 @@ gsap.registerPlugin(useGSAP);
 
 export default function Home() {
 
-  const paperWindowRef = useRef(null);
+  const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);
   const paperBackRef = useRef(null);
-  const isDesktop = useMediaQuery('(min-width: 460px)');
+  // const isDesktop = useMediaQuery('(min-width: 460px)');
 
   const [open, setOpen] = useState(false);
+  const offset = 1800
   const [close, setClose] = useState(false);
+
+
+  // Menu Folder Logic
   const [homeTouch, setHomeTouch] = useState(false)
   const [aboutUsTouch, setAboutTouch] = useState(false)
   const [followUsTouch, setFollowTouch] = useState(false)
@@ -39,33 +45,40 @@ export default function Home() {
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (paperFrontRef.current) {
-      const height = paperFrontRef.current.offsetHeight;
-      setPageHeight(height);
-      console.log(height);
-    }
+  //   if (paperFrontRef.current) {
+  //     const height = paperFrontRef.current.offsetHeight;
+  //     setPageHeight(height);
+  //     console.log(height);
+  //   }
 
 
-  }, [])
+  // }, [])
 
   // Update transform origin
+  const updateTransformOrigin = () => {
+    if (!windowRef.current || !paperFrontRef.current) return;
+
+    const scrollTop = windowRef.current.scrollTop;
+    const pageHeight = paperFrontRef.current.offsetHeight;
+    console.log(pageHeight)
+    const equation = ((scrollTop + offset) / pageHeight) * 100;
+
+    paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
+  };
 
   useEffect(() => {
-
-
-    const scrollTop = window.scrollY;
-
-    const equation = (scrollTop + 1800) / pageHeight * 100;
-
-    if (paperFrontRef.current) {
-      paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
-    }
-  }, [pageHeight])
-
+    updateTransformOrigin(); // initial calcualtion
+  })
 
   const openMenu = () => {
+
+    if (paperFrontRef.current) {
+    const height = paperFrontRef.current.offsetHeight;
+    setPageHeight(height);
+    console.log(height);
+    }
     setOpen(true);
     setClose(false)
     console.log('opening....');
@@ -192,6 +205,7 @@ export default function Home() {
     gsap.to('#secondlogo', {opacity: 1, delay: 3})
     gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
     gsap.from('#slogan2', { opacity: 0, delay: 3.5, x: -100})
+    gsap.to('#bottle', {x:-200, delay: 8} )
     
   }, [])
   // const isDesktop = useMediaQuery('(min-width: 460px)');
@@ -245,14 +259,15 @@ export default function Home() {
   return (
    <>
 
-<header id="paper-back">
+
+<header className="font-juju" id="paper-back">
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li id="home" onClick={homeTouch ? closeHome : openHome}>About Lucky
+    <li id="home" onClick={homeTouch ? closeHome : openHome}>About Us
       <div id="about-selections" className={`opacity-0 ${homeTouch ? 'flex' : 'hidden'} flex-col gap-[-10px]  w-[30%]`}>
         <a className="text-[16px]" href="#">Our Story</a>
-        <a className="text-[16px]" href="#">Lucky Team</a>
+        <a className="text-[16px] w-[200px]" href="#">Our Team</a>
 
         
       </div>
@@ -260,14 +275,14 @@ export default function Home() {
     <li onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">Shop
 
       <div id="">
-        <a className="text-[16px]" href="#">Lucky Honey Gold</a>
+        <a className="text-[16px]" href="#">Honey Gold</a>
       </div>
     </li>
-    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Follow Us</li>
+    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Socials</li>
 
-    <li  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Order Now
+    <li  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Delivery
     <div id="">
-        <a className="text-[16px]" href="#">Local Delivery (DFW)</a>
+        <a className="text-[16px]" href="#">Dallas/Fort-Worth</a>
 
       </div>
     </li>
@@ -279,7 +294,7 @@ export default function Home() {
 </header>
 
     {/* Hero Section */}
-    <div id="paper-window" className={open? 'tilt' : ''}>
+    <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
   <div ref={paperFrontRef} id="paper-front" >
     <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
     <div id="container">
@@ -302,18 +317,30 @@ export default function Home() {
 
     {/* Product Showcase */}
     <section id="product-showcase">
-        <h2>Honey Gold</h2>
+        <h2 className="font-main text-green-700">Honey Gold</h2>
         <div>
-          <span className="border border-red-600 p-1">Product Goes Here</span>
+          <Image id="bottle" alt="Lucky Bottle" width={200} src={Mockup2}/>
+
         </div>
         <span>Try it!</span>
       </section>
 
-      <ViewCanvas />
-      <section className="bg-black">
+      {/* <ViewCanvas /> */}
+      <section className="banner-container">
         <div className="banner">
+          <div className="banner-content">
+            <div className="flex gap-3 items-center">
+            <span>Get Lucky!</span>
+            <FontAwesomeIcon className="text-green-600" icon={faClover} />
 
-           <span>Get Lucky!</span>                                            
+
+            </div>
+            <div>
+              <span>Try our Honey Gold Flavor</span>
+            </div>
+          </div>
+
+                                                      
         </div>
       </section>
 
@@ -333,8 +360,8 @@ export default function Home() {
           </div>
 
         </div>
-        <div className="border border-red-500 relative rounded-md h-[50%]">
-          <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
+        <div className="border border-red-500 relative rounded-md h-[80%]">
+          <Image className="h-full w-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
 
           </Image>
           <div className="absolute z-50 bottom-0 text-white">
@@ -352,7 +379,7 @@ export default function Home() {
       </section>
 
 
-      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
+      {/* <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
     
     
     <div>
@@ -384,14 +411,14 @@ export default function Home() {
         </ul>
       </div>
     
-  </footer>
+  </footer> */}
 
 
   </div>
 
   
   {/* Socials */}
-  <SocialPanel />
+  {/* <SocialPanel /> */}
 
   <section>
 

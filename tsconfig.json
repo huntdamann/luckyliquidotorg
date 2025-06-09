@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext", "ES2019"],
     "allowJs": true,
+    "types": ["jquery"],
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "target": "es5",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
