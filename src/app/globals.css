@@ -223,7 +223,7 @@ body {
 
 .hamburger {
   position: fixed;
-  z-index: 4;
+  z-index: 30;
   top: 30px;
   left: 30px;
   width: 45px;

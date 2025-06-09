@@ -144,6 +144,8 @@ export default function Home() {
       gsap.to('#followus', {opacity: 0})
       gsap.to('#delivery', {opacity: 0})
       gsap.to('#home', {opacity: 0})
+      gsap.to('#shop-selections', {autoAlpha: 1, delay: 0.4})
+
 
 
 
@@ -154,12 +156,14 @@ export default function Home() {
       gsap.to('#followus', {opacity: 1})
       gsap.to('#delivery', {opacity: 1})
       gsap.to('#home', {opacity: 1})
+      gsap.to('#shop-selections', {autoAlpha: 0})
+
 
     }
   })
   useEffect (() => {
     if (followUsTouch && !aboutUsTouch && !homeTouch && !orderTouch) {
-      gsap.to('#followus', {y: -193})
+      gsap.to('#followus', {y: -153})
       gsap.to('#ourstory', {opacity: 0})
       gsap.to('#delivery', {opacity: 0})
       gsap.to('#home', {opacity: 0})
@@ -178,10 +182,12 @@ export default function Home() {
   })
   useEffect (() => {
     if (orderTouch && !aboutUsTouch && !homeTouch && !followUsTouch) {
-      gsap.to('#delivery', {y: -273})
+      gsap.to('#delivery', {y: -223})
       gsap.to('#ourstory', {opacity: 0})
       gsap.to('#followus', {opacity: 0})
       gsap.to('#home', {opacity: 0})
+      gsap.to('#delivery-selections', {autoAlpha: 1, delay: 0.4})
+
 
 
 
@@ -192,6 +198,8 @@ export default function Home() {
       gsap.to('#ourstory', {opacity: 1})
       gsap.to('#followus', {opacity: 1})
       gsap.to('#home', {opacity: 1})
+      gsap.to('#delivery-selections', {autoAlpha: 0})
+
 
     }
   })
@@ -264,24 +272,24 @@ export default function Home() {
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li id="home" onClick={homeTouch ? closeHome : openHome}>About Us
-      <div id="about-selections" className={`opacity-0 ${homeTouch ? 'flex' : 'hidden'} flex-col gap-[-10px]  w-[30%]`}>
+    <li id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>About Us
+      <div id="about-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px]" href="#">Our Story</a>
         <a className="text-[16px] w-[200px]" href="#">Our Team</a>
 
         
       </div>
     </li>
-    <li onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">Shop
+    <li className="relative"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">Shop
 
-      <div id="">
-        <a className="text-[16px]" href="#">Honey Gold</a>
+      <div id="shop-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
+        <a className="text-[16px] w-[200px]" href="#">Honey Gold</a>
       </div>
     </li>
     <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Socials</li>
 
-    <li  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Delivery
-    <div id="">
+    <li className="relative"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Delivery
+    <div id="delivery-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px]" href="#">Dallas/Fort-Worth</a>
 
       </div>
@@ -346,9 +354,9 @@ export default function Home() {
 
       {/* Call to action Shop  */}
 
-      <section className="flex flex-col p-[2rem] justify-evenly h-[100%] overflow-hidden bg-honeygold">
-        <div className="h-full flex flex-col gap-2">
-        <div className="border border-red-500 relative rounded-md h-[50%]">
+      <section className="flex flex-col p-[2rem] justify-evenly h-[100%]  bg-honeygold">
+        <div className="h-full border border-red-700 flex flex-col gap-2">
+        <div className=" relative rounded-md h-[50%]">
           <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
 
           </Image>
@@ -360,7 +368,7 @@ export default function Home() {
           </div>
 
         </div>
-        <div className="border border-red-500 relative rounded-md h-[80%]">
+        <div className=" relative rounded-md h-[80%]">
           <Image className="h-full w-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
 
           </Image>
