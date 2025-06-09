@@ -354,9 +354,9 @@ export default function Home() {
 
       {/* Call to action Shop  */}
 
-      <section className="flex flex-col p-[2rem] justify-evenly h-[100%]  bg-honeygold">
+      <section className="flex flex-col p-[2rem] justify-evenly   bg-honeygold">
         <div className="h-full border border-red-700 flex flex-col gap-2">
-        <div className=" relative rounded-md h-[50%]">
+        <div className=" relative rounded-md h-[30%]">
           <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
 
           </Image>
