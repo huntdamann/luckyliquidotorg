@@ -386,8 +386,10 @@ export default function Home() {
         
       </section>
 
+      <SocialPanel realCount={100} />
 
-      {/* <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
+
+      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
     
     
     <div>
@@ -419,7 +421,7 @@ export default function Home() {
         </ul>
       </div>
     
-  </footer> */}
+  </footer>
 
 
   </div>
