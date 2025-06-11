@@ -220,7 +220,33 @@ body {
     }
   }
 }
+#social-section {
 
+  background: linear-gradient(green 20%, black);
+  height: 30vh;
+
+}
+
+.newsletter-section {
+  background-color: green;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 1rem;
+  font-family: 'Ultra', serif;
+  font-weight: 700;
+  background-image: linear-gradient(black 60%, green);
+
+
+
+  p {
+    max-width: 6rem;
+    color: #d1a054;
+  }
+  
+}
 .hamburger {
   position: fixed;
   z-index: 30;

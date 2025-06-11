@@ -14,6 +14,7 @@ import Mockup from '../../public/assets/bottle-mockup.png'
 import Mockup2 from '../../public/assets/test_mockup.png'
 import Popup from '../slices/Popup'
 import SocialPanel from '../slices/SocialPanel'
+import Newsletter from '../slices/Newsletter'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClover } from "@fortawesome/free-solid-svg-icons";
 
@@ -387,9 +388,11 @@ export default function Home() {
       </section>
 
       <SocialPanel realCount={100} />
+      <Newsletter />
 
 
-      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center border">
+
+      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center">
     
     
     <div>

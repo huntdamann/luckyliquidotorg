@@ -30,7 +30,7 @@ const FollowerCounter = ({ realcount }) => {
 }
 
 
-const SocialPanel = ({ realCount }) => {
+const SocialPanel = ({ realCount, duration = 2000, start = 0 }) => {
 
 
     const [displayFollowCount, setDisplayCount ] = useState(0);
@@ -43,38 +43,50 @@ const SocialPanel = ({ realCount }) => {
     useEffect(() => {
         if (!inView || hasAnimated) return;
 
-        const overshoot = Math.floor(realCount * 0.2)
-        const peak = realCount + overshoot
-        console.log(peak)
-        console.log(realCount)
+        const range = realCount - start
+        if (range <= 0) return;
 
-        let current = realCount
-        let phase = 'increasing'
-        console.log('In View')
+        const stepTime = Math.abs(Math.floor(duration / range))
+        console.log('How quickly score runs based in milliseconds:', stepTime)
+
+        let current = start;
+        console.log('What is currently shown:', current)
 
         const interval = setInterval(() => {
-            if (phase === 'increasing') {
-                current += Math.floor(Math.random() * 100 + 50)
-                console.log(current)
+            console.log('I am running')
+          current+=1
+          setDisplayCount(current)
+          if (current >= realCount) {
+            clearInterval(interval)
+          }
 
-                if (current >= peak) {
-                    current = peak;
-                    phase = 'decreasing';
-                }
-            }
-                else if (phase === 'decreasing') {
-                    current -= Math.floor(Math.random() * 50 + 10)
-                    if (current <= realCount ) {
-                        current = realCount
-                        clearInterval(interval)
-                    } 
-            }
-            setDisplayCount(current)
-            
-        }, phase === 'increasing' ? 5 : 10)
-        setHasAnimated(true)
+
+        }, stepTime)
         return () => clearInterval(interval)
-    }, [inView, hasAnimated, realCount])
+
+        // const interval = setInterval(() => {
+        //     console.log('Interaval is working')
+        //     if (phase === 'increasing') {
+        //         current += Math.floor(Math.random() * 100 + 50)
+        //         console.log(current)
+
+        //         if (current >= peak) {
+        //             current = peak;
+        //             phase = 'decreasing';
+        //         }
+        //     }
+        //         else if (phase === 'decreasing') {
+        //             current -= Math.floor(Math.random() * 50 + 10)
+        //             if (current <= realCount ) {
+        //                 current = realCount
+        //                 clearInterval(interval)
+        //             } 
+        //     }
+        //     setDisplayCount(current)
+            
+        // }, 10)
+        setHasAnimated(true)
+    }, [inView, hasAnimated, realCount, duration, start])
 
 
 
@@ -84,12 +96,20 @@ const SocialPanel = ({ realCount }) => {
 
         <>
 
-           <div className="border text-white bg-black flex flex-col justify-center items-center ">
+           <div id="social-section" className=" text-white flex flex-col justify-evenly items-center ">
 
-            <span>Follow us on Social Media</span>
+            <h2 className="font-main text-honeygold text-2xl">Follow Our Socials</h2>
+
+            <div className="flex items-center gap-1 ">
             <FontAwesomeIcon className="text-[5rem]" icon={faInstagram} />
-            <span>22 Followers</span>
-            <span className="text-blue-600" style={{color: 'green', fontWeight: 800}} ref={ref}>{displayFollowCount.toLocaleString()}</span>
+            <a className="" href="https://www.instagram.com/waytoolucky_/">Instagram</a>
+            </div>
+
+            <div className="flex gap-2">
+            <span className="text-blue-600" style={{color: '#d1a054', fontWeight: 800}} ref={ref}>{displayFollowCount.toLocaleString()}</span>
+            <span>Followers</span>
+            </div>
+          
             
 
 
