@@ -4,7 +4,8 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 config.autoAddCss = false;
 import { useInView } from 'react-intersection-observer'
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 import React, { forwardRef, useEffect } from "react";
 
@@ -28,21 +29,22 @@ const Newsletter = () => {
 
     const { ref , inView , entry } = useInView({
         triggerOnce: true,
-        threshold: 0.1
+        threshold: 0.5
     })
 
     useEffect(() => {
             if (!inView) return;
     
             console.log('Newsletter Section in View')
-            
+            gsap.to('#quote', {opacity: 1});
+
         }, [inView])
     
     return(
 
         <>
         <div ref={ref} className="newsletter-section">
-                <p className="text-honeygold">"Luck is when preparation of tea meets opportunity"</p>
+                <p id="quote" className="text-honeygold opacity-0">"Luck is when preparation of tea meets opportunity"</p>
                 <Image className="text-[3rem]" src={Clover} alt="clover
                 +23" ></Image>
         </div>

@@ -5,7 +5,6 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {RemoveScroll} from 'react-remove-scroll';
 import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
