@@ -95,6 +95,10 @@ body {
   }
 }
 
+.slogan {
+  font-family: 'Fredoka', serif;
+  font-weight: 900;
+}
 
 /* Menu Burger Logic */
 

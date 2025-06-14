@@ -187,6 +187,8 @@ export default function Home() {
       gsap.to('#delivery', {opacity: 1})
       gsap.to('#home', {opacity: 1})
       gsap.to('#social-selections', {autoAlpha: 0})
+      gsap.to('#instagram-social-icon', {rotate: 0, duration: 1, delay: 0.5})
+
 
 
 
@@ -346,7 +348,7 @@ export default function Home() {
       <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
       <div className="text-3xl text-black font-[900] flex flex-col">
-      <span id="slogan">"A Bold New Brew"</span>
+      <span className="slogan" id="slogan">"A Bold New Brew"</span>
 
       </div>
       
