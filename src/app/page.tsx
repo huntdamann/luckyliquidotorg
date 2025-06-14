@@ -182,7 +182,7 @@ export default function Home() {
   })
   useEffect (() => {
     if (orderTouch && !aboutUsTouch && !homeTouch && !followUsTouch) {
-      gsap.to('#delivery', {y: -223})
+      gsap.to('#delivery', {y: -173})
       gsap.to('#ourstory', {opacity: 0})
       gsap.to('#followus', {opacity: 0})
       gsap.to('#home', {opacity: 0})
@@ -268,30 +268,36 @@ export default function Home() {
    <>
 
 
-<header className="font-juju" id="paper-back">
+<header className="text-sm" id="paper-back">
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>About Us
-      <div id="about-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
+    <li id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>Socials
+      
+    </li>
+    <li className="relative"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
+      
+       <span className=""> 
+        
+           Our Products
+       </span>
+
+      <div id="shop-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[20%]`}>
+        <a className="text-[16px] w-[200px]" href="#">Honey Gold</a>
+      </div>
+    </li>
+    <li className="relative"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Get Lucky!
+    <div id="delivery-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
+        <a className="text-[16px]" href="#">Dallas/Fort-Worth</a>
+
+      </div>
+    </li>
+    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Socials
+    <div id="about-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px]" href="#">Our Story</a>
         <a className="text-[16px] w-[200px]" href="#">Our Team</a>
 
         
-      </div>
-    </li>
-    <li className="relative"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">Shop
-
-      <div id="shop-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px] w-[200px]" href="#">Honey Gold</a>
-      </div>
-    </li>
-    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Socials</li>
-
-    <li className="relative"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Delivery
-    <div id="delivery-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px]" href="#">Dallas/Fort-Worth</a>
-
       </div>
     </li>
     </ul>
@@ -312,48 +318,30 @@ export default function Home() {
       <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
       <div className="text-3xl text-black font-[900] flex flex-col">
-      <span id="slogan">Brewed Different.</span>
-      <span id="slogan2">Tastes Like Winning.</span>
+      <span id="slogan">"A Bold New Brew"</span>
 
       </div>
       
-      <button className="border border-black bg-black font-juju text-white p-[0.5rem] w-[7em]"><span>Shop Now</span></button>
+      {/* <button className="border border-black bg-black font-juju text-white p-[0.5rem] w-[7em]"><span>Shop Now</span></button> */}
 
     </section>
       
     </div>
 
     {/* Product Showcase */}
-    <section id="product-showcase">
+    {/* <section id="product-showcase">
         <h2 className="font-main text-green-700">Honey Gold</h2>
         <div>
           <Image id="bottle" alt="Lucky Bottle" width={200} src={Mockup2}/>
 
         </div>
         <span>Try it!</span>
-      </section>
+      </section> */}
 
       {/* <ViewCanvas /> */}
-      <section className="banner-container">
-        <div className="banner">
-          <div className="banner-content">
-            <div className="flex gap-3 items-center">
-            <span>Get Lucky!</span>
-            <FontAwesomeIcon className="text-green-600" icon={faClover} />
-
-
-            </div>
-            <div>
-              <span>Try our Honey Gold Flavor</span>
-            </div>
-          </div>
-
-                                                      
-        </div>
-      </section>
-
+     
       {/* Call to action Shop  */}
-
+{/* 
       <section className="flex flex-col p-[2rem] justify-evenly   bg-honeygold">
         <div className="h-full border border-red-700 flex flex-col gap-2">
         <div className=" relative rounded-md h-[30%]">
@@ -384,14 +372,32 @@ export default function Home() {
         
         </div>
         
+      </section> */}
+{/* 
+      <SocialPanel realCount={100} />
+      <section className="banner-container">
+        <div className="banner">
+          <div className="banner-content">
+            <div className="flex gap-3 items-center">
+            <span>Get Lucky!</span>
+            <FontAwesomeIcon className="text-green-600" icon={faClover} />
+
+
+            </div>
+            <div>
+              <span>Try our Honey Gold Flavor</span>
+            </div>
+          </div>
+
+                                                      
+        </div>
       </section>
 
-      <SocialPanel realCount={100} />
-      <Newsletter />
+      <Newsletter /> */}
 
 
 
-      <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center">
+      {/* <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center">
     
     
     <div>
@@ -423,7 +429,7 @@ export default function Home() {
         </ul>
       </div>
     
-  </footer>
+  </footer> */}
 
 
   </div>
