@@ -16,6 +16,8 @@ import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClover } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram, faBluesky, faTiktok} from '@fortawesome/free-brands-svg-icons';
+
 
 import { ViewCanvas } from '../components/ViewCanvas'
 
@@ -122,9 +124,11 @@ export default function Home() {
 
   useEffect(() => {
     if (homeTouch && !aboutUsTouch && !followUsTouch && !orderTouch) {
-      gsap.to('#ourstory', {opacity: 0});
+      gsap.to('#ourstory', {opacity: 0,});
       gsap.to('#followus', {opacity: 0})
       gsap.to('#delivery', {opacity: 0})
+      gsap.to('#home', {y: -170})
+
       gsap.to('#about-selections', {autoAlpha: 1, delay: 0.4})
 
     }
@@ -133,6 +137,8 @@ export default function Home() {
       gsap.to('#ourstory', {opacity: 1});
       gsap.to('#followus', {opacity: 1})
       gsap.to('#delivery', {opacity: 1})
+      gsap.to('#home', {y: 0})
+
       gsap.to('#about-selections', {autoAlpha: 0})
 
     }
@@ -140,7 +146,7 @@ export default function Home() {
 
   useEffect (() => {
     if (aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
-      gsap.to('#ourstory', {y: -75})
+      gsap.to('#ourstory', {y: -55})
       gsap.to('#followus', {opacity: 0})
       gsap.to('#delivery', {opacity: 0})
       gsap.to('#home', {opacity: 0})
@@ -163,10 +169,13 @@ export default function Home() {
   })
   useEffect (() => {
     if (followUsTouch && !aboutUsTouch && !homeTouch && !orderTouch) {
-      gsap.to('#followus', {y: -153})
+      gsap.to('#followus', {y: 0})
       gsap.to('#ourstory', {opacity: 0})
       gsap.to('#delivery', {opacity: 0})
       gsap.to('#home', {opacity: 0})
+      gsap.to('#social-selections', {autoAlpha: 1, delay: 0.4})
+
+      gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
 
 
 
@@ -177,16 +186,22 @@ export default function Home() {
       gsap.to('#ourstory', {opacity: 1})
       gsap.to('#delivery', {opacity: 1})
       gsap.to('#home', {opacity: 1})
+      gsap.to('#social-selections', {autoAlpha: 0})
+
+
 
     }
   })
+
+  // Delivery Selction 
   useEffect (() => {
     if (orderTouch && !aboutUsTouch && !homeTouch && !followUsTouch) {
-      gsap.to('#delivery', {y: -173})
+      gsap.to('#delivery', {y: -115})
       gsap.to('#ourstory', {opacity: 0})
       gsap.to('#followus', {opacity: 0})
       gsap.to('#home', {opacity: 0})
       gsap.to('#delivery-selections', {autoAlpha: 1, delay: 0.4})
+      console.log('Delivery Tab opened')
 
 
 
@@ -199,6 +214,8 @@ export default function Home() {
       gsap.to('#followus', {opacity: 1})
       gsap.to('#home', {opacity: 1})
       gsap.to('#delivery-selections', {autoAlpha: 0})
+      console.log('Delivery Tab closed')
+
 
 
     }
@@ -212,8 +229,7 @@ export default function Home() {
     gsap.to('#leadlogo', {opacity: 1, delay: 2.5, y: 10})
     gsap.to('#secondlogo', {opacity: 1, delay: 3})
     gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
-    gsap.from('#slogan2', { opacity: 0, delay: 3.5, x: -100})
-    gsap.to('#bottle', {x:-200, delay: 8} )
+    // gsap.to('#bottle', {x:-200, delay: 8} )
     
   }, [])
   // const isDesktop = useMediaQuery('(min-width: 460px)');
@@ -272,7 +288,15 @@ export default function Home() {
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>Socials
+    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
+      
+    <div id="social-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
+      <div className="flex items-center gap-1 ">
+                    <FontAwesomeIcon id="instagram-social-icon" className="text-[1rem]" icon={faInstagram} />
+                    <a className="text-[16px] w-[200px]" href="https://www.instagram.com/waytoolucky_/">Instagram</a>
+          </div>
+      
+      </div>
       
     </li>
     <li className="relative"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
@@ -282,19 +306,21 @@ export default function Home() {
            Our Products
        </span>
 
-      <div id="shop-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[20%]`}>
+      <div id="shop-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
         <a className="text-[16px] w-[200px]" href="#">Honey Gold</a>
       </div>
     </li>
     <li className="relative"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Get Lucky!
-    <div id="delivery-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px]" href="#">Dallas/Fort-Worth</a>
+    <div id="delivery-selections" className={`opacity-0   fixed  top-11 flex flex-col gap-5 pt-1  w-[30%]`}>
+        <a className="text-[16px] w-[200px]" href="#">Dallas/Fort-Worth</a>
 
       </div>
     </li>
-    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus" >Socials
-    <div id="about-selections" className={`opacity-0   fixed flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px]" href="#">Our Story</a>
+   
+   
+    <li  id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>About Us
+    <div id="about-selections" className={`opacity-0   fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
+        <a className="text-[16px] w-[200px]" href="#">Our Story</a>
         <a className="text-[16px] w-[200px]" href="#">Our Team</a>
 
         
@@ -308,6 +334,8 @@ export default function Home() {
 </header>
 
     {/* Hero Section */}
+
+    <RemoveScroll>
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
   <div ref={paperFrontRef} id="paper-front" >
     <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
@@ -447,7 +475,7 @@ export default function Home() {
   
 </div>
 
-   
+   </RemoveScroll>
  
    </>
   );
