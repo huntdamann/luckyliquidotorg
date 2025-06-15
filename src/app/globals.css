@@ -94,10 +94,15 @@ body {
     bottom: 2rem;
   }
 }
+#followus {
+  border: 1px red solid;
+}
 
 .slogan {
-  font-family: 'Fredoka', serif;
-  font-weight: 900;
+  font-family: 'Fredoka', cursive;
+  font-weight: 800;
+  font-variation-settings:
+    "wdth" 125;
 }
 
 /* Menu Burger Logic */
@@ -107,7 +112,11 @@ body {
   height: 100vh;
   background-color: green;
   position: fixed;
-
+  border: 1px red solid;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 800;
+  font-variation-settings:
+    "wdth" 125;
   top: 0;
   left: 0;
   z-index: 1;
@@ -115,11 +124,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  
 
   nav {
     padding: 120px 34px;
     display: flex;
-    font-family: 'Ultra', serif;
     li {
       display: block;
       margin-bottom: 35px;

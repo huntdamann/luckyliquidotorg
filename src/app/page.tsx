@@ -107,9 +107,13 @@ export default function Home() {
   }
   const openFollow = () => {
     setFollowTouch(true);
+
+    console.log('opening social tab')
   }
   const closeFollow = () => {
     setFollowTouch(false);
+    console.log('closing social tab')
+
   }
   const openDelivery = () => {
     setOrderTouch(true);
@@ -175,7 +179,7 @@ export default function Home() {
       gsap.to('#home', {opacity: 0})
       gsap.to('#social-selections', {autoAlpha: 1, delay: 0.4})
 
-      gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
+      // gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
 
 
 
@@ -187,13 +191,13 @@ export default function Home() {
       gsap.to('#delivery', {opacity: 1})
       gsap.to('#home', {opacity: 1})
       gsap.to('#social-selections', {autoAlpha: 0})
-      gsap.to('#instagram-social-icon', {rotate: 0, duration: 1, delay: 0.5})
+      // gsap.to('#instagram-social-icon', {rotate: 0, duration: 1, delay: 0.5})
 
 
 
 
     }
-  })
+  }, [followUsTouch])
 
   // Delivery Selction 
   useEffect (() => {
@@ -290,18 +294,24 @@ export default function Home() {
   <nav className="text-white">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
+    <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
       
-    <div id="social-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
-      <div className="flex items-center gap-1 ">
-                    <FontAwesomeIcon id="instagram-social-icon" className="text-[1rem]" icon={faInstagram} />
-                    <a className="text-[16px] w-[200px]" href="https://www.instagram.com/waytoolucky_/">Instagram</a>
-          </div>
+   
       
+      <div id="social-selections" className={`opacity-0 border z-10  fixed  top-11 flex flex-col gap-5 pt-1  w-[150px]`}>
+        <a className="text-[16px] border w-[200px]" href="https://youtube.com">
+        <FontAwesomeIcon id="instagram-social-icon" className="text-[1rem]" icon={faInstagram} />
+
+          <span className="w-[200px]">Instagram</span>
+          
+          </a>
+
       </div>
       
+    
+      
     </li>
-    <li className="relative"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
+    <li className="relative cursor-pointer"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
       
        <span className=""> 
         
@@ -309,21 +319,21 @@ export default function Home() {
        </span>
 
       <div id="shop-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
-        <a className="text-[16px] w-[200px]" href="#">Honey Gold</a>
+        <span className="text-[16px] w-[200px]">Honey Gold</span>
       </div>
     </li>
-    <li className="relative"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Get Lucky!
+    <li className="relative cursor-pointer"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Get Lucky!
     <div id="delivery-selections" className={`opacity-0   fixed  top-11 flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px] w-[200px]" href="#">Dallas/Fort-Worth</a>
+        <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">Dallas/Fort-Worth</a>
 
       </div>
     </li>
    
    
-    <li  id="home" className="relative" onClick={homeTouch ? closeHome : openHome}>About Us
+    <li  id="home" className="relative cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
     <div id="about-selections" className={`opacity-0   fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px] w-[200px]" href="#">Our Story</a>
-        <a className="text-[16px] w-[200px]" href="#">Our Team</a>
+        {/* <a className="text-[16px] w-[200px]" href="#">Our Team</a> */}
 
         
       </div>
