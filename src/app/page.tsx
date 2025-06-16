@@ -1,4 +1,5 @@
 "use client";
+import Head from 'next/head'
 import React, { lazy, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -179,7 +180,7 @@ export default function Home() {
       gsap.to('#home', {opacity: 0})
       gsap.to('#social-selections', {autoAlpha: 1, delay: 0.4})
 
-      // gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
+      gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
 
 
 
@@ -191,7 +192,7 @@ export default function Home() {
       gsap.to('#delivery', {opacity: 1})
       gsap.to('#home', {opacity: 1})
       gsap.to('#social-selections', {autoAlpha: 0})
-      // gsap.to('#instagram-social-icon', {rotate: 0, duration: 1, delay: 0.5})
+      gsap.to('#instagram-social-icon', {rotate: 0, duration: 1, delay: 0.5})
 
 
 
@@ -289,28 +290,42 @@ export default function Home() {
   return (
    <>
 
+   <Head>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"/>
+
+   </Head>
+
 
 <header className="text-sm" id="paper-back">
-  <nav className="text-white">
+  <nav className="text-white relative">
     <div onClick={close? openMenu: closeMenu} className="close"></div>
     <ul>
-    <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
+    {/* <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
       
    
       
       <div id="social-selections" className={`opacity-0 border z-10  fixed  top-11 flex flex-col gap-5 pt-1  w-[150px]`}>
-        <a className="text-[16px] border w-[200px]" href="https://youtube.com">
-        <FontAwesomeIcon id="instagram-social-icon" className="text-[1rem]" icon={faInstagram} />
-
-          <span className="w-[200px]">Instagram</span>
-          
-          </a>
-
+      <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">Dallas/Fort-Worth</a>
       </div>
       
     
       
+    </li> */}
+    
+    <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
+    
+    <div id="social-selections" className= "opacity-0  z-10  fixed  top-[5rem] flex flex-col gap-5 pt-1  w-[150px]">
+          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
+          <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
+          Instagram</a>
+
+    </div>
     </li>
+    
+    
     <li className="relative cursor-pointer"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
       
        <span className=""> 

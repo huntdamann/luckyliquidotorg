@@ -28,6 +28,11 @@ const Julius = localFont({
   variable: "--font-juju",
   weight: "100 900",
 });
+// const Fredoka = localFont({
+//   src: "./fonts/Fredoka-VariableFont_wdth.ttf",
+//   variable: "--font-fred",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "LuckyLiquid",
@@ -47,7 +52,7 @@ export default function RootLayout({
     <html lang="en">
   
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${LeckerliOne.variable} ${Julius.variable} antialiased`}
+        className={`${geistSans.variable}  ${geistMono.variable} ${LeckerliOne.variable} ${Julius.variable} antialiased`}
       >
         
 
