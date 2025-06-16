@@ -373,7 +373,7 @@ export default function Home() {
 
     {/* Hero Section */}
 
-    <RemoveScroll enabled={false}>
+    {/* <RemoveScroll enabled={false}> */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
       <div ref={paperFrontRef} id="paper-front" >
         <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
@@ -509,7 +509,7 @@ export default function Home() {
   
 </div>
 
-   </RemoveScroll>
+   {/* </RemoveScroll> */}
  
    </>
   );
