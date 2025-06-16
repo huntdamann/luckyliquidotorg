@@ -15,6 +15,7 @@ import Mockup2 from '../../public/assets/test_mockup.png'
 import Popup from '../slices/Popup'
 import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
+import OurStory from '../slices/OurStory'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClover } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram, faBluesky, faTiktok} from '@fortawesome/free-brands-svg-icons';
@@ -321,10 +322,16 @@ export default function Home() {
     
     <li className="relative cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
     
-    <div id="social-selections" className= "opacity-0  z-10  fixed  top-[5rem] flex flex-col gap-5 pt-1  w-[150px]">
+    <div id="social-selections" className= "opacity-0  z-10  fixed  top-[3rem] flex flex-col gap-5 pt-1  w-[150px]">
           <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
           <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
           Instagram</a>
+          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
+          <FontAwesomeIcon id='instagram-social-icon' icon={faTiktok} />
+          Tiktok</a>
+          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
+          <FontAwesomeIcon id='instagram-social-icon' icon={faBluesky} />
+          Blueskies</a>
 
     </div>
     </li>
@@ -384,6 +391,7 @@ export default function Home() {
       {/* <button className="border border-black bg-black font-juju text-white p-[0.5rem] w-[7em]"><span>Shop Now</span></button> */}
 
     </section>
+    <OurStory />
       
     </div>
 

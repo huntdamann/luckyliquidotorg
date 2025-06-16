@@ -114,7 +114,7 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  font-size: 33px;
+  font-size: 23px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -240,6 +240,23 @@ body {
 
 }
 
+.our_story {
+  position: fixed;
+  top: 0;
+  background-color: #d1a054;
+  color: white;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.5rem;
+  padding-top: 8rem;
+  align-items: center;
+  h1 {
+    font-size: 2rem;
+  }
+}
 .newsletter-section {
   background-color: green;
   width: 100%;
