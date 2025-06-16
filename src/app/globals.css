@@ -96,7 +96,7 @@ body {
 }
 
 .slogan {
-  font-family: 'Fredoka', serif;
+  font-family: 'Fredoka', monospace;
   font-weight: 500;
   src: url('../../public/fonts/Fredoka-VariableFont_wdth.woff2'), url('../../public/fonts/Fredoka-VariableFont_wdth.woff');
 }
