@@ -389,7 +389,7 @@ export default function Home() {
               </div>
         
             </section>
-           <OurStory />
+           {/* <OurStory /> */}
       
           </div>
 
