@@ -42,6 +42,7 @@ const OurStory = forwardRef((props, ref) => {
                 <span>But for us, tea is just the beginning. We're here to push the limits of what a beverage brand cand do. Our vision goes beyond the bottle -- we're building a movement rooted in community. By 2030, we aim to lauch a nonprofit dedicated to empowering the next generation through scholarships and youth activty centers, starting right here in our own backyard. <span className="font-bold"> It's more than just tea: this is a promise in a bottle. This is what it means to Get Lucky.</span></span>
                 <Image className="text-[3rem]" src={Clover} alt="clover
                 +23" ></Image>
+                
             </section>
 
         

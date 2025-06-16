@@ -373,27 +373,25 @@ export default function Home() {
 
     {/* Hero Section */}
 
-    <RemoveScroll>
+    <RemoveScroll enabled={false}>
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
-  <div ref={paperFrontRef} id="paper-front" >
-    <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
-    <div id="container">
-    <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
+      <div ref={paperFrontRef} id="paper-front" >
+        <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
+          <div id="container">
+            <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
 
-      <Image className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
-      <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
+              <Image className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
+              <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
-      <div className="text-3xl text-black font-[900] flex flex-col">
-      <span className="slogan" id="slogan">"A Bold New Brew"</span>
+              <div className="text-3xl text-black font-[900] flex flex-col">
+              <span className="slogan" id="slogan">"A Bold New Brew"</span>
 
-      </div>
+              </div>
+        
+            </section>
+           <OurStory />
       
-      {/* <button className="border border-black bg-black font-juju text-white p-[0.5rem] w-[7em]"><span>Shop Now</span></button> */}
-
-    </section>
-    <OurStory />
-      
-    </div>
+          </div>
 
     {/* Product Showcase */}
     {/* <section id="product-showcase">
@@ -505,10 +503,7 @@ export default function Home() {
   {/* Socials */}
   {/* <SocialPanel /> */}
 
-  <section>
-
-  </section>
-
+  
  
   
   
