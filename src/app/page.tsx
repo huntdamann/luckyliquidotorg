@@ -106,22 +106,26 @@ export default function Home() {
   const closeAbout = () => {
     setAboutTouch(false);
   }
-  const openFollow = () => {
-    setFollowTouch(true);
+  
 
-    console.log('opening social tab')
+  const toggleFollow = () => {
+    if (followUsTouch === true) {
+      setFollowTouch(false)
+    }
+    else {
+      setFollowTouch(true)
+    }
   }
-  const closeFollow = () => {
-    setFollowTouch(false);
-    console.log('closing social tab')
-
+  const toggleDeliver = () => {
+    if (orderTouch === true) {
+      setOrderTouch(false)
+    }
+    else {
+      setOrderTouch(true)
+    }
   }
-  const openDelivery = () => {
-    setOrderTouch(true);
-  }
-  const closeDelivery = () => {
-    setOrderTouch(false);
-  }
+  
+ 
 
 
 
@@ -129,9 +133,9 @@ export default function Home() {
 
   useEffect(() => {
     if (homeTouch && !aboutUsTouch && !followUsTouch && !orderTouch) {
-      gsap.to('#ourstory', {opacity: 0,});
-      gsap.to('#followus', {opacity: 0})
-      gsap.to('#delivery', {opacity: 0})
+      gsap.to('#ourstory', {opacity: 0, zIndex: -1});
+      gsap.to('#followus', {opacity: 0, zIndex: -1})
+      gsap.to('#delivery', {opacity: 0, zIndex: -1})
       gsap.to('#home', {y: -170})
 
       gsap.to('#about-selections', {autoAlpha: 1, delay: 0.4})
@@ -139,9 +143,9 @@ export default function Home() {
     }
     else if (!homeTouch && !aboutUsTouch && !followUsTouch && !orderTouch) {
 
-      gsap.to('#ourstory', {opacity: 1});
-      gsap.to('#followus', {opacity: 1})
-      gsap.to('#delivery', {opacity: 1})
+      gsap.to('#ourstory', {opacity: 1, zIndex: 10});
+      gsap.to('#followus', {opacity: 1, zIndex: 10})
+      gsap.to('#delivery', {opacity: 1, zIndex: 10})
       gsap.to('#home', {y: 0})
 
       gsap.to('#about-selections', {autoAlpha: 0})
@@ -152,9 +156,9 @@ export default function Home() {
   useEffect (() => {
     if (aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
       gsap.to('#ourstory', {y: -55})
-      gsap.to('#followus', {opacity: 0})
-      gsap.to('#delivery', {opacity: 0})
-      gsap.to('#home', {opacity: 0})
+      gsap.to('#followus', {opacity: 0, zIndex: -1})
+      gsap.to('#delivery', {opacity: 0, zIndex: -1})
+      gsap.to('#home', {opacity: 0, zIndex: -1})
       gsap.to('#shop-selections', {autoAlpha: 1, delay: 0.4})
 
 
@@ -164,9 +168,9 @@ export default function Home() {
 
     else if (!aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
       gsap.to('#ourstory', {y: 0})
-      gsap.to('#followus', {opacity: 1})
-      gsap.to('#delivery', {opacity: 1})
-      gsap.to('#home', {opacity: 1})
+      gsap.to('#followus', {opacity: 1, zIndex: 10})
+      gsap.to('#delivery', {opacity: 1, zIndex: 10})
+      gsap.to('#home', {opacity: 1, zIndex: 10})
       gsap.to('#shop-selections', {autoAlpha: 0})
 
 
@@ -175,9 +179,9 @@ export default function Home() {
   useEffect (() => {
     if (followUsTouch && !aboutUsTouch && !homeTouch && !orderTouch) {
       gsap.to('#followus', {y: 0})
-      gsap.to('#ourstory', {opacity: 0})
-      gsap.to('#delivery', {opacity: 0})
-      gsap.to('#home', {opacity: 0})
+      gsap.to('#ourstory', {opacity: 0, zIndex: -1})
+      gsap.to('#delivery', {opacity: 0 , zIndex: -1})
+      gsap.to('#home', {opacity: 0, zIndex: -1})
       gsap.to('#social-selections', {autoAlpha: 1, delay: 0.4})
 
       gsap.to('#instagram-social-icon', {rotate: 360, duration: 1, delay: 0.5})
@@ -198,15 +202,15 @@ export default function Home() {
 
 
     }
-  }, [followUsTouch])
+  }, [followUsTouch, homeTouch, aboutUsTouch, orderTouch])
 
   // Delivery Selction 
   useEffect (() => {
     if (orderTouch && !aboutUsTouch && !homeTouch && !followUsTouch) {
       gsap.to('#delivery', {y: -115})
-      gsap.to('#ourstory', {opacity: 0})
-      gsap.to('#followus', {opacity: 0})
-      gsap.to('#home', {opacity: 0})
+      gsap.to('#ourstory', {opacity: 0, zIndex: -1})
+      gsap.to('#followus', {opacity: 0, zIndex: -1})
+      gsap.to('#home', {opacity: 0, zIndex: -1})
       gsap.to('#delivery-selections', {autoAlpha: 1, delay: 0.4})
       console.log('Delivery Tab opened')
 
@@ -217,9 +221,9 @@ export default function Home() {
 
     else if (!followUsTouch && !homeTouch && !aboutUsTouch && !orderTouch) {
       gsap.to('#delivery', {y: 0})
-      gsap.to('#ourstory', {opacity: 1})
-      gsap.to('#followus', {opacity: 1})
-      gsap.to('#home', {opacity: 1})
+      gsap.to('#ourstory', {opacity: 1, zIndex: 10})
+      gsap.to('#followus', {opacity: 1, zIndex: 10})
+      gsap.to('#home', {opacity: 1, zIndex: 10})
       gsap.to('#delivery-selections', {autoAlpha: 0})
       console.log('Delivery Tab closed')
 
@@ -315,7 +319,7 @@ export default function Home() {
       
     </li> */}
     
-    <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
+    <li className="relative cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
     
     <div id="social-selections" className= "opacity-0  z-10  fixed  top-[5rem] flex flex-col gap-5 pt-1  w-[150px]">
           <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
@@ -337,7 +341,7 @@ export default function Home() {
         <span className="text-[16px] w-[200px]">Honey Gold</span>
       </div>
     </li>
-    <li className="relative cursor-pointer"  onClick={orderTouch ? closeDelivery : openDelivery} id="delivery">Get Lucky!
+    <li className="relative cursor-pointer"  onClick={() => {toggleDeliver()}} id="delivery">Get Lucky!
     <div id="delivery-selections" className={`opacity-0   fixed  top-11 flex flex-col gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">Dallas/Fort-Worth</a>
 
