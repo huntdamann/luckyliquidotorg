@@ -405,8 +405,7 @@ export default function Home() {
 
               <div className="text-3xl text-black font-[900] flex flex-col">
               <Image id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan2} />
-              <Image id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan3} />
-              <Image id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan4} />
+             
 
               {/* <span className="slogan" id="slogan">"A Bold New Brew"</span> */}
 
