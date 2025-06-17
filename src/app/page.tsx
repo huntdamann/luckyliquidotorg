@@ -51,6 +51,9 @@ export default function Home() {
   const [followUsTouch, setFollowTouch] = useState(false)
   const [orderTouch, setOrderTouch] = useState(false)
 
+  //Open Our Story 
+  const [openStory, setOpenStory] = useState(false)
+
   const [pageHeight, setPageHeight] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -83,6 +86,13 @@ export default function Home() {
     updateTransformOrigin(); // initial calcualtion
   })
 
+  const openStoryPage = () => {
+
+    setOpenStory(prev => !prev);
+    console.log('Opening Our Story Page')
+    setClose(true);
+    setOpen(false)
+  }
   const openMenu = () => {
 
     if (paperFrontRef.current) {
@@ -364,12 +374,15 @@ export default function Home() {
    
    
     <li  id="home" className="relative cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
-    <div id="about-selections" className={`opacity-0   fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px] w-[200px]" href="#">Our Story</a>
+    <div id="about-selections" className={`opacity-0 fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
+        <span onClick={openStoryPage} className="text-[16px] w-[200px]">Our Story</span>
         {/* <a className="text-[16px] w-[200px]" href="#">Our Team</a> */}
 
         
       </div>
+    </li>
+    <li className="relative cursor-pointer" id="delivery">
+    <a href="/">Home</a>
     </li>
     </ul>
     
@@ -400,9 +413,16 @@ export default function Home() {
               </div>
         
             </section>
-           {/* <OurStory /> */}
       
           </div>
+          <section>
+            {openStory && (
+               <OurStory />
+            )}
+           
+
+          </section>
+
 
     {/* Product Showcase */}
     {/* <section id="product-showcase">
@@ -505,7 +525,7 @@ export default function Home() {
         </ul>
       </div>
     
-  </footer> */}
+      </footer> */}
 
 
   </div>
@@ -516,9 +536,10 @@ export default function Home() {
 
   
  
-  
+
   
 </div>
+
 
    {/* </RemoveScroll> */}
  
