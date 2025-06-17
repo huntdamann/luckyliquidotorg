@@ -12,6 +12,7 @@ import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Mockup from '../../public/assets/bottle-mockup.png'
 import Mockup2 from '../../public/assets/test_mockup.png'
+import Slogan from '../../public/assets/slogan.png'
 import Popup from '../slices/Popup'
 import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
@@ -384,7 +385,9 @@ export default function Home() {
               <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
               <div className="text-3xl text-black font-[900] flex flex-col">
-              <span className="slogan" id="slogan">"A Bold New Brew"</span>
+              <Image id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan} />
+
+              {/* <span className="slogan" id="slogan">"A Bold New Brew"</span> */}
 
               </div>
         

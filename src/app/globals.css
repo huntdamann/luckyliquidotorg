@@ -96,8 +96,9 @@ body {
 }
 
 .slogan {
-  font-family: 'Fredoka One', cursive, Arial, Helvetica, sans-serif;
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
   font-weight: 500;
+  font-style: oblique;
   src: url('../../public/fonts/fredoka-one.woff'), url('../../public/fonts/fredoka-one.woff2');
 }
 
