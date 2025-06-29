@@ -37,11 +37,11 @@ export default async function handler(request, response) {
 
      }
 
-     response.status(200).json({ message : 'Subscription was successful'})
+      return response.status(200).json({ message : 'Subscription was successful'})
     }
     catch (error) {
         console.error('Subscription error: ', error)
-        response.status(500).json({ message : 'Internal Server Error' });
+        return response.status(500).json({ message : 'Internal Server Error' });
     }
  
 
