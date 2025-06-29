@@ -32,7 +32,7 @@ export default async function handler(request, response) {
      })
 
      if (!reply.ok) {
-        const errorData = await response.json()
+        const errorData = await reply.json()
         return response.status(500).json({ message: errorData.error.message || 'Failed to Subscribe'});
 
      }
