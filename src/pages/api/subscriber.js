@@ -19,11 +19,12 @@ export default async function handler(request, response) {
 
      const mailerKey = process.env.MAILERLITE_API_KEY;
 
-     const reply = await fetch('https://api.mailerlite.com/api/v2/subscribers', {
+
+     const reply = await fetch('https://connect.mailerlite.com/api/subscribers', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-MailerLite-ApiKey': mailerKey,
+            'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`,
         },
         body: JSON.stringify({
             email,
@@ -33,8 +34,11 @@ export default async function handler(request, response) {
 
      if (!reply.ok) {
         const errorData = await reply.json()
-        return response.status(500).json({ message: errorData.error.message || 'Failed to Subscribe'});
 
+        
+        console.error(errorData)
+        return response.status(500).json({ message: errorData?.error?.message || 'Failed to Subscribe'});
+        
      }
 
       return response.status(200).json({ message : 'Subscription was successful'})

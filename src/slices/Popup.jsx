@@ -30,10 +30,13 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
     const handleUserSubmit = async (e) => {
         e.preventDefault();
+        console.log('code gets here')
         const res = await fetch('/api/subscriber', {
             method: 'POST',
             body: JSON.stringify({ email }),
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
         })
         const data = await res.json();
         setStatus(data.message)
