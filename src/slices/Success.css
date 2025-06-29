@@ -1,0 +1,12 @@
+#success-container {
+
+    transform: translateX(-50%);
+    min-width: 20rem;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    #success-container {
+        padding: 4rem;
+    }
+}

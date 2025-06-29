@@ -3,13 +3,15 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 config.autoAddCss = false;
+import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 
+import Title from '../../public/assets/new_word.png'
+import React, { forwardRef, useState } from "react";
 
-import React, { forwardRef } from "react";
-
-
+import Success from '../slices/Success'
 
 import Lucky from '../../public/assets/lucky-logo-demo.png'
+import PhotoNews from '../../public/assets/IMG_9895.jpeg'
 import Image from "next/image";
 
 
@@ -23,6 +25,19 @@ import Image from "next/image";
 const Popup = ({ refPop, refOut, refNo, setter}) => {
 
 
+    const [ email, setEmail] = useState('')
+    const [ status, setStatus ] = useState(null)
+
+    const handleUserSubmit = async (e) => {
+        e.preventDefault();
+        const res = await fetch('/api/subscriber', {
+            method: 'POST',
+            body: JSON.stringify({ email }),
+            headers: {'Content-Type': 'application/json'},
+        })
+        const data = await res.json();
+        setStatus(data.message)
+    }
 
 
 
@@ -33,26 +48,59 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
         <>
 
             {/* Pop up Container */}
-            <div id="popup-container" ref={refPop} className="border gap-[3rem] text-center opacity-0 rounded-xl bg-white absolute p-[3rem] justify-between  items-center   border-green-700 flex flex-col min-h-[20rem] top-[10rem]">
+            <div id="popup-container" ref={refPop} className="border-2 shadow-md text-black bg-[#51B150] gap-[3rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[10%] left-[51%]">
 
-                <Image alt='Picture' src={Lucky} width={150} height={150}></Image>
-                    
-                <span className="text-xl font-mono">Thank you for your interest in our brand!</span>
+              <div className="h-full w-full flex items-center justify-center flex-row">
 
-                <span className="w-[16rem] font-mono">We're working on creating a unique experience that brings a touch of <span className="font-bold text-green-600">luck</span> into your life. Sign up for our email list below to be among the first to know when it's ready for you.  
+
+
+
+                <div className="image">
+                    <Image className="w-full rounded-2xl" alt="Product-Photo" src={PhotoNews} width={300} />
+                </div>
+
+                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'} top-1 right-5 cursor-pointer`}>
+                    No, Thanks
+                </div>
+
+                <div className="flex flex-col text-center items-center justify-center gap-3">
+
+
+                <Image alt='Picture' src={Lucky} width={300} height={150}></Image>
+                <Image className="" id="secondlogo" alt="Lucky Leperchaun Logo" width={150} src={Lucky2} />
+                <Image className="" id="title-one" alt="We're Brewing Something Special" width={350} src={Title} />
+
+
+                <span className="w-[16rem] font-mono">
+                    Join the Lucky list and be entered for a chance to win <span className="text-honeygold font-bold">$100!</span>  
 
                 </span>
 
+                <form onSubmit={handleUserSubmit} className=" rounded-md flex gap-2 justify-center items-center w-[15rem]" action="">
+                    <input className="h-full w-full shadow-md rounded-md p-2" type="email" name="" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required id="" />
+                    <button id="button-submit" type="submit" className="rounded-md bg-green-400 shadow-md h-[2rem] w-[7rem]"><span className="">Get Lucky</span></button>
+
+                    {status && <Success set={setter} refNo={refNo} />}
+                </form>
                 
 
-                <button className=" text-honeygold shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] p-1  "><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHDIve2VdrZBGBCTDY7Cx4jjgvlo5WjRfDWuy9-dv6lb9lwg/viewform?usp=dialog">Sign up</a></button>
+                <span>Winner will be announced on July 31st, 2025</span>
+
+                
+                
                 <div className='triangle'></div>
 
 
+
+                </div>
+
+
+                </div>
+
+
+
                  {/* Dark Overlay */}
-            <section ref={refOut} className=" text-green-600">
-                <button id="cancel" onClick={() => setter(!refNo) }>No, thanks</button>
-            </section>
+           
             </div>
 
             

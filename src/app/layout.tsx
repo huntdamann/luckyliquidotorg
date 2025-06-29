@@ -3,6 +3,8 @@ import React, { lazy, Suspense } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "../slices/Popup.css"
+import "../slices/Success.css"
 import { Preloader } from '../components/Preloader'
 
 

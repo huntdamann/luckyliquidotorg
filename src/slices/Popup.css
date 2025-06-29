@@ -5,3 +5,50 @@
     z-index: 99;
     border: solid;
 }
+
+
+.image {
+    min-width: 50%;
+    min-height: 60%;
+    border-radius: 1rem;
+}
+
+
+@media only screen and (max-width: 540px) {
+    #popup-container {
+        top: 15rem;
+        .image {
+            display: none;
+        }
+        padding: 2rem;
+
+    }
+
+    #button-submit {
+        width: 9rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .image {
+        display: inline-block;
+    }
+    #popup-container {
+        align-items: center;
+        justify-content: center;
+        padding: 3rem;
+        
+        width: 40rem;
+    }
+}
+
+
+#popup-container {
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    
+
+}
+
+
