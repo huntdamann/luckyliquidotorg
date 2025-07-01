@@ -24,7 +24,8 @@ export default async function handler(request, response) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`,
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${mailerKey}`,
         },
         body: JSON.stringify({
             email,
