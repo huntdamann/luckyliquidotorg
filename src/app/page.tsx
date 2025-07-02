@@ -470,7 +470,7 @@ export default function Home() {
     <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
     
 
-    <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 absolute animate-bounce z-[999] left-[45%] lg:left-[49%] bottom-[1rem]">
+    <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 fixed animate-bounce z-[999] left-[45%] lg:left-[49%] bottom-[1rem]">
       <div  ref={chevronRef} className="flex flex-col text-green-600 opacity-1">
         <span>Join</span>
        
