@@ -255,7 +255,7 @@ body {
 
 
 /* //prevents the scrolling when the menu is open */
-#paper-window {
+#paper-window { 
   height: 100dvh;
   width: 100vw;
   position: relative; 

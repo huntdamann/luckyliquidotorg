@@ -75,7 +75,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
 
                 <span className="w-[16rem] font-mono">
-                    Join the Lucky list and be entered for a chance to win <span className="text-honeygold font-bold">$100!</span>  
+                    Join the Lucky list and unlock exclusive perks 
 
                 </span>
 
@@ -87,7 +87,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                 </form>
                 
 
-                <span>Winner will be announced on July 31st, 2025</span>
+                <span>Discounts, Special Flavors, Events, and More</span>
 
                 
                 

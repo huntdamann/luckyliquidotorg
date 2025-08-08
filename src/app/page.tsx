@@ -85,6 +85,7 @@ export default function Home() {
     if (!windowRef.current || !paperFrontRef.current) return;
 
     const scrollTop = windowRef.current.scrollTop;
+    console.log('Scroll Progress:', scrollTop)
     const pageHeight = paperFrontRef.current.offsetHeight;
     console.log(pageHeight)
     const equation = ((scrollTop + offset) / pageHeight) * 100;
