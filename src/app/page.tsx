@@ -196,7 +196,7 @@ export default function Home() {
       gsap.to('#ourstory', {opacity: 0, zIndex: -1});
       gsap.to('#followus', {opacity: 0, zIndex: -1})
       gsap.to('#delivery', {opacity: 0, zIndex: -1})
-      gsap.to('#home', {y: -170})
+      gsap.to('#home', {y: -110})
 
       gsap.to('#about-selections', {autoAlpha: 1, delay: 0.4})
 
@@ -236,6 +236,9 @@ export default function Home() {
 
     }
   })
+
+
+  // Socials button 
   useEffect (() => {
     if (followUsTouch && !aboutUsTouch && !homeTouch && !orderTouch) {
       gsap.to('#followus', {y: 0})
@@ -316,53 +319,18 @@ export default function Home() {
   // const exitRef = useRef(null);
   // const chevronRef = useRef(null);
 
-  // useGSAP(() => {
-  //   gsap.from('#leadlogo', {y:-320, opacity: 0, delay: 7 })
-    
-  //   gsap.to('#leadlogo', {y: 0,  opacity: 1})
-   
-  // })
-
-  // useEffect(() => {
-  //   if(openPopUp) {
-  //     gsap.to(popupRef.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
-  //     gsap.to(overlayRef.current, {zIndex: 800, opacity: 0.8, duration: 1, ease:"power3.out"})
-  //     gsap.to(buttonRef.current, { opacity: 0, y: -50, duration: 0.3, ease:"sine.out"})
-
-  //   } else {
-  //     gsap.to(popupRef.current, {
-        
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       ease: "sine.in",
-  //       zIndex: -1,
-  //     })
-  //     gsap.to(overlayRef.current, {
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       ease:'power3.in',
-  //       zIndex: -1,
-
-  //     })
-  //     gsap.to(buttonRef.current, {
-  //       opacity: 1,
-  //       duration: 0.3,
-  //       ease: "power3.in",
-  //       zIndex: 40,
-
-  //     })
-  //   }
-  // }, [openPopUp])
 
 
   return (
    <>
 
+
+{/* Google Fonts */}
    <Head>
 
-   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com"/>
+      <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"/>
 
    </Head>
 
@@ -408,15 +376,15 @@ export default function Home() {
        </span>
 
       <div id="shop-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
-        <span className="text-[16px] w-[200px]">Honey Gold</span>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header" className="text-[16px] w-[200px]">Honey Gold</a>
       </div>
     </li>
-    <li className="relative cursor-pointer"  onClick={() => {toggleDeliver()}} id="delivery">Get Lucky!
+    {/* <li className="relative cursor-pointer"  onClick={() => {toggleDeliver()}} id="delivery">Get Lucky!
     <div id="delivery-selections" className={`opacity-0   fixed  top-11 flex flex-col gap-5 pt-1  w-[30%]`}>
         <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">DFW Delivery</a>
 
       </div>
-    </li>
+    </li> */}
    
    
     <li  id="home" className="relative cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
