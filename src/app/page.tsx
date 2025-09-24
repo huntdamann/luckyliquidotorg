@@ -134,6 +134,9 @@ export default function Home() {
     gsap.to(chevronRef.current, {
       opacity: 0
     })
+    gsap.to(popupRef.current, {
+      opacity: 0
+    })
     console.log('Opening Our Story Page')
     setClose(true);
     setOpen(false)
