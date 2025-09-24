@@ -131,6 +131,9 @@ export default function Home() {
   const openStoryPage = () => {
 
     setOpenStory(prev => !prev);
+    gsap.to(chevronRef.current, {
+      opacity: 0
+    })
     console.log('Opening Our Story Page')
     setClose(true);
     setOpen(false)

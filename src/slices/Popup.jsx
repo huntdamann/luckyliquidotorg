@@ -75,7 +75,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
 
                 <span className="w-[16rem] font-mono">
-                    Join the Lucky list and unlock exclusive perks 
+                    Join the Lucky List and unlock exclusive perks 
 
                 </span>
 
