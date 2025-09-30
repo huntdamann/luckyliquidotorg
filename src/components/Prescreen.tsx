@@ -37,7 +37,7 @@ export function PreScreen({}: Props) {
       useEffect(() => {
         const timeout = setTimeout(() => {
             setAnimationComplete(true);
-        }, 5000)
+        }, 2500)
 
         return () => clearTimeout(timeout)
       }, [])

@@ -26,7 +26,7 @@ import Newsletter from '../slices/Newsletter'
 import OurStory from '../slices/OurStory'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faInstagram, faBluesky, faTiktok} from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
 
 
 import { ViewCanvas } from '../components/ViewCanvas'
@@ -363,9 +363,15 @@ export default function Home() {
           <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
           <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
           Instagram</a>
-          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
+          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
           <FontAwesomeIcon id='instagram-social-icon' icon={faTiktok} />
-          Tiktok</a>
+          Tiktok
+          </a>
+          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
+          <FontAwesomeIcon id='instagram-social-icon' icon={faFacebook} />
+          Facebook
+          </a>
+          
           <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
           <FontAwesomeIcon id='instagram-social-icon' icon={faBluesky} />
           Blueskies</a>
@@ -420,7 +426,7 @@ export default function Home() {
           <div id="container">
             <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
 
-              <Image className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
+              <Image loading='lazy' className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
               <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
               <div className="text-3xl text-black font-[900] flex flex-col">
