@@ -426,11 +426,11 @@ export default function Home() {
           <div id="container">
             <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
 
-              <Image loading='lazy' className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
-              <Image className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
+              <Image priority className="opacity-0" id="leadlogo" alt="Lucky Logo" width={300} src={Lucky}/>
+              <Image priority className="opacity-0" id="secondlogo" alt="Lucky Leperchaun Logo" width={300} src={Lucky2} />
 
               <div className="text-3xl text-black font-[900] flex flex-col">
-              <Image id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan2} />
+              <Image priority id='slogan' alt="Lucky Leperchaun Logo" width={300} src={Slogan2} />
              
 
               {/* <span className="slogan" id="slogan">"A Bold New Brew"</span> */}
