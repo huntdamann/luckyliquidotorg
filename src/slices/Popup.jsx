@@ -6,9 +6,10 @@ config.autoAddCss = false;
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 
 import Title from '../../public/assets/new_word.png'
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 
 import Success from '../slices/Success'
+import gsap from "gsap";
 
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import PhotoNews from '../../public/assets/IMG_9895.jpeg'
@@ -27,6 +28,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
     const [ email, setEmail] = useState('')
     const [ status, setStatus ] = useState(null)
+    const [ auto, autoOpen ] = useState(false)
 
     const handleUserSubmit = async (e) => {
         e.preventDefault();
@@ -41,17 +43,44 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
         const data = await res.json();
         setStatus(data.message)
     }
+    useEffect(() => {
+        if(auto) {
+          gsap.to(refPop.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
+          
+        } else {
+          gsap.to(refPop.current, {
+            
+            opacity: 0,
+            duration: 0.5,
+            ease: "sine.in",
+            zIndex: -1,
+          })
+          
+         
+         
+        }
+      }, [auto])
 
 
 
-
+      useEffect(() => {
+        // set a timeout to change the state after 10 seconds
+        const timer = setTimeout(() => {
+          autoOpen(true);
+        }, 10000); // 10 seconds in milliseconds
+    
+        // cleanup in case component unmounts before timeout finishes
+        return () => clearTimeout(timer);
+      }, []);
 
     return(
 
         <>
 
-            {/* Pop up Container */}
-            <div id="popup-container" ref={refPop} className="border-2 shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[10%] left-[51%]">
+
+          
+                       
+            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[10%] left-[51%]">
 
               <div className="h-full w-full flex items-center gap-8 justify-center flex-row">
 
@@ -62,7 +91,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                     <Image className="w-full rounded-2xl" alt="Product-Photo" src={PhotoNews} width={300} />
                 </div>
 
-                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'} top-1 right-5 cursor-pointer`}>
+                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-1 right-5 cursor-pointer`}>
                     No, Thanks
                 </div>
 
@@ -102,12 +131,10 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
 
 
-                 {/* Dark Overlay */}
            
             </div>
 
-            
-           
+    
 
         
         
