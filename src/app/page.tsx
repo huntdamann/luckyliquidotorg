@@ -587,7 +587,7 @@ export default function Home() {
           className="text-center text-xs text-[#d1a054] py-4"
         >
           © 2025 — Crafted by 
-          <a href="https://humann.design" target="_blank" className="font-semibold hover:underline ml-1">
+          <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
             HUMANNDESIGN
           </a>
       </motion.footer>
