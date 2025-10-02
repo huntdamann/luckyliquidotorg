@@ -472,7 +472,6 @@ export default function Home() {
       <div  ref={chevronRef} className={`flex justify-center items-center text-green-600 ${isInView ? 'opacity-0' : 'opacity-100'}`}>
 
         <span>Join</span>
-          <FaClover />
 
       </div>
     </button>

@@ -64,14 +64,16 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
 
       useEffect(() => {
+        
         // set a timeout to change the state after 10 seconds
         const timer = setTimeout(() => {
           autoOpen(true);
         }, 10000); // 10 seconds in milliseconds
     
+      
         // cleanup in case component unmounts before timeout finishes
         return () => clearTimeout(timer);
-      }, []);
+      }, [refNo]);
 
     return(
 
