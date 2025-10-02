@@ -3,8 +3,11 @@ import Head from 'next/head'
 import React, { lazy, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { FaClover } from "react-icons/fa6";
+
 import localFont from "next/font/local";
 import { useGSAP } from "@gsap/react";
+import { motion, useInView } from 'motion/react';
 import gsap from "gsap";
 import {RemoveScroll} from 'react-remove-scroll';
 import useMediaQuery from '../hooks/useMediaQuery'
@@ -79,6 +82,10 @@ export default function Home() {
 
 
   // }, [])
+
+  const footerRef = useRef(null)
+  const isInView = useInView(footerRef, {amount: 0.6})
+
 
   // Update transform origin
   const updateTransformOrigin = () => {
@@ -310,7 +317,7 @@ export default function Home() {
     gsap.to('#secondlogo', {opacity: 1, delay: 3})
     gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
     gsap.from(chevronRef.current, {opacity: 0, delay: 4})
-    gsap.to(chevronRef.current, {opacity: 1 ,delay: 4, ease: "circ.out"})
+    gsap.to(chevronRef.current, {opacity: isInView ? 0 : 1 ,delay: 4, ease: "circ.out"})
 
 
     // gsap.to('#bottle', {x:-200, delay: 8} )
@@ -452,9 +459,10 @@ export default function Home() {
     
 
     <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 fixed animate-bounce z-[999] left-[45%] lg:left-[49%] bottom-[1rem]">
-      <div  ref={chevronRef} className="flex flex-col text-green-600 opacity-1">
+      <div  ref={chevronRef} className={`flex justify-center items-center text-green-600 ${isInView ? 'opacity-0' : 'opacity-100'}`}>
+
         <span>Join</span>
-       
+          <FaClover />
 
       </div>
     </button>
@@ -571,6 +579,18 @@ export default function Home() {
   
  
 
+  <motion.footer
+          ref={footerRef}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center text-xs text-[#d1a054] py-4"
+        >
+          © 2025 — Crafted by 
+          <a href="https://humann.design" target="_blank" className="font-semibold hover:underline ml-1">
+            HUMANNDESIGN
+          </a>
+      </motion.footer>
   
 </div>
 
