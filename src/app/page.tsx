@@ -84,7 +84,7 @@ export default function Home() {
   // }, [])
 
   const footerRef = useRef(null)
-  const isInView = useInView(footerRef, {amount: 0.6})
+  const isInView = useInView(footerRef, {amount: 1})
 
 
   // Update transform origin
@@ -308,6 +308,16 @@ export default function Home() {
     }
   })
 
+  useEffect (() => {
+    if (isInView) {
+
+      gsap.to(chevronRef.current, {opacity: 0})
+    }
+    else {
+      gsap.to(chevronRef.current, {opacity: 1})
+    }
+  })
+
 
   useGSAP (() => {
 
@@ -317,7 +327,7 @@ export default function Home() {
     gsap.to('#secondlogo', {opacity: 1, delay: 3})
     gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
     gsap.from(chevronRef.current, {opacity: 0, delay: 4})
-    gsap.to(chevronRef.current, {opacity: isInView ? 0 : 1 ,delay: 4, ease: "circ.out"})
+    gsap.to(chevronRef.current, {opacity: 1 ,delay: 4, ease: "circ.out"})
 
 
     // gsap.to('#bottle', {x:-200, delay: 8} )
