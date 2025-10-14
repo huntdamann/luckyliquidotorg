@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://luckyliquid.org
+
+# Sitemaps
+Sitemap: https://luckyliquid.org/sitemap.xml

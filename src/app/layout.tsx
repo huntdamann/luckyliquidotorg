@@ -37,8 +37,8 @@ const Fredoka = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "LuckyLiquid",
-  description: "Homemade Tea Beverages",
+  title: "Lucky Liquid",
+  description: "Homemade Tea Beverages & Tea Blends",
 };
 
 
