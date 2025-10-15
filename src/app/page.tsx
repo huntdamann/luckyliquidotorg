@@ -26,7 +26,7 @@ import Popup from '../slices/Popup'
 import Success from '../slices/Success'
 import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
-import OurStory from '../slices/OurStory'
+import OurStory from '../slices/OurStory.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
