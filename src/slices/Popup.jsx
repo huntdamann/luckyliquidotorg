@@ -30,17 +30,25 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
     const [ status, setStatus ] = useState(null)
     const [ auto, autoOpen ] = useState(false)
 
+
+
+
     const handleUserSubmit = async (e) => {
         e.preventDefault();
         console.log('code gets here')
         const res = await fetch('/api/subscriber', {
             method: 'POST',
-            body: JSON.stringify({ email }),
-            headers: {'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+              email,
+              resubscribe: true,
+          })
         })
         const data = await res.json();
+        console.log(data.message)
         setStatus(data.message)
     }
     useEffect(() => {

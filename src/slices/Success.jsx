@@ -25,7 +25,7 @@ const Success = ({ set, refNo }) => {
         <>
 
             {/* Success Container */}
-            <div id="success-container"  className="border-2 shadow-md text-black bg-[#51B150] gap-[3rem]  text-center  rounded-xl absolute  p-[4rem] justify-between  items-center z-[1000]   border-green-700 flex flex-row min-h-[20rem] top-[10%] left-[50%]">
+            <div id="success-container"  className="border-2 shadow-md text-black bg-[#51B150] gap-[3rem]  text-center  rounded-xl absolute  p-[4rem] justify-between  items-center z-[1000] lg:p-10   border-green-700 flex flex-row min-h-[20rem] top-[10%] left-[50%]">
 
                
 
@@ -33,7 +33,7 @@ const Success = ({ set, refNo }) => {
                     Close
                 </div>
 
-                <div className="flex flex-col text-center items-center justify-center gap-3">
+                <div className="flex flex-col text-center items-center lg:p-10 justify-center gap-3">
 
 
                 <Image alt='Picture' src={Lucky} width={300} height={150}></Image>
