@@ -12,7 +12,7 @@ import Success from '../slices/Success'
 import gsap from "gsap";
 
 import Lucky from '../../public/assets/lucky-logo-demo.png'
-import PhotoNews from '../../public/assets/IMG_0450.jpg'
+import PhotoNews from '../../public/assets/IMG_0438.jpeg'
 import Image from "next/image";
 
 
@@ -90,7 +90,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
           
                        
-            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[10%] left-[51%]">
+            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[3%] left-[51%]">
 
               <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
 
@@ -103,8 +103,8 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                       src={PhotoNews}
                       alt="Product Photo"
                       layout="responsive"
-                      width={600}
-                      height={400}
+                      width={500}
+                      height={300}
                       quality={100}
                       sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
                       className="rounded-2xl"
