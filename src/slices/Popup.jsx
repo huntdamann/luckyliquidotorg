@@ -12,7 +12,7 @@ import Success from '../slices/Success'
 import gsap from "gsap";
 
 import Lucky from '../../public/assets/lucky-logo-demo.png'
-import PhotoNews from '../../public/assets/IMG_9895.jpeg'
+import PhotoNews from '../../public/assets/IMG_0450.jpg'
 import Image from "next/image";
 
 
@@ -92,14 +92,24 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                        
             <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[10%] left-[51%]">
 
-              <div className="h-full w-full flex items-center gap-8 justify-center flex-row">
+              <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
 
 
 
 
-                <div className="image">
-                    <Image className="w-full rounded-2xl" alt="Product-Photo" src={PhotoNews} width={300} />
-                </div>
+                 {/* Product Photo */}
+                  <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
+                    <Image
+                      src={PhotoNews}
+                      alt="Product Photo"
+                      layout="responsive"
+                      width={600}
+                      height={400}
+                      quality={100}
+                      sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
+                      className="rounded-2xl"
+                    />
+                  </div>
 
                 <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-1 right-5 cursor-pointer`}>
                     No, Thanks
