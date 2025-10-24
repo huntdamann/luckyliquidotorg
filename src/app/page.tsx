@@ -377,19 +377,19 @@ export default function Home() {
     <li className="relative cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
     
     <div id="social-selections" className= "opacity-0  z-10  fixed  top-[3rem] flex flex-col gap-5 pt-1  w-[150px]">
-          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
+          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
           <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
           Instagram</a>
-          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
+          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
           <FontAwesomeIcon id='instagram-social-icon' icon={faTiktok} />
           Tiktok
           </a>
-          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
+          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
           <FontAwesomeIcon id='instagram-social-icon' icon={faFacebook} />
           Facebook
           </a>
           
-          <a className='flex items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
+          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
           <FontAwesomeIcon id='instagram-social-icon' icon={faBluesky} />
           Blueskies</a>
 
