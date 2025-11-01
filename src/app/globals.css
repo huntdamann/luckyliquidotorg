@@ -25,7 +25,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   position: relative;
-
 }
 
 .overlay2 {
@@ -58,8 +57,6 @@ body {
   background-color: green;
 }
 
-
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -67,12 +64,8 @@ body {
 }
 
 @media (max-width: 767px) {
-
-
   #button-handle {
-
     bottom: 3rem;
-
   }
 
   #popup-container {
@@ -84,24 +77,138 @@ body {
 }
 
 @media (max-width: 375px) {
-
-  
   #button-handle {
     bottom: 1rem;
   }
 }
 @media (max-width: 400px) {
-
   #button-handle {
     bottom: 1rem;
   }
 }
 
 .slogan {
-  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  font-family: "Fredoka", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-style: oblique;
-  src: url('../../public/fonts/fredoka-one.woff'), url('../../public/fonts/fredoka-one.woff2');
+  src: url("../../public/fonts/fredoka-one.woff"),
+    url("../../public/fonts/fredoka-one.woff2");
+}
+
+/* Carousel Logic */
+
+.embla {
+  max-width: 30rem;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 70%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  border: 1px red solid;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__slide__number {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  border-radius: 1.8rem;
+  font-size: 4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--slide-height);
+  user-select: none;
+}
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.embla__button {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  border-radius: 50%;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.embla__button:disabled {
+  color: var(--detail-high-contrast);
+}
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+.embla__dot {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.embla__dot:after {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: "";
+}
+.embla__dot--selected:after {
+  box-shadow: inset 0 0 0 0.2rem var(--text-body);
 }
 
 /* Menu Burger Logic */
@@ -111,10 +218,9 @@ body {
   height: 100vh;
   background-color: green;
   position: fixed;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
   font-weight: 500;
-  font-variation-settings:
-    "wdth" 125;
+  font-variation-settings: "wdth" 125;
   top: 0;
   left: 0;
   z-index: 10;
@@ -122,7 +228,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  
 
   nav {
     padding: 120px 34px;
@@ -136,17 +241,17 @@ body {
   }
 }
 
-
 #button-handle {
   transform: translateX(-50%);
   bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 #scroll-banner {
   transform: skewX(0.1333333deg);
   user-select: none;
   touch-action: pan-y;
-
 }
 #scroll-image {
   position: absolute;
@@ -154,7 +259,6 @@ body {
   left: 2.4rem;
   z-index: -10;
   transform: rotate(-40deg);
-  
 }
 
 #scroll-content {
@@ -165,8 +269,8 @@ body {
   gap: 2rem;
   user-select: none;
   overflow: hidden;
-  font-family: 'Comfortaa', fantasy;
-  
+  font-family: "Comfortaa", fantasy;
+
   ul {
     display: flex;
     flex-shrink: 0;
@@ -180,9 +284,6 @@ body {
       background-color: yellow;
     }
   }
-  
-  
-
 }
 #scroll-header {
   color: green;
@@ -223,28 +324,23 @@ body {
   border-bottom: 2px solid #444;
 }
 .banner {
-  
   white-space: nowrap;
   display: flex;
-  
 }
 .banner-content {
   display: flex;
   gap: 2rem;
   padding-left: 100%;
   animation: slide-to-left 12s linear infinite;
-
-
 }
 
 @keyframes slide-to-left {
   0% {
-    transform: translate3d(0,0,0);
-
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translate3d(-100%, 0, 0)
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
@@ -254,25 +350,23 @@ body {
   }
 }
 
-
-
 /* //prevents the scrolling when the menu is open */
-#paper-window { 
+#paper-window {
   height: 100dvh;
   width: 100vw;
-  position: relative; 
+  position: relative;
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 10;
-  
-  
+
   &.tilt {
     overflow: hidden;
     pointer-events: none;
-    #paper-front { transform: rotate(10deg) translateZ(0); }
+    #paper-front {
+      transform: rotate(10deg) translateZ(0);
+    }
   }
 }
-
 
 #paper-front {
   pointer-events: auto;
@@ -283,9 +377,7 @@ body {
   transform-origin: center 70%;
   transition: all 0.3s ease;
   height: 100dvh;
-  
 }
-
 
 #product-showcase {
   height: 50%;
@@ -296,7 +388,7 @@ body {
   position: relative;
 
   z-index: 10;
-  background: linear-gradient(#d1a054, white)
+  background: linear-gradient(#d1a054, white);
 }
 
 /* //actual content */
@@ -305,13 +397,21 @@ body {
     height: 600px;
     text-align: center;
     &:first-of-type {
-      padding-top: 10vh;  
-      h1 { font-size: 45px; }
-      p { font-size: 25px; }
+      padding-top: 10vh;
+      h1 {
+        font-size: 45px;
+      }
+      p {
+        font-size: 25px;
+      }
       @media (max-width: 600px) {
-        padding-top: 15vh;  
-        h1 { font-size: 30px; }
-        p { font-size: 18px; }
+        padding-top: 15vh;
+        h1 {
+          font-size: 30px;
+        }
+        p {
+          font-size: 18px;
+        }
       }
     }
     &:nth-of-type(2n) {
@@ -320,10 +420,8 @@ body {
   }
 }
 #social-section {
-
   background: linear-gradient(green 20%, black);
   height: 30vh;
-
 }
 
 .our_story {
@@ -351,17 +449,14 @@ body {
   justify-content: space-between;
   flex-direction: row;
   padding: 1rem;
-  font-family: 'Ultra', serif;
+  font-family: "Ultra", serif;
   font-weight: 700;
   background-image: linear-gradient(black 60%, green);
-
-
 
   p {
     max-width: 6rem;
     color: #d1a054;
   }
-  
 }
 .hamburger {
   position: fixed;
@@ -374,22 +469,28 @@ body {
   user-select: none;
   span {
     position: relative;
-    
-    &, &:before, &:after {
+
+    &,
+    &:before,
+    &:after {
       display: block;
       width: 45px;
       height: 6px;
       background-color: green;
       border-radius: 2px;
     }
-    
-    &:before, &:after {
-      content: '';
+
+    &:before,
+    &:after {
+      content: "";
       position: absolute;
     }
-    &:before { bottom: -14px; }
-    &:after { bottom: -28px; }
-    
+    &:before {
+      bottom: -14px;
+    }
+    &:after {
+      bottom: -28px;
+    }
   }
 }
 
@@ -400,19 +501,24 @@ body {
   width: 45px;
   height: 34px;
   cursor: pointer;
-  
-  &:before, &:after {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 45px;
-      height: 6px;
-      top: 50%;
-      background-color: white;
-      border-radius: 2px;
-    }
-    &:before { transform: translateY(-50%) rotate(45deg); }
-    &:after { transform: translateY(-50%) rotate(-45deg); }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 45px;
+    height: 6px;
+    top: 50%;
+    background-color: white;
+    border-radius: 2px;
+  }
+  &:before {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  &:after {
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 #secondlogo {

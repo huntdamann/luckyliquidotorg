@@ -1,11 +1,11 @@
 "use client";
 import Head from 'next/head'
 import React, { lazy, useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import { FaClover } from "react-icons/fa6";
 
-import localFont from "next/font/local";
+import Image from "next/image";
+import { EmblaOptionsType } from 'embla-carousel'
+
+
 import { useGSAP } from "@gsap/react";
 import { motion, useInView } from 'motion/react';
 import gsap from "gsap";
@@ -17,6 +17,8 @@ import Mockup from '../../public/assets/bottle-mockup.png'
 import Mockup2 from '../../public/assets/test_mockup.png'
 import Slogan from '../../public/assets/slogan.png'
 import Slogan2 from '../../public/assets/slogan2.png'
+import Testimonials from '../../public/assets/Testimonial-removebg-preview.png'
+import Testimonials2 from '../../public/assets/Testimonial_2-removebg-preview.png'
 
 import Slogan3 from '../../public/assets/slogan3.png'
 
@@ -27,17 +29,23 @@ import Success from '../slices/Success'
 import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
 import OurStory from '../slices/OurStory.jsx'
+import EmblaCarousel from '@/components/EmblaCarousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
 
 
 import { ViewCanvas } from '../components/ViewCanvas'
+import { button } from 'leva';
 
 gsap.registerPlugin(useGSAP);
 
 
 export default function Home() {
+
+  const OPTIONS: EmblaOptionsType = { loop: true }
+  const SLIDE_COUNT = 5
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);
@@ -84,7 +92,7 @@ export default function Home() {
   // }, [])
 
   const footerRef = useRef(null)
-  const isInView = useInView(footerRef, {amount: 1})
+  const isInView = useInView(footerRef, {amount: 0.5})
 
 
   // Update transform origin
@@ -153,7 +161,6 @@ export default function Home() {
     if (paperFrontRef.current) {
     const height = paperFrontRef.current.offsetHeight;
     setPageHeight(height);
-    console.log(height);
     }
     setOpen(true);
     setClose(false)
@@ -311,14 +318,26 @@ export default function Home() {
   useEffect (() => {
     if (isInView) {
 
-      gsap.to(chevronRef.current, {opacity: 0})
+      gsap.to(buttonRef.current, {opacity: 0})
     }
     else {
-      gsap.to(chevronRef.current, {opacity: 1})
+      gsap.to(buttonRef.current, {opacity: 1})
     }
   })
 
 
+  useEffect (() => {
+
+
+    if (open) {
+
+          gsap.to(buttonRef.current, {opacity: 0})
+
+    }
+   
+
+
+   }, [open])
   useGSAP (() => {
 
 
@@ -326,11 +345,10 @@ export default function Home() {
     gsap.to('#leadlogo', {opacity: 1, delay: 2.5, y: 10})
     gsap.to('#secondlogo', {opacity: 1, delay: 3})
     gsap.from('#slogan', { opacity: 0, delay: 3.5, x: 100})
-    gsap.from(chevronRef.current, {opacity: 0, delay: 4})
-    gsap.to(chevronRef.current, {opacity: 1 ,delay: 4, ease: "circ.out"})
+    gsap.from(buttonRef.current, {opacity: 0, delay: 4})
+    gsap.to(buttonRef.current, {opacity: 1 ,delay: 4, ease: "circ.out"})
 
 
-    // gsap.to('#bottle', {x:-200, delay: 8} )
     
   }, [])
   // const isDesktop = useMediaQuery('(min-width: 460px)');
@@ -441,7 +459,7 @@ export default function Home() {
       <div ref={paperFrontRef} id="paper-front" >
         <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
           <div id="container">
-            <section className="flex flex-col justify-center text-center gap-6 pt-[9em] items-center">
+            <section className="flex border flex-col justify-center text-center gap-6 pt-[3rem] pb-[3rem] min-h-screen items-center">
 
               <Image priority className="opacity-0" id="leadlogo" alt="Lucky Liquid Logo" width={300} src={Lucky}/>
               <Image priority className="opacity-0" id="secondlogo" alt="Lucky Liquid Leperchaun Logo" width={300} src={Lucky2} />
@@ -450,7 +468,6 @@ export default function Home() {
               <Image priority id='slogan' alt="Lucky Liquid Leperchaun Logo" width={300} src={Slogan2} />
              
 
-              {/* <span className="slogan" id="slogan">"A Bold New Brew"</span> */}
 
               </div>
         
@@ -464,148 +481,67 @@ export default function Home() {
            
 
           </section>
-          {/* <ScrollingBanner /> */}
-    <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
-    
+          <section className='border min-h-screen bg-[#d1a054]'>
+            <div className='flex flex-col justify-center items-center'>
+              <Image priority alt="Testimonial Section" width={250} src={Testimonials} />
+              <Image priority alt="Lucky Liquid Leperchaun Logo" width={250} src={Testimonials2} />
 
-    <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className="text-white p-2 fixed animate-bounce z-[999] left-[45%] lg:left-[49%] bottom-[1rem]">
-      <div  ref={chevronRef} className={`flex justify-center items-center text-green-600 ${isInView ? 'opacity-0' : 'opacity-100'}`}>
-
-        <span>Join</span>
-
-      </div>
-    </button>
-    {/* Product Showcase */}
-    {/* <section id="product-showcase">
-        <h2 className="font-main text-green-700">Honey Gold</h2>
-        <div>
-          <Image id="bottle" alt="Lucky Bottle" width={200} src={Mockup2}/>
-
-        </div>
-        <span>Try it!</span>
-      </section> */}
-
-      {/* <ViewCanvas /> */}
-     
-      {/* Call to action Shop  */}
-{/* 
-      <section className="flex flex-col p-[2rem] justify-evenly   bg-honeygold">
-        <div className="h-full border border-red-700 flex flex-col gap-2">
-        <div className=" relative rounded-md h-[30%]">
-          <Image className="h-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
-
-          </Image>
-          <div className="absolute z-50 bottom-0 text-white">
-          <span >Shop Now</span>
-
-
-            <FontAwesomeIcon className="text-green-600" icon={faClover} />
-          </div>
-
-        </div>
-        <div className=" relative rounded-md h-[80%]">
-          <Image className="h-full w-full rounded-md" src={Mockup} alt="Lucky Product Mockup">
-
-          </Image>
-          <div className="absolute z-50 bottom-0 text-white">
-          <span >Shop Now</span>
-
-
-            <FontAwesomeIcon className="text-green-600" icon={faClover} />
-          </div>
-          
-
-        </div>
-        
-        </div>
-        
-      </section> */}
-{/* 
-      <SocialPanel realCount={100} />
-      <section className="banner-container">
-        <div className="banner">
-          <div className="banner-content">
-            <div className="flex gap-3 items-center">
-            <span>Get Lucky!</span>
-            <FontAwesomeIcon className="text-green-600" icon={faClover} />
-
+              <EmblaCarousel slides={SLIDES} options={OPTIONS} />
 
             </div>
-            <div>
-              <span>Try our Honey Gold Flavor</span>
+           
+          </section>
+          <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
+    
+
+          <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white  ${isInView ? 'opacity-0' : ''} p-2 fixed border-2 border-gray-400 bg-[#51B150] rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
+            <div ref={chevronRef} className={`flex justify-center  items-center text-white`}>
+
+              <span>Join</span>
+
             </div>
-          </div>
+          </button>
+          <motion.footer
+              ref={footerRef}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center text-xs min-h-6 text-[#d1a054] py-6"
+            >
+              © 2025 — Crafted by 
+              <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
+                HUMANNDESIGN
+              </a>
+         </motion.footer>
 
-                                                      
-        </div>
-      </section>
-
-      <Newsletter /> */}
 
 
 
-      {/* <footer className="flex text-white gap-4 p-3 flex-row items-center justify-center">
-    
-    
-    <div>
-      <h3 className="font-main">Lucky</h3>
-      <ul className="font-juju">
-        <li>About Us</li>
-        <li>Leadership</li>
 
-        <li>Accessbility</li>
-        <li>Terms of Service
-        </li>
-        <li>Privacy Policy</li>
 
-      </ul>
+
       </div>
-      <div>
-        <h3 className="font-main">Help</h3>
-        <ul className="font-juju">
-          <li>FAQs</li>
-          <li>Contact</li>
-
-          <li>Order Tracking</li>
-          <li>Shipping Policy</li>
-
-          <li>Return Policy</li>
-
-
-
-        </ul>
-      </div>
-    
-      </footer> */}
-
-
-  </div>
 
   
-  {/* Socials */}
-  {/* <SocialPanel /> */}
 
   
  
 
-  <motion.footer
-          ref={footerRef}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center text-xs text-[#d1a054] py-4"
-        >
-          © 2025 — Crafted by 
-          <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
-            HUMANNDESIGN
-          </a>
-      </motion.footer>
-  
-</div>
-
-
-   {/* </RemoveScroll> */}
- 
+      {/* <motion.footer
+              ref={footerRef}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center text-xs min-h-6 border text-[#d1a054] py-4"
+            >
+              © 2025 — Crafted by 
+              <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
+                HUMANNDESIGN
+              </a>
+      </motion.footer> */}
+      
+    </div>
+   
    </>
   );
 }

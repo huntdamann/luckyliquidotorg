@@ -7,6 +7,7 @@ import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 
 import Title from '../../public/assets/new_word.png'
 import React, { forwardRef, useEffect, useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
 
 import Success from '../slices/Success'
 import gsap from "gsap";
@@ -90,7 +91,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
           
                        
-            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl absolute justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[3%] left-[51%]">
+            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl fixed justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[3%] left-[51%]">
 
               <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
 
@@ -111,8 +112,8 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                     />
                   </div>
 
-                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-1 right-5 cursor-pointer`}>
-                    No, Thanks
+                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-2 right-5 text-3xl cursor-pointer`}>
+                    <IoCloseSharp />
                 </div>
 
                 <div className="flex flex-col text-center items-center justify-center gap-3">
