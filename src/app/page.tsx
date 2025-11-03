@@ -415,22 +415,22 @@ export default function Home() {
       
     </li> */}
     
-    <li className="relative cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
+    <li className="relative active:text-green-300 cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
     
     <div id="social-selections" className= "opacity-0  z-10  fixed  top-[3rem] flex flex-col gap-5 pt-1  w-[150px]">
-          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
+          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
           <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
           Instagram</a>
-          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
+          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
           <FontAwesomeIcon id='instagram-social-icon' icon={faTiktok} />
           Tiktok
           </a>
-          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
+          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
           <FontAwesomeIcon id='instagram-social-icon' icon={faFacebook} />
           Facebook
           </a>
           
-          <a target='_blank' rel="noopener noreferrer" className='flex items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
+          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
           <FontAwesomeIcon id='instagram-social-icon' icon={faBluesky} />
           Blueskies</a>
 
@@ -438,7 +438,7 @@ export default function Home() {
     </li>
     
     
-    <li className="relative cursor-pointer"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
+    <li className="relative active:text-green-300 cursor-pointer"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
       
        <span className=""> 
         
@@ -457,7 +457,7 @@ export default function Home() {
     </li> */}
    
    
-    <li  id="home" className="relative cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
+    <li  id="home" className="relative active:text-green-300 cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
     <div id="about-selections" className={`opacity-0 fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
         <span onClick={openStoryPage} className="text-[16px] w-[200px]">Our Story</span>
         {/* <a className="text-[16px] w-[200px]" href="#">Our Team</a> */}
@@ -465,7 +465,7 @@ export default function Home() {
         
       </div>
     </li>
-    <li className="relative cursor-pointer" id="delivery">
+    <li className="relative active:text-green-300 cursor-pointer" id="delivery">
     <a href="/">Home</a>
     </li>
     </ul>
@@ -548,7 +548,7 @@ export default function Home() {
           <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
     
 
-          <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white  ${isInView ? 'opacity-0' : ''} p-2 fixed border-2 border-gray-400 bg-[#51B150] rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
+          <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white  ${isInView ? 'opacity-0' : ''} p-2 fixed border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
             <div ref={chevronRef} className={`flex justify-center  items-center text-white`}>
 
               <span>Join</span>

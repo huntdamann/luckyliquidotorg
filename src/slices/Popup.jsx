@@ -112,7 +112,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
                     />
                   </div>
 
-                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-2 right-5 text-3xl cursor-pointer`}>
+                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-2 right-2  active:text-white text-3xl cursor-pointer`}>
                     <IoCloseSharp />
                 </div>
 
@@ -131,7 +131,7 @@ const Popup = ({ refPop, refOut, refNo, setter}) => {
 
                 <form onSubmit={handleUserSubmit} className=" rounded-md flex gap-2 justify-center items-center w-[15rem]" action="">
                     <input className="h-full w-full shadow-md rounded-md p-2" type="email" name="" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required id="" />
-                    <button id="button-submit" type="submit" className="rounded-md bg-green-400 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"><span className="">Get Lucky</span></button>
+                    <button id="button-submit" type="submit" className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"><span className="">Get Lucky</span></button>
 
                     {status && <Success set={setter} refNo={refNo} />}
                 </form>

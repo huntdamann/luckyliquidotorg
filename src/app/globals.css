@@ -352,12 +352,12 @@ body {
   position: fixed;
   z-index: 30;
   top: 30px;
-  border: 1px red solid;
   left: 30px;
   width: 45px;
   height: 34px;
   cursor: pointer;
   user-select: none;
+
   span {
     position: relative;
 
@@ -369,6 +369,7 @@ body {
       height: 6px;
       background-color: green;
       border-radius: 2px;
+      transition: background-color 0.25s ease;
     }
 
     &:before,
@@ -376,14 +377,21 @@ body {
       content: "";
       position: absolute;
     }
+
     &:before {
       bottom: -14px;
     }
+
     &:after {
       bottom: -28px;
     }
   }
+
+  &:active {
+    background-color: rgba(128, 128, 128, 0.4); 
+  }
 }
+
 
 .close {
   position: fixed;

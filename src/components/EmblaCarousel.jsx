@@ -56,17 +56,21 @@ export default function EmblaCarousel() {
         {/* Button Controls */}
         <div className='relative flex mt-8 min-h-[3rem] justify-evenly'>
 
-               
-                <button className="text-white relative" onClick={scrollPrev}>
-                    <FaArrowLeft className='relative z-40' />
-                    <FaClover className='text-green-500 absolute top-0 left-[-1rem] text-5xl' />
+          <button
+            onClick={scrollPrev}
+            className="text-white h-10 rounded-md bg-[#51B150] p-2 shadow-[4px_0_0_rgba(128,128,128,0.5)] 
+                      transition-all duration-150 active:scale-95 active:bg-[#46A247]"
+          >
+           <FaArrowLeft className="relative z-40" />
+          </button>
 
-                </button>
 
 
-                <button className="text-white relative" onClick={scrollNext}>
+                <button
+                onClick={scrollNext}
+                 className="text-white h-10 rounded-md bg-[#51B150] p-2 shadow-[-4px_0_0_rgba(128,128,128,0.5)] 
+                      transition-all duration-150 active:scale-95 active:bg-[#46A247]" >
                     <FaArrowRight className='relative z-40' />
-                    <FaClover className='text-green-500 absolute top-0 right-[-1rem] text-5xl' />
 
                 </button>
         </div>
