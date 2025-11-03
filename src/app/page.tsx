@@ -1,11 +1,11 @@
 "use client";
 import Head from 'next/head'
 import React, { lazy, useEffect, useRef, useState } from "react";
+import clsx from 'clsx';
 
 import Image from "next/image";
 import { EmblaOptionsType } from 'embla-carousel'
-
-
+import SlickSLider from '../components/SlickSlider';
 import { useGSAP } from "@gsap/react";
 import { motion, useInView } from 'motion/react';
 import gsap from "gsap";
@@ -24,12 +24,12 @@ import Slogan3 from '../../public/assets/slogan3.png'
 
 import Slogan4 from '../../public/assets/slogan4.png'
 
+
+import EmblaCarousel from '../components/EmblaCarousel';
 import Popup from '../slices/Popup'
 import Success from '../slices/Success'
-import SocialPanel from '../slices/SocialPanel'
 import Newsletter from '../slices/Newsletter'
 import OurStory from '../slices/OurStory.jsx'
-import EmblaCarousel from '@/components/EmblaCarousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
@@ -43,9 +43,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function Home() {
 
-  const OPTIONS: EmblaOptionsType = { loop: true }
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+ 
 
   const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);
@@ -62,6 +60,28 @@ export default function Home() {
   // const isDesktop = useMediaQuery('(min-width: 460px)');
 
   const [open, setOpen] = useState(false);
+
+  // Fade logic for Hamburger Menu
+  const [showHamburger, setShowHamburger] = useState(true);
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+  
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY + 10) {
+        // add a small threshold to avoid jitter
+        setShowHamburger(false);
+      } else if (currentScrollY < lastScrollY - 10) {
+        setShowHamburger(true);
+      }
+      lastScrollY = currentScrollY;
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
+
   const offset = 1800
   const [close, setClose] = useState(false);
 
@@ -360,6 +380,9 @@ export default function Home() {
   // const exitRef = useRef(null);
   // const chevronRef = useRef(null);
 
+  const OPTIONS: EmblaOptionsType = { loop: true }
+  const SLIDE_COUNT = 5
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 
   return (
@@ -457,7 +480,16 @@ export default function Home() {
     {/* <RemoveScroll enabled={false}> */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
       <div ref={paperFrontRef} id="paper-front" >
-        <div onClick={open ? closeMenu : openMenu} className="hamburger"><span></span></div>
+      <div
+        className={`fixed top-6 right-6 z-50 transition-opacity duration-500 ${
+          showHamburger ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div onClick={open ? closeMenu : openMenu} className="hamburger">
+          <span></span>
+        </div>
+      </div>
+
           <div id="container">
             <section className="flex border flex-col justify-center text-center gap-6 pt-[3rem] pb-[3rem] min-h-screen items-center">
 
@@ -481,16 +513,38 @@ export default function Home() {
            
 
           </section>
-          <section className='border min-h-screen bg-[#d1a054]'>
-            <div className='flex flex-col justify-center items-center'>
-              <Image priority alt="Testimonial Section" width={250} src={Testimonials} />
-              <Image priority alt="Lucky Liquid Leperchaun Logo" width={250} src={Testimonials2} />
+          <section className="min-h-screen bg-[#d1a054] flex flex-col items-center justify-center py-16 px-4">
+  {/* Logos Section */}
+  <div className="flex flex-col items-center gap-6 mb-8">
+    <Image
+      priority
+      alt="Testimonial Section"
+      width={250}
+      src={Testimonials}
+      className="rounded-lg object-contain"
+    />
+    <Image
+      priority
+      alt="Lucky Liquid Leprechaun Logo"
+      width={250}
+      src={Testimonials2}
+      className="rounded-lg object-contain"
+    />
+  </div>
 
-              <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+  {/* Carousel Section */}
+<div className="relative w-full max-w-4xl mx-auto overflow-hidden">
+  {/* Left Blur Overlay */}
+  <div className="hidden md:block absolute left-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
 
-            </div>
-           
-          </section>
+  {/* Right Blur Overlay */}
+  <div className="hidden md:block absolute right-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
+
+  <EmblaCarousel />
+</div>
+
+</section>
+
           <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
     
 

@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "../slices/Popup.css"
 import "../slices/Success.css"
+import '../css/embla.css'
 import { Preloader } from '../components/Preloader'
 
 
