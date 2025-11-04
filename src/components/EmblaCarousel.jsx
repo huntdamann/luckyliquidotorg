@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaClover } from "react-icons/fa6";
@@ -11,6 +13,9 @@ import '../css/base.css'
 
 export default function EmblaCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel()
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+  useDotButton(emblaApi)
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -54,7 +59,7 @@ export default function EmblaCarousel() {
 
 
         {/* Button Controls */}
-        <div className='relative flex mt-8 min-h-[3rem] justify-evenly'>
+        {/* <div className='relative flex mt-8 min-h-[3rem] justify-evenly'>
 
           <button
             onClick={scrollPrev}
@@ -73,7 +78,21 @@ export default function EmblaCarousel() {
                     <FaArrowRight className='relative z-40' />
 
                 </button>
+        </div> */}
+        <div className="embla__controls">
+        
+        <div className="embla__dots">
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={'embla__dot'.concat(
+                index === selectedIndex ? ' embla__dot--selected' : ''
+              )}
+            />
+          ))}
         </div>
+      </div>
        
     </div>
   )

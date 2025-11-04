@@ -37,6 +37,7 @@ import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-b
 
 import { ViewCanvas } from '../components/ViewCanvas'
 import { button } from 'leva';
+import  AnimatedBottle  from '@/components/AnimatedBottle'
 
 gsap.registerPlugin(useGSAP);
 
@@ -542,6 +543,16 @@ export default function Home() {
 
   <EmblaCarousel />
 </div>
+
+
+</section>
+<section className='bg-[#d1a054] text-white relative border'>
+
+      <Image className='absolute left-[35%] top-[10%]' src="/assets/getlucky.png" alt='Get Luckuy' width={100} height={200} />
+
+
+      <Image className='absolute left-[20%] top-[20%]' src="/assets/honeygold.png" alt='Honey Gold' width={200} height={200} />
+      <AnimatedBottle />
 
 </section>
 
