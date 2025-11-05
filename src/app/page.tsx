@@ -29,8 +29,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
 
-
-import  AnimatedBottle  from '@/components/AnimatedBottle'
+import AnimatedBottle from '@/components/AnimatedBottle'
 
 gsap.registerPlugin(useGSAP);
 
