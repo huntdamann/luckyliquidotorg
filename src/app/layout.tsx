@@ -5,7 +5,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "../slices/Popup.css"
 import "../slices/Success.css"
-import '../css/embla.css'
+import Footer from '../slices/Footer'
+
 import { Preloader } from '../components/Preloader'
 
 
@@ -62,7 +63,12 @@ export default function RootLayout({
     
         <PreScreen />
 
+      <main>
+
         {children}
+      </main>
+      <Footer />
+
       </body>
      
     </html>

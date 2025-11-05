@@ -55,7 +55,7 @@ body {
 .bar2 {
   width: 10vw;
   height: 105vh;
-  background-color: green;
+  background-color: #008000;
 }
 
 @layer utilities {

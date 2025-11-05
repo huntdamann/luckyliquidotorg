@@ -5,28 +5,23 @@ import clsx from 'clsx';
 
 import Image from "next/image";
 import { EmblaOptionsType } from 'embla-carousel'
-import SlickSLider from '../components/SlickSlider';
 import { useGSAP } from "@gsap/react";
 import { motion, useInView } from 'motion/react';
 import gsap from "gsap";
-import {RemoveScroll} from 'react-remove-scroll';
-import useMediaQuery from '../hooks/useMediaQuery'
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
-import Mockup from '../../public/assets/bottle-mockup.png'
-import Mockup2 from '../../public/assets/test_mockup.png'
+
 import Slogan from '../../public/assets/slogan.png'
 import Slogan2 from '../../public/assets/slogan2.png'
 import Testimonials from '../../public/assets/Testimonial-removebg-preview.png'
 import Testimonials2 from '../../public/assets/Testimonial_2-removebg-preview.png'
 
-import Slogan3 from '../../public/assets/slogan3.png'
-
-import Slogan4 from '../../public/assets/slogan4.png'
 
 
 import EmblaCarousel from '../components/EmblaCarousel';
 import Popup from '../slices/Popup'
+import Header from '../slices/Header'
+import Footer from '../slices/Footer'
 import Success from '../slices/Success'
 import Newsletter from '../slices/Newsletter'
 import OurStory from '../slices/OurStory.jsx'
@@ -35,8 +30,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faBluesky, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
 
 
-import { ViewCanvas } from '../components/ViewCanvas'
-import { button } from 'leva';
 import  AnimatedBottle  from '@/components/AnimatedBottle'
 
 gsap.registerPlugin(useGSAP);
@@ -46,19 +39,21 @@ export default function Home() {
 
  
 
+  // References to Main component Containers (PaperFront, Window, PaperBack)
   const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);
   const paperBackRef = useRef(null);
-
-  const [openPopUp, setOpenPopUp] = useState(false);
+  // Component References
   const popupRef = useRef(null);
   const overlayRef = useRef(null);
   const chevronRef = useRef(null);
   const buttonRef = useRef(null);
 
+  const [openPopUp, setOpenPopUp] = useState(false);
 
 
-  // const isDesktop = useMediaQuery('(min-width: 460px)');
+
+
 
   const [open, setOpen] = useState(false);
 
@@ -100,21 +95,7 @@ export default function Home() {
   const [scrollTop, setScrollTop] = useState(0);
 
 
-
-  // useEffect(() => {
-
-  //   if (paperFrontRef.current) {
-  //     const height = paperFrontRef.current.offsetHeight;
-  //     setPageHeight(height);
-  //     console.log(height);
-  //   }
-
-
-  // }, [])
-
-  const footerRef = useRef(null)
-  const isInView = useInView(footerRef, {amount: 0.5})
-
+  
 
   // Update transform origin
   const updateTransformOrigin = () => {
@@ -336,15 +317,7 @@ export default function Home() {
     }
   })
 
-  useEffect (() => {
-    if (isInView) {
-
-      gsap.to(buttonRef.current, {opacity: 0})
-    }
-    else {
-      gsap.to(buttonRef.current, {opacity: 1})
-    }
-  })
+ 
 
 
   useEffect (() => {
@@ -400,86 +373,22 @@ export default function Home() {
    </Head>
 
 
-<header className="text-sm" id="paper-back">
-  <nav className="text-white relative">
-    <div onClick={close? openMenu: closeMenu} className="close"></div>
-    <ul>
-    {/* <li className="relative cursor-pointer" onClick={followUsTouch ? closeFollow : openFollow} id="followus">Socials
-      
-   
-      
-      <div id="social-selections" className={`opacity-0 border z-10  fixed  top-11 flex flex-col gap-5 pt-1  w-[150px]`}>
-      <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">Dallas/Fort-Worth</a>
-      </div>
-      
-    
-      
-    </li> */}
-    
-    <li className="relative active:text-green-300 cursor-pointer" onClick={() => { toggleFollow()}} id="followus">Socials
-    
-    <div id="social-selections" className= "opacity-0  z-10  fixed  top-[3rem] flex flex-col gap-5 pt-1  w-[150px]">
-          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.instagram.com/waytoolucky_/">
-          <FontAwesomeIcon id='instagram-social-icon' icon={faInstagram} />
-          Instagram</a>
-          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.tiktok.com/@luckyteadtx">
-          <FontAwesomeIcon id='instagram-social-icon' icon={faTiktok} />
-          Tiktok
-          </a>
-          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://www.facebook.com/profile.php?id=61580219229816">
-          <FontAwesomeIcon id='instagram-social-icon' icon={faFacebook} />
-          Facebook
-          </a>
-          
-          <a target='_blank' rel="noopener noreferrer" className='flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]' href="https://bsky.app/profile/waytoolucky.bsky.social">
-          <FontAwesomeIcon id='instagram-social-icon' icon={faBluesky} />
-          Blueskies</a>
+   <Header
+    followUsTouch={followUsTouch}
+    toggleFollow={toggleFollow}
+    aboutUsTouch={aboutUsTouch}
+    openAbout={openAbout}
+    closeAbout={closeAbout}
+    homeTouch={homeTouch}
+    openHome={openHome}
+    closeHome={closeHome}
+    closeMenu={closeMenu} // pass it here
+    />
 
-    </div>
-    </li>
-    
-    
-    <li className="relative active:text-green-300 cursor-pointer"  onClick={aboutUsTouch ? closeAbout : openAbout} id="ourstory">
-      
-       <span className=""> 
-        
-           Our Products
-       </span>
-
-      <div id="shop-selections" className={`opacity-0   fixed flex top-11 flex-col gap-5 pt-1  w-[20%]`}>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header" className="text-[16px] w-[200px]">Honey Gold</a>
-      </div>
-    </li>
-    {/* <li className="relative cursor-pointer"  onClick={() => {toggleDeliver()}} id="delivery">Get Lucky!
-    <div id="delivery-selections" className={`opacity-0   fixed  top-11 flex flex-col gap-5 pt-1  w-[30%]`}>
-        <a className="text-[16px] w-[200px]" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">DFW Delivery</a>
-
-      </div>
-    </li> */}
-   
-   
-    <li  id="home" className="relative active:text-green-300 cursor-pointer" onClick={homeTouch ? closeHome : openHome}>About Us
-    <div id="about-selections" className={`opacity-0 fixed flex flex-col top-11 gap-5 pt-1  w-[30%]`}>
-        <span onClick={openStoryPage} className="text-[16px] w-[200px]">Our Story</span>
-        {/* <a className="text-[16px] w-[200px]" href="#">Our Team</a> */}
-
-        
-      </div>
-    </li>
-    <li className="relative active:text-green-300 cursor-pointer" id="delivery">
-    <a href="/">Home</a>
-    </li>
-    </ul>
-    
-   
-   
-  </nav>
-</header>
 
     {/* Hero Section */}
-
-    {/* <RemoveScroll enabled={false}> */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
+      {/* The Front of the Paper */}
       <div ref={paperFrontRef} id="paper-front" >
       <div
         className={`fixed top-6 right-6 z-50 transition-opacity duration-500 ${
@@ -491,6 +400,7 @@ export default function Home() {
         </div>
       </div>
 
+          {/* Hero Section */}
           <div id="container">
             <section className="flex border flex-col justify-center text-center gap-6 pt-[3rem] pb-[3rem] min-h-screen items-center">
 
@@ -507,6 +417,7 @@ export default function Home() {
             </section>
       
           </div>
+          {/* Our Story and About us */}
           <section>
             {openStory && (
                <OurStory />
@@ -514,71 +425,59 @@ export default function Home() {
            
 
           </section>
+
+          {/* Testimonials */}
           <section className="min-h-screen bg-[#d1a054] flex flex-col items-center justify-center py-16 px-4">
-  {/* Logos Section */}
-  <div className="flex flex-col items-center gap-6 mb-8">
-    <Image
-      priority
-      alt="Testimonial Section"
-      width={250}
-      src={Testimonials}
-      className="rounded-lg object-contain"
-    />
-    <Image
-      priority
-      alt="Lucky Liquid Leprechaun Logo"
-      width={250}
-      src={Testimonials2}
-      className="rounded-lg object-contain"
-    />
-  </div>
+              <div className="flex flex-col items-center gap-6 mb-8">
+                <Image
+                  priority
+                  alt="Testimonial Section"
+                  width={250}
+                  src={Testimonials}
+                  className="rounded-lg object-contain"
+                />
+                <Image
+                  priority
+                  alt="Lucky Liquid Leprechaun Logo"
+                  width={250}
+                  src={Testimonials2}
+                  className="rounded-lg object-contain"
+                />
+              </div>
 
-  {/* Carousel Section */}
-<div className="relative w-full max-w-4xl mx-auto overflow-hidden">
-  {/* Left Blur Overlay */}
-  <div className="hidden md:block absolute left-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
+      {/* Carousel Section */}
+      <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
+        {/* Left Blur Overlay */}
+        <div className="hidden md:block absolute left-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
 
-  {/* Right Blur Overlay */}
-  <div className="hidden md:block absolute right-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
+        {/* Right Blur Overlay */}
+        <div className="hidden md:block absolute right-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
 
-  <EmblaCarousel />
-</div>
-
-
-</section>
-<section className='bg-[#d1a054] text-white relative border'>
-
-      <Image className='absolute left-[35%] top-[10%]' src="/assets/getlucky.png" alt='Get Luckuy' width={100} height={200} />
+        <EmblaCarousel />
+      </div>
 
 
-      <Image className='absolute left-[20%] top-[20%]' src="/assets/honeygold.png" alt='Honey Gold' width={200} height={200} />
-      <AnimatedBottle />
+  </section>
+  {/* Product Showcase */}
+  <section className='bg-[#d1a054] text-white relative border'>
 
-</section>
+            <Image className='absolute left-[35%] top-[10%]' src="/assets/getlucky.png" alt='Get Luckuy' width={100} height={200} />
 
-          <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
+
+            <Image className='absolute left-[20%] top-[20%]' src="/assets/honeygold.png" alt='Honey Gold' width={200} height={200} />
+            <AnimatedBottle />
+
+      </section>
+      <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  />
     
 
-          <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white  ${isInView ? 'opacity-0' : ''} p-2 fixed border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
-            <div ref={chevronRef} className={`flex justify-center  items-center text-white`}>
+      <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white p-2 fixed border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
+        <div ref={chevronRef} className={`flex justify-center  items-center text-white`}>
 
-              <span>Join</span>
+            <span>Join</span>
 
-            </div>
-          </button>
-          <motion.footer
-              ref={footerRef}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center text-xs min-h-6 text-[#d1a054] py-6"
-            >
-              © 2025 — Crafted by 
-              <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
-                HUMANNDESIGN
-              </a>
-         </motion.footer>
-
+        </div>
+      </button>
 
 
 
@@ -586,24 +485,6 @@ export default function Home() {
 
 
       </div>
-
-  
-
-  
- 
-
-      {/* <motion.footer
-              ref={footerRef}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center text-xs min-h-6 border text-[#d1a054] py-4"
-            >
-              © 2025 — Crafted by 
-              <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
-                HUMANNDESIGN
-              </a>
-      </motion.footer> */}
       
     </div>
    

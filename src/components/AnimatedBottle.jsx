@@ -9,8 +9,11 @@ export default function AnimatedBottle() {
   const canvasRef = useRef(null);
   const currentFrameRef = useRef(0);
 
+  const BASE_URL = "https://nrcmjxothukotcvjmndi.supabase.co/storage/v1/object/public/frames/";
+
+
   const getFrameSrc = (index) =>
-    `/frames/${index.toString().padStart(4, "0")}.png`;
+    `${BASE_URL}${index.toString().padStart(4, "0")}.png`;
 
   const loadFrame = (index) =>
     new Promise((resolve) => {
@@ -19,6 +22,8 @@ export default function AnimatedBottle() {
         return;
       }
       const img = new Image();
+      img.crossOrigin = "anonymous"; // important for Supabase public files
+
       img.src = getFrameSrc(index);
       img.onload = () => {
         if (images.current.size >= cacheLimit) {
