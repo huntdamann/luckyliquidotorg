@@ -11,8 +11,7 @@ import { Bubbles } from './Bubbles'
 import { Clover } from "./Clover";
 
 import React from "react";
-import Scene from './Scene'
-import Model from './Model'
+
 import Env from './Env'
 import { OrbitControls, PerformanceMonitor, AccumulativeShadows, RandomizedLight } from "@react-three/drei";
 import { PerspectiveCamera } from "three";
