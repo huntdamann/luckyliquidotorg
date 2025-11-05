@@ -101,9 +101,7 @@ export default function Home() {
     if (!windowRef.current || !paperFrontRef.current) return;
 
     const scrollTop = windowRef.current.scrollTop;
-    console.log('Scroll Progress:', scrollTop)
     const pageHeight = paperFrontRef.current.offsetHeight;
-    console.log(pageHeight)
     const equation = ((scrollTop + offset) / pageHeight) * 100;
 
     paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
@@ -111,7 +109,7 @@ export default function Home() {
 
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
-  })
+  }, [])
   useEffect(() => {
     if(openPopUp) {
       gsap.to(popupRef.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
@@ -232,7 +230,7 @@ export default function Home() {
       gsap.to('#about-selections', {autoAlpha: 0})
 
     }
-  })
+  }, [homeTouch])
 
   useEffect (() => {
     if (aboutUsTouch && !homeTouch && !followUsTouch && !orderTouch) {
@@ -256,7 +254,7 @@ export default function Home() {
 
 
     }
-  })
+  }, [aboutUsTouch])
 
 
   // Socials button 
@@ -314,7 +312,7 @@ export default function Home() {
 
 
     }
-  })
+  }, [orderTouch])
 
  
 
