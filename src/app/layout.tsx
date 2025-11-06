@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
