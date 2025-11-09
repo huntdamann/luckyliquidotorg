@@ -153,22 +153,62 @@ const ProductShowcase = React.memo(function ProductShowcase() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AnimatePresence mode="wait">
+        {activeProduct === "honeygold" && (
+          <motion.div
+            key="honeygold"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute bottom-0 left-0 h-full"
+          >
+            <Image
+              src="/assets/empty_bottle4.png"
+              alt="HoneyGold"
+              width={tabletQuery ? 600 : 1500}
+              height={100}
+              priority
+            />
+          </motion.div>
+        )}
+
+        {activeProduct === "more" && (
+          <motion.div
+            key="more"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            className="product-title"
+          >
+            <Image
+              src="/assets/getlucky.png"
+              alt="Coming Soon"
+              width={500}
+              height={100}
+              priority
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
      
       <AnimatePresence>
-      {activeProduct === "honeygold" && (
-          
-        <motion.button
-        key="honeygold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1}}
-            exit={{opacity: 0, y: 20}}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        {activeProduct === "honeygold" && (
+            
+            <motion.button
+            key="honeygold"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1}}
+                exit={{opacity: 0, y: 20}}
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
 
-            id="button-handle-2"
-            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500  min-w-24">
-                <span>Get</span>
-        </motion.button>
-        )}
+                id="button-handle-2"
+                className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500  min-w-24">
+                    <span>Get</span>
+            </motion.button>
+            )}
         {activeProduct === "more" && (
           
           <motion.button
