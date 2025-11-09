@@ -19,6 +19,7 @@ import Popup from '../slices/Popup'
 import Header from '../slices/Header'
 import Footer from '../slices/Footer'
 import Hero from '../slices/Hero'
+import ProductShowcase from '../slices/ProductShowcase'
 import Testimonials from '../slices/Testimonials'
 import Success from '../slices/Success'
 import Newsletter from '../slices/Newsletter'
@@ -87,7 +88,7 @@ export default function Home() {
 
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
-  }, [])
+  }, [open])
  
 
   // const openStoryPage = () => {
@@ -158,6 +159,9 @@ export default function Home() {
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 
+ 
+
+
   return (
    <>
 
@@ -204,55 +208,15 @@ export default function Home() {
           {openStory && (
              <OurStory />
           )}
-           
-
         </section>
-        {/* <Testimonials /> */}
-        <section className="relative bg-[#d1a054] min-h-screen">
-   {/* Centered Image */}
-   <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-auto h-auto">
-    <Image
-      src="/assets/getlucky.png" // path to your image in /public folder
-      alt="Get Lucky"
-      width={300} // set your desired width
-      height={100} // set your desired height
-      priority // optional, ensures image loads quickly
-    />
-  </div>
-  <div className="absolute top-[10rem] left-1/2 transform -translate-x-1/2 w-auto h-auto">
-    <Image
-      src="/assets/honeygold.png" // path to your image in /public folder
-      alt="Get Lucky"
-      width={250} // set your desired width
-      height={100} // set your desired height
-      priority // optional, ensures image loads quickly
-    />
-  </div>
-
-  <div className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center">
-    <AnimatedBottle />
-  </div>
-  <button id='button-handle-2' className={`text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 absolute z-[999] left-[40%] lg:left-[50%] bottom-[6rem]`}>
-    <span >Get A Bottle!</span>
-  </button>
-</section>
-
+        <ProductShowcase />
 
         
-  {/* Product Showcase */}
-        {/* <section className='bg-[#d1a054] text-white relative border'>
-
-            <Image className='absolute left-[35%] top-[10%]' src="/assets/getlucky.png" alt='Get Luckuy' width={100} height={200} />
-
-
-            <Image className='absolute left-[20%] top-[20%]' src="/assets/honeygold.png" alt='Honey Gold' width={200} height={200} />
-            <AnimatedBottle />
-
-         </section> */}
+  
       {/* <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> */}
     
 
-      <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white p-2 fixed border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] left-[40%] lg:left-[40%] bottom-[1rem]`}>
+      <button id="button-handle" ref={buttonRef} onClick={() => setOpenPopUp(!openPopUp)} className={`text-white p-2 fixed border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem]`}>
         <div ref={chevronRef} className={`flex justify-center  items-center text-white`}>
 
             <span>Join</span>

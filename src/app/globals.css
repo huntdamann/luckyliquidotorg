@@ -22,6 +22,7 @@
   }
 }
 
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -58,35 +59,77 @@ body {
   background-color: #008000;
 }
 
+.product-showcase-container {
+
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: 2rem;
+  
+  
+}
+.product-controls {
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+  z-index: 99;
+  gap: 20rem;
+}
+.main {
+  background: #826437;
+  background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+}
+.more {
+  background: #1D1A1A;
+  background: linear-gradient(0deg, rgba(29, 26, 26, 1) 0%, rgba(103, 97, 97, 1) 98%);
+}
+.more-button {
+
+}
+.product-title {
+  margin-top: 3rem;
+}
+.more-button:hover {
+  transform: scale(1.1);
+
+}
+.slider-selection:hover {
+  transform: scale(1.1);
+
+}
+.honeygold-button {
+  z-index: 999;
+}
+.honeygold-button:hover {
+  transform: scale(1.1);
+
+}
+.slider-selection {
+  width: 100px;
+  height: 50px;
+  background-color: #A1E6B3;
+  position: absolute;
+  border-radius: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.image-container {
+  position: relative;
+  width: 70px;   /* ✅ same width */
+  height: 50px;  /* ✅ same height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-@media (max-width: 767px) {
-  #button-handle {
-    bottom: 3rem;
-  }
-
-  #popup-container {
-    margin-top: -10rem;
-  }
-  #cancel {
-    bottom: 3%;
-  }
-}
-
-@media (max-width: 375px) {
-  #button-handle {
-    bottom: 1rem;
-  }
-}
-@media (max-width: 400px) {
-  #button-handle {
-    bottom: 1rem;
-  }
-}
 
 .slogan {
   font-family: "Fredoka", Arial, Helvetica, sans-serif;
@@ -132,16 +175,17 @@ body {
 }
 
 #button-handle {
-  transform: translateX(-50%);
   bottom: 1rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 #button-handle-2 {
-  transform: translateX(-50%);
-  bottom: 6rem;
+  
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 3rem;
 }
 
 #scroll-banner {
@@ -250,6 +294,7 @@ body {
 #paper-window {
   height: 100dvh;
   width: 100vw;
+  border: 1px red solid;
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -290,7 +335,7 @@ body {
 /* //actual content */
 #container {
   section {
-    height: 600px;
+    height: 100dvh;
     text-align: center;
     &:first-of-type {
       padding-top: 10vh;
@@ -428,4 +473,41 @@ body {
 
 #secondlogo {
   margin-left: 2em;
+}
+
+
+@media (max-width: 630px) {
+  #button-handle {
+    bottom: 3rem;
+  }
+  .product-controls {
+    display: flex;
+    justify-content: unset;
+    z-index: 99;
+    gap: 10rem;
+  }
+
+  #popup-container {
+    margin-top: -10rem;
+  }
+  #cancel {
+    bottom: 3%;
+  }
+}
+
+@media (max-width: 375px) {
+  #button-handle {
+    bottom: 1rem;
+  }
+}
+@media (max-width: 440px) {
+  #button-handle {
+    bottom: 1rem;
+  }
+  .product-controls {
+    display: flex;
+    justify-content: unset;
+    z-index: 99;
+    gap: 5rem;
+  }
 }
