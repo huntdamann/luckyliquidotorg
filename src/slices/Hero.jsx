@@ -14,7 +14,7 @@ const Hero = React.memo(function Hero() {
   return (
 
     <div id="container">
-        <section className="flex border flex-col justify-center text-center gap-6 pt-[3rem] pb-[3rem] min-h-screen items-center">
+        <section className="flex border flex-col justify-center text-center gap-6 pt-[1rem] pb-[3rem] min-h-screen items-center">
 
 
             <motion.div>

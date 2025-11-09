@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faBluesky, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { motion } from 'motion/react'
 
 export default function Header({
   followUsTouch,
@@ -17,6 +18,17 @@ export default function Header({
 }) {
 
   const [showHamburger, setShowHamburger] = useState(true);
+  const ourProductsVariants = {
+    hidden: { opacity: 1, y: 0 },
+    click: { opacity: 1, y: -70},
+    start: { opacity: 1}
+  };
+  const aboutUsVariants = {
+    hidden: { opacity: 1, y: 0 },
+    click: { opacity: 1, y: -140},
+    start: { opacity: 1}
+  };
+
 
   // Fade logic for Hamburger Menu
   useEffect(() => {
@@ -51,7 +63,7 @@ export default function Header({
             Socials
             <div
               id="social-selections"
-              className="opacity-0 z-10 fixed top-[3rem] flex flex-col gap-5 pt-1 w-[150px]"
+              className={`opacity-0 z-10 fixed top-[3rem] flex flex-col gap-5 pt-1 w-[150px]`}
             >
               <a
                 target="_blank"
@@ -92,7 +104,10 @@ export default function Header({
             </div>
           </li>
 
-          <li
+          <motion.li
+            variants={ourProductsVariants}
+            initial="start"
+            animate={aboutUsTouch ? "click" : "hidden"}
             className="relative active:text-green-300 cursor-pointer"
             onClick={aboutUsTouch ? closeAbout : openAbout}
             id="ourstory"
@@ -109,9 +124,12 @@ export default function Header({
                 Honey Gold
               </a>
             </div>
-          </li>
+          </motion.li>
 
-          <li
+          <motion.li
+            variants={aboutUsVariants}
+            initial="start"
+            animate={homeTouch ? "click" : "hidden"}
             id="home"
             className="relative active:text-green-300 cursor-pointer"
             onClick={homeTouch ? closeHome : openHome}
@@ -123,7 +141,7 @@ export default function Header({
             >
               <span className="text-[16px] w-[200px]">Our Story</span>
             </div>
-          </li>
+          </motion.li>
 
           <li className="relative active:text-green-300 cursor-pointer" id="delivery">
             <a href="/">Home</a>
