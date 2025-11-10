@@ -21,6 +21,11 @@ export default function Header({
     about: -140,
     home: 0,
   };
+  const rotateAnimation = {
+    initial: { rotateY: 0 },
+    animate: { rotateY: 360 },
+    transition: { duration: 0.8, ease: "easeInOut" },
+  };
 
   const handleItemClick = (itemName, callback) => {
     if (activeItem === itemName) {
@@ -56,23 +61,36 @@ export default function Header({
           >
             Socials
             <div
-              className={`fixed top-[3rem] flex flex-col gap-5 pt-1 w-[150px] transition-opacity duration-300 ${
-                activeItem === "socials" ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            >
-              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
-                <FontAwesomeIcon icon={faInstagram} /> Instagram
-              </a>
-              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
-                <FontAwesomeIcon icon={faTiktok} /> TikTok
-              </a>
-              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
-                <FontAwesomeIcon icon={faFacebook} /> Facebook
-              </a>
-              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
-                <FontAwesomeIcon icon={faBluesky} /> Bluesky
-              </a>
-            </div>
+  className={`fixed top-[3rem] flex flex-col gap-6 pt-1 w-[200px] transition-opacity duration-300 ${
+    activeItem === "socials" ? "opacity-100" : "opacity-0 pointer-events-none"
+  }`}
+>
+  {/* Common styles for each link */}
+  {[
+    { icon: faInstagram, label: "Instagram" },
+    { icon: faTiktok, label: "TikTok" },
+    { icon: faFacebook, label: "Facebook" },
+    { icon: faBluesky, label: "Bluesky" },
+  ].map(({ icon, label }) => (
+    <a
+      key={label}
+      href="#"
+      className="flex items-center gap-2 w-full text-[16px] text-left"
+    >
+      <motion.div
+        key={activeItem === "socials"} // re-triggers animation when shown
+        {...rotateAnimation}
+        className="flex items-center flex-col justify-center"
+      >
+        <FontAwesomeIcon
+          icon={icon}
+          className="text-[18px] align-middle leading-none"
+        />
+      </motion.div>
+      <span className="leading-none">{label}</span>
+    </a>
+  ))}
+</div>
           </motion.li>
 
           {/* PRODUCTS */}
@@ -83,7 +101,7 @@ export default function Header({
               y: activeItem === "products" ? yOffsets.products : 0,
             }}
             transition={{ duration: 0.3 }}
-            className="relative cursor-pointer"
+            className="relative cursor-pointer text-xl"
             onClick={() => handleItemClick("products", openAbout)}
           >
             Our Products
@@ -118,7 +136,7 @@ export default function Header({
                 activeItem === "about" ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
-              <span className="text-[14px] border w-[200px]">Our Story</span>
+              <a href="/" className=" border w-[200px]">Our Story</a>
             </div>
           </motion.li>
 

@@ -86,9 +86,7 @@ body {
   background: #1D1A1A;
   background: linear-gradient(0deg, rgba(29, 26, 26, 1) 0%, rgba(103, 97, 97, 1) 98%);
 }
-.more-button {
 
-}
 .product-title {
   margin-top: 3rem;
 }
@@ -162,7 +160,6 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  font-size: 23px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -173,8 +170,20 @@ body {
     li {
       display: block;
       margin-bottom: 35px;
+      font-size: 20px;
       text-decoration: none;
       color: rgba(white, 0.7);
+      div {
+
+        gap: 1rem;
+        padding-top: 1rem;
+        
+      }
+      a {
+        font-size: 16px;
+        display: flex;
+        gap: 1rem;
+      }
     }
   }
 }
