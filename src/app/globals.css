@@ -92,10 +92,7 @@ body {
 .product-title {
   margin-top: 3rem;
 }
-.more-button:hover {
-  transform: scale(1.1);
 
-}
 .slider-selection:hover {
   transform: scale(1.1);
 
@@ -103,10 +100,18 @@ body {
 .honeygold-button {
   z-index: 999;
 }
-.honeygold-button:hover {
+@media (hover: hover) and (pointer: fine) {
+  .honeygold-button:hover {
+    transform: scale(1.1);
+  }
+
+  .more-button:hover {
   transform: scale(1.1);
 
 }
+
+}
+
 .slider-selection {
   width: 100px;
   height: 50px;
