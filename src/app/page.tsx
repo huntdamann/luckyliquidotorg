@@ -177,12 +177,9 @@ export default function Home() {
 
 
    <Header
-    followUsTouch={followUsTouch}
     toggleFollow={toggleFollow}
-    aboutUsTouch={aboutUsTouch}
     openAbout={openAbout}
     closeAbout={closeAbout}
-    homeTouch={homeTouch}
     openHome={openHome}
     closeHome={closeHome}
     closeMenu={closeMenu} // pass it here

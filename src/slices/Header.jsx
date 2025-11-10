@@ -1,126 +1,99 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faBluesky, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { motion } from 'motion/react'
+import { motion } from "motion/react";
 
 export default function Header({
-  followUsTouch,
   toggleFollow,
-  aboutUsTouch,
   openAbout,
   closeAbout,
-  homeTouch,
   openHome,
   closeHome,
-  closeMenu, // added prop
+  closeMenu,
 }) {
+  const [activeItem, setActiveItem] = useState(null);
 
-  const [showHamburger, setShowHamburger] = useState(true);
-  const [fadeout, setFadeOut ] = useState(true)
-  const ourProductsVariants = {
-    hidden: { opacity: 1, y: 0 },
-    click: { opacity: 1, y: -70},
-    end: { opacity: 0}
-  };
-  const aboutUsVariants = {
-    hidden: { opacity: 1, y: 0 },
-    click: { opacity: 1, y: -140},
-    start: { opacity: 1}
+  const yOffsets = {
+    socials: 0,
+    products: -70,
+    about: -140,
+    home: 0,
   };
 
+  const handleItemClick = (itemName, callback) => {
+    if (activeItem === itemName) {
+      setActiveItem(null);
+      if (callback) callback(false); // Optional: reset state if callback needs it
+    } else {
+      setActiveItem(itemName);
+      if (callback) callback(true);
+    }
+  };
 
-  // Fade logic for Hamburger Menu
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY + 10) {
-        setShowHamburger(false);
-      } else if (currentScrollY < lastScrollY - 10) {
-        setShowHamburger(true);
-      }
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleCloseMenu = () => {
+    setActiveItem(null);
+    if (closeMenu) closeMenu();
+  };
 
   return (
     <header className="text-sm" id="paper-back">
       <nav className="text-white relative">
-        {/* Close Menu Button */}
-        <div className="close" onClick={closeMenu}></div>
+        <div className="close" onClick={handleCloseMenu}></div>
 
-        <ul>
-          <li
-            className="relative active:text-green-300 cursor-pointer"
-            onClick={toggleFollow}
-            id="followus"
+        <ul className="flex flex-col gap-4">
+          {/* SOCIALS */}
+          <motion.li
+            initial={{ opacity: 1, y: 0 }}
+            animate={{
+              opacity: activeItem && activeItem !== "socials" ? 0 : 1,
+              y: activeItem === "socials" ? yOffsets.socials : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="relative cursor-pointer"
+            onClick={() => handleItemClick("socials", toggleFollow)}
           >
             Socials
             <div
-              id="social-selections"
-              className={`opacity-0 z-10 fixed top-[3rem] flex flex-col gap-5 pt-1 w-[150px]`}
+              className={`fixed top-[3rem] flex flex-col gap-5 pt-1 w-[150px] transition-opacity duration-300 ${
+                activeItem === "socials" ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
             >
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]"
-                href="https://www.instagram.com/waytoolucky_/"
-              >
-                <FontAwesomeIcon id="instagram-social-icon" icon={faInstagram} />
-                Instagram
+              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
+                <FontAwesomeIcon icon={faInstagram} /> Instagram
               </a>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]"
-                href="https://www.tiktok.com/@luckyteadtx"
-              >
-                <FontAwesomeIcon id="instagram-social-icon" icon={faTiktok} />
-                Tiktok
+              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
+                <FontAwesomeIcon icon={faTiktok} /> TikTok
               </a>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]"
-                href="https://www.facebook.com/profile.php?id=61580219229816"
-              >
-                <FontAwesomeIcon id="instagram-social-icon" icon={faFacebook} />
-                Facebook
+              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
+                <FontAwesomeIcon icon={faFacebook} /> Facebook
               </a>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex active:text-green-300 items-center gap-1 w-[200px] text-[16px]"
-                href="https://bsky.app/profile/waytoolucky.bsky.social"
-              >
-                <FontAwesomeIcon id="instagram-social-icon" icon={faBluesky} />
-                Blueskies
+              <a href="#" className="flex items-center gap-1 w-[200px] text-[16px]">
+                <FontAwesomeIcon icon={faBluesky} /> Bluesky
               </a>
             </div>
-          </li>
+          </motion.li>
 
+          {/* PRODUCTS */}
           <motion.li
-            variants={ourProductsVariants}
-            initial="start"
-            animate={aboutUsTouch ? "click" : "hidden"}
-            exit={fadeout ? 'end' : "hidden"}
-            className="relative active:text-green-300 cursor-pointer"
-            onClick={aboutUsTouch ? closeAbout : openAbout}
-            id="ourstory"
+            initial={{ opacity: 1, y: 0 }}
+            animate={{
+              opacity: activeItem && activeItem !== "products" ? 0 : 1,
+              y: activeItem === "products" ? yOffsets.products : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="relative cursor-pointer"
+            onClick={() => handleItemClick("products", openAbout)}
           >
             Our Products
             <div
-              id="shop-selections"
-              className="opacity-0 fixed flex top-11 flex-col gap-5 pt-1 w-[20%]"
+              className={`fixed flex top-11 flex-col gap-5 pt-1 w-[20%] transition-opacity duration-300 ${
+                activeItem === "products" ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
             >
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header"
+                href="#"
                 className="text-[16px] w-[200px]"
               >
                 Honey Gold
@@ -128,26 +101,40 @@ export default function Header({
             </div>
           </motion.li>
 
+          {/* ABOUT */}
           <motion.li
-            variants={aboutUsVariants}
-            initial="start"
-            animate={homeTouch ? "click" : "hidden"}
-            id="home"
-            className="relative active:text-green-300 cursor-pointer"
-            onClick={homeTouch ? closeHome : openHome}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{
+              opacity: activeItem && activeItem !== "about" ? 0 : 1,
+              y: activeItem === "about" ? yOffsets.about : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="relative cursor-pointer"
+            onClick={() => handleItemClick("about", openHome)}
           >
             About Us
             <div
-              id="about-selections"
-              className="opacity-0 fixed flex flex-col top-11 gap-5 pt-1 w-[30%]"
+              className={`fixed flex flex-col top-11 gap-5 pt-1 w-[30%] transition-opacity duration-300 ${
+                activeItem === "about" ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
             >
-              <span className="text-[16px] w-[200px]">Our Story</span>
+              <span className="text-[14px] border w-[200px]">Our Story</span>
             </div>
           </motion.li>
 
-          <li className="relative active:text-green-300 cursor-pointer" id="delivery">
+          {/* HOME */}
+          <motion.li
+            initial={{ opacity: 1, y: 0 }}
+            animate={{
+              opacity: activeItem && activeItem !== "home" ? 0 : 1,
+              y: activeItem === "home" ? yOffsets.home : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="relative cursor-pointer"
+            onClick={() => handleItemClick("home")}
+          >
             <a href="/">Home</a>
-          </li>
+          </motion.li>
         </ul>
       </nav>
     </header>
