@@ -18,10 +18,11 @@ export default function Header({
 }) {
 
   const [showHamburger, setShowHamburger] = useState(true);
+  const [fadeout, setFadeOut ] = useState(true)
   const ourProductsVariants = {
     hidden: { opacity: 1, y: 0 },
     click: { opacity: 1, y: -70},
-    start: { opacity: 1}
+    end: { opacity: 0}
   };
   const aboutUsVariants = {
     hidden: { opacity: 1, y: 0 },
@@ -108,6 +109,7 @@ export default function Header({
             variants={ourProductsVariants}
             initial="start"
             animate={aboutUsTouch ? "click" : "hidden"}
+            exit={fadeout ? 'end' : "hidden"}
             className="relative active:text-green-300 cursor-pointer"
             onClick={aboutUsTouch ? closeAbout : openAbout}
             id="ourstory"

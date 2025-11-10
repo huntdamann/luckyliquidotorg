@@ -294,7 +294,6 @@ body {
 #paper-window {
   height: 100dvh;
   width: 100vw;
-  border: 1px red solid;
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll;

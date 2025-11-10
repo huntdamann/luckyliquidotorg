@@ -220,7 +220,7 @@ export default function Home() {
   id="button-handle"
   ref={buttonRef}
   onClick={() => setOpenPopUp(!openPopUp)}
-  className={`text-white p-2 absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem] left-[38%] sm:left-[43%] md:left-[46%] transform -translate-x-1/2`}
+  className={`text-white p-2 absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem] left-[38%] sm:left-[43%] md:left-[48%] transform -translate-x-1/2`}
 >
   <div
     ref={chevronRef}

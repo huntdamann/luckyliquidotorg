@@ -80,7 +80,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
           </div>
         </button>
         {/* Animated Slider */}
-        <motion.div animate={{x: activeProduct === "more"  ? phoneQuery ? 230 : tabletQuery ? 310 : 235 : phoneQuery ? -5 : tabletQuery ? -8 : -195, width: activeProduct === "more" ? dimensions.width : dimensionsHoney.width}} className="slider-selection">
+        <motion.div animate={{x: activeProduct === "more"  ? phoneQuery ? 230 : tabletQuery ? 310 : 235 : phoneQuery ? -2 : tabletQuery ? -2 : -195, width: activeProduct === "more" ? dimensions.width : dimensionsHoney.width}} className="slider-selection">
 
         </motion.div>
 
@@ -162,15 +162,15 @@ const ProductShowcase = React.memo(function ProductShowcase() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="absolute bottom-0 left-0 h-full"
+            className="absolute"
           >
-            <Image
+            {/* <Image
               src="/assets/empty_bottle4.png"
               alt="HoneyGold"
-              width={tabletQuery ? 600 : 1500}
-              height={100}
+              width={1400}
+              height={800}
               priority
-            />
+            /> */}
           </motion.div>
         )}
 
