@@ -22,7 +22,7 @@ import Image from "next/image";
 }
 
 
-const About = forwardRef((props, ref) => {
+export default function Home() {
 
     // References to Main component Containers (PaperFront, Window, PaperBack)
   const windowRef = useRef<HTMLDivElement | null>(null);
@@ -197,6 +197,5 @@ const About = forwardRef((props, ref) => {
 
 
 
-})
+}
 
-export default About;
