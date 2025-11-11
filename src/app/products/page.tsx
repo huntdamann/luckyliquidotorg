@@ -16,13 +16,9 @@ import Image from "next/image";
 
 
 
- async function saveAction() {
+ 
 
-    console.log('hey');
-}
-
-
-const Products = forwardRef((props, ref) => {
+export default function Home() {
 
     const productOptions = ["Tea", "Shirts"];
 
@@ -54,6 +50,5 @@ const Products = forwardRef((props, ref) => {
 
 
 
-})
+}
 
-export default Products;

@@ -1,9 +1,6 @@
 "use client";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "motion/react";
-config.autoAddCss = false;
 
 import Header from "@/slices/Header";
 import React, { useEffect, useState, useRef } from "react";
