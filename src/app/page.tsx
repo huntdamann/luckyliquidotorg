@@ -206,26 +206,26 @@ export default function Home() {
              <OurStory />
           )}
         </section>
-        <ProductShowcase />
+        <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
 
         
   
-      {/* <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> */}
+       <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
     
 
       <button
-  id="button-handle"
-  ref={buttonRef}
-  onClick={() => setOpenPopUp(!openPopUp)}
-  className={`text-white p-2 absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem] left-[38%] sm:left-[43%] md:left-[48%] transform -translate-x-1/2`}
->
-  <div
-    ref={chevronRef}
-    className="flex justify-center items-center text-white"
-  >
-    <span>Join</span>
-  </div>
-</button>
+        id="button-handle"
+        ref={buttonRef}
+        onClick={() => setOpenPopUp(!openPopUp)}
+        className={`text-white p-2 ${openPopUp ? "opacity-0" : "opacity-100"} absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem] left-[38%] sm:left-[43%] md:left-[48%] transform -translate-x-1/2`}
+      >
+        <div
+          ref={chevronRef}
+          className="flex justify-center items-center text-white"
+        >
+          <span>Join</span>
+        </div>
+      </button>
 
 
 

@@ -1,176 +1,138 @@
 "use client";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 config.autoAddCss = false;
-import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 
-import Title from '../../public/assets/new_word.png'
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
+import { motion } from "motion/react";
 
-import Success from '../slices/Success'
-import gsap from "gsap";
-
-import Lucky from '../../public/assets/lucky-logo-demo.png'
-import PhotoNews from '../../public/assets/IMG_0438.jpeg'
 import Image from "next/image";
+import Success from "../slices/Success";
 
+import Lucky2 from "../../public/assets/lucky_logo_nobg.png";
+import Title from "../../public/assets/new_word.png";
+import Lucky from "../../public/assets/lucky-logo-demo.png";
+import PhotoNews from "../../public/assets/IMG_0438.jpeg";
 
+const Popup = ({ refPop, refOut, refNo, setter }) => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null);
+  const [auto, autoOpen] = useState(false);
 
- async function saveAction() {
+  const handleUserSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/subscriber", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, resubscribe: true }),
+    });
+    const data = await res.json();
+    setStatus(data.message);
+  };
 
-    console.log('hey');
-}
+  // Automatically open after 10s
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      autoOpen(true);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, [refNo]);
 
+  // Framer Motion animation variants
+  const popupVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+      zIndex: -1,
+      pointerEvents: "none",
+      transition: { duration: 0.4, ease: "easeInOut" },
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      zIndex: 999,
+      pointerEvents: "auto",
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+    },
+  };
 
-const Popup = ({ refPop, refOut, refNo, setter}) => {
+  return (
+    <motion.div
+      ref={refPop}
+      id="popup-container"
+      variants={popupVariants}
+      initial="hidden"
+      animate={refNo ? "visible" : "hidden"}
+      className="border-2 shadow-md text-black bg-[#51B150] gap-[9rem] text-center rounded-xl fixed justify-between items-center border-green-700 left-5 flex flex-row"
+    >
+      <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
+        {/* Product Photo */}
+        <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
+          <Image
+            src={PhotoNews}
+            alt="Product Photo"
+            layout="responsive"
+            width={500}
+            height={300}
+            quality={100}
+            sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
+            className="rounded-2xl"
+          />
+        </div>
 
+        {/* Close Button */}
+        <div
+          onClick={() => setter(!refNo)}
+          className={`absolute ${
+            status ? "opacity-0" : "opacity-100"
+          } top-2 right-2 active:text-white text-3xl cursor-pointer`}
+        >
+          <IoCloseSharp />
+        </div>
 
-    const [ email, setEmail] = useState('')
-    const [ status, setStatus ] = useState(null)
-    const [ auto, autoOpen ] = useState(false)
+        {/* Popup Text */}
+        <div className="flex flex-col text-center items-center justify-center gap-3">
+          <Image alt="Picture" src={Lucky} width={300} height={150} />
+          <Image alt="Lucky Logo" width={150} src={Lucky2} />
+          <Image alt="Title" width={350} src={Title} />
 
+          <span className="w-[16rem] font-mono">
+            Join the Lucky List and unlock exclusive perks
+          </span>
 
+          <form
+            onSubmit={handleUserSubmit}
+            className="rounded-md flex gap-2 justify-center items-center w-[15rem]"
+          >
+            <input
+              className="h-full w-full shadow-md rounded-md p-2"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+            />
+            <button
+              id="button-submit"
+              type="submit"
+              className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"
+            >
+              <span>Get Lucky</span>
+            </button>
 
+            {status && <Success set={setter} refNo={refNo} />}
+          </form>
 
-    const handleUserSubmit = async (e) => {
-        e.preventDefault();
-        console.log('code gets here')
-        const res = await fetch('/api/subscriber', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-              email,
-              resubscribe: true,
-          })
-        })
-        const data = await res.json();
-        console.log(data.message)
-        setStatus(data.message)
-    }
-    useEffect(() => {
-        if(auto) {
-          gsap.to(refPop.current, {zIndex:999, opacity: 1, duration: 0.6, ease: "sine.out"})
-          
-        } else {
-          gsap.to(refPop.current, {
-            
-            opacity: 0,
-            duration: 0.5,
-            ease: "sine.in",
-            zIndex: -1,
-          })
-          
-         
-         
-        }
-      }, [auto])
-
-
-
-      useEffect(() => {
-        
-        // set a timeout to change the state after 10 seconds
-        const timer = setTimeout(() => {
-          autoOpen(true);
-        }, 10000); // 10 seconds in milliseconds
-    
-      
-        // cleanup in case component unmounts before timeout finishes
-        return () => clearTimeout(timer);
-      }, [refNo]);
-
-    return(
-
-        <>
-
-
-          
-                       
-            <div id="popup-container" ref={refPop} className="border-2  shadow-md text-black bg-[#51B150] gap-[9rem]  text-center  rounded-xl fixed justify-between  items-center z-[1000]  border-green-700 flex flex-row top-[3%] left-[51%]">
-
-              <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
-
-
-
-
-                 {/* Product Photo */}
-                  <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
-                    <Image
-                      src={PhotoNews}
-                      alt="Product Photo"
-                      layout="responsive"
-                      width={500}
-                      height={300}
-                      quality={100}
-                      sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
-                      className="rounded-2xl"
-                    />
-                  </div>
-
-                <div onClick={() => setter(!refNo) } className={`fixed ${status? 'opacity-0' : 'opacity-1'}  top-2 right-2  active:text-white text-3xl cursor-pointer`}>
-                    <IoCloseSharp />
-                </div>
-
-                <div className="flex flex-col text-center items-center justify-center gap-3">
-
-
-                <Image alt='Picture' src={Lucky} width={300} height={150}></Image>
-                <Image className="" id="secondlogo" alt="Lucky Leperchaun Logo" width={150} src={Lucky2} />
-                <Image className="" id="title-one" alt="We're Brewing Something Special" width={350} src={Title} />
-
-
-                <span className="w-[16rem] font-mono">
-                    Join the Lucky List and unlock exclusive perks 
-
-                </span>
-
-                <form onSubmit={handleUserSubmit} className=" rounded-md flex gap-2 justify-center items-center w-[15rem]" action="">
-                    <input className="h-full w-full shadow-md rounded-md p-2" type="email" name="" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required id="" />
-                    <button id="button-submit" type="submit" className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"><span className="">Get Lucky</span></button>
-
-                    {status && <Success set={setter} refNo={refNo} />}
-                </form>
-                
-
-                <span>Discounts, Special Flavors, Events, and More</span>
-
-                
-                
-                <div className='triangle'></div>
-
-
-
-                </div>
-
-
-                </div>
-
-
-
-           
-            </div>
-
-    
-
-        
-        
-        
-        </>
-
-
-
-    )
-
-
-
-
-
-
-}
+          <span>Discounts, Special Flavors, Events, and More</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default Popup;

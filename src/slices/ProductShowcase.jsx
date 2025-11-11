@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from 'motion/react';
 import  useMediaQuery  from '../hooks/useMediaQuery'
 
-const ProductShowcase = React.memo(function ProductShowcase() {
+const ProductShowcase = ({ setter, refNo }) => {
   const [activeProduct, setActiveProduct] = useState("honeygold");
   const moreButtonRef = useRef(null);
   const honeyButtonRef = useRef(null)
@@ -76,6 +76,9 @@ const ProductShowcase = React.memo(function ProductShowcase() {
               height={100}
               priority
               style={{ objectFit: "contain" }}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCACmAmYDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAYAQEBAAMAAAAAAAAAAAAAAAAAAQIDBP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOeA5G8AARQEAARQEAARRRAAQVBAAEFQAAAAEFAQUBFBAAAUAAUEUBQFAAABQAAAAUAAAAAAAAAAAEFQAAAABFAQVAAAAAAAaAUAAAAEUBBUARQRBUARQEFARFAQUBBQEFAQUBBQEFAQUBFAAUBFAAFFRQAAQBQAAAAAAAAAAAAAAAABFFEFAQUBAAAAAAAAaAVAAEFAQVAAAAAQUBBQERpAQUBBQEFAQUBBQEFAQUBBQEFARQAFAQUBFBAAAFAQUBFAAAAAAAAAAAAAEFAQUBBQEFAQUBBQEFAAGQAAAAAAAIAACKAgoCCgIKAgoCCgIKAgoCCgIKAgoCCgIKAgoAAAAAAAAAKAgoCCgIKAgoCCgIKAgoCCgIKAgoCCgIKAgoCCgIAqAAAAAAAAoKCIKCoKAgoCKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAKAgoCCgMiCooAAAAAAACoAoiigAAAAAAAAKAAAAgAAAAAKIKgAAAAAAAAAAAAAAAAAAAAAgCiKAAAAAAAAAAgAAogCiAKIAyIKiiAKAAACiAKICqIoAAKIIKIAoAAACoAogCiAKIAogAAAAAAAAAIKKgAAAAAAAAAAAAAAAAIAACoAogCiAKIAogCiAKIAyIKKIAoggogCgAKgCiAKIAqoAogCiAKIAoAAAKIAogCoAAAAAAAAICiAKIAqAAAAAAAAIAogCiAKIAoigAAAAAAKgCiAKIAogDAAAAAAKIAoggogCgAogCiAKIAoAKIAogCiAqiAKIAogCiAKICKIAogCiAKgAAAAAAAAgKIAogCiAKIAogCiAKIAogCiAKIAogCiAMgAAAAAAAogCiAKIoACAqAqiAKIoAAAACoAogCiAKIAogCiAKIAogCiAAAAAAAAAAAAAAAAAAgCiAKIAogCiAKIAogCiAKIAyAIAAoAAAAAAAAACgKAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAIACgAAAAAAAAAP//Z"
+
             />
           </div>
         </button>
@@ -95,6 +98,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
                 fill
                 priority
                 style={{ objectFit: "contain" }}
+
                 />
 
             )}
@@ -106,6 +110,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
                 fill
                 priority
                 style={{ objectFit: "contain" }}
+
                 />
 
             )}
@@ -130,6 +135,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
               width={500}
               height={100}
               priority
+
             />
           </motion.div>
         )}
@@ -149,6 +155,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
               width={500}
               height={100}
               priority
+
             />
           </motion.div>
         )}
@@ -170,6 +177,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
               width={250}
               height={800}
               priority
+
             />
           </motion.div>
         )}
@@ -189,6 +197,7 @@ const ProductShowcase = React.memo(function ProductShowcase() {
               width={500}
               height={100}
               priority
+
             />
           </motion.div>
         )}
@@ -197,12 +206,16 @@ const ProductShowcase = React.memo(function ProductShowcase() {
       <AnimatePresence>
         {activeProduct === "honeygold" && (
             
+
+            
             <motion.button
             key="honeygold"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1}}
                 exit={{opacity: 0, y: 20}}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header', '_blank')}
+
 
                 id="button-handle-2"
                 className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500  min-w-24">
@@ -213,6 +226,8 @@ const ProductShowcase = React.memo(function ProductShowcase() {
           
           <motion.button
               exit={{opacity: 0, y: 20}}
+              onClick={() => setter(!refNo)}
+
                   id="button-handle-2"
                   className="text-white p-2 border-2 hover:bg-red-500 border-gray-400 bg-[#51B150] active:bg-green-500   min-w-24"
               >
@@ -226,6 +241,6 @@ const ProductShowcase = React.memo(function ProductShowcase() {
       
     </section>
   );
-});
+};
 
 export default ProductShowcase;
