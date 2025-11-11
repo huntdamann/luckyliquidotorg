@@ -14,7 +14,6 @@ import React, { forwardRef } from "react";
 
 import Image from "next/image";
 
-import Clover from '../../public/assets/clover-clip.png'
 
 
  async function saveAction() {

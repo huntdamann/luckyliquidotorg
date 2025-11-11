@@ -90,6 +90,11 @@ body {
 .product-title {
   margin-top: 3rem;
 }
+.product-image {
+  margin-top: -5rem;
+  position: absolute;
+  top: 15rem;
+}
 
 .slider-selection:hover {
   transform: scale(1.1);
