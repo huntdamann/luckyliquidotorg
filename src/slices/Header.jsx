@@ -61,7 +61,7 @@ export default function Header({
           >
             Socials
             <div
-  className={`fixed top-[3rem] flex flex-col gap-6 pt-1 w-[200px] transition-opacity duration-300 ${
+  className={`fixed top-[3rem] flex flex-col gap-6 pt-3 w-[200px] transition-opacity duration-300 ${
     activeItem === "socials" ? "opacity-100" : "opacity-0 pointer-events-none"
   }`}
 >
@@ -84,7 +84,7 @@ export default function Header({
       >
         <FontAwesomeIcon
           icon={icon}
-          className="text-[18px] align-middle leading-none"
+          className="text-[18px]"
         />
       </motion.div>
       <span className="leading-none">{label}</span>
@@ -136,7 +136,7 @@ export default function Header({
                 activeItem === "about" ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
-              <a href="/" className=" border w-[200px]">Our Story</a>
+              <a href="/about" className=" border w-[200px]">Our Story</a>
             </div>
           </motion.li>
 
