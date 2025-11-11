@@ -178,12 +178,7 @@ body {
       font-size: 20px;
       text-decoration: none;
       color: rgba(white, 0.7);
-      div {
-
-        gap: 2rem;
-        
-        
-      }
+     
       a {
         font-size: 16px;
         display: flex;
@@ -194,6 +189,20 @@ body {
     }
   }
 }
+#about-folder {
+
+  margin-top: 1rem;
+}
+#product-folder {
+
+  margin-top: 1rem;
+}
+#social-folder {
+
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
 
 #button-handle {
   bottom: 1rem;

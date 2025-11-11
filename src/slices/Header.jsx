@@ -61,6 +61,7 @@ export default function Header({
           >
             Socials
             <div
+            id="social-folder"
   className={`fixed top-[3rem] flex flex-col gap-6 pt-3 w-[200px] transition-opacity duration-300 ${
     activeItem === "socials" ? "opacity-100" : "opacity-0 pointer-events-none"
   }`}
@@ -106,6 +107,7 @@ export default function Header({
           >
             Our Products
             <div
+            id="product-folder"
               className={`fixed flex top-11 flex-col gap-5 pt-1 w-[20%] transition-opacity duration-300 ${
                 activeItem === "products" ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
@@ -132,7 +134,8 @@ export default function Header({
           >
             About Us
             <div
-              className={`fixed flex flex-col top-11 gap-5 pt-1 w-[30%] transition-opacity duration-300 ${
+            id="about-folder"
+              className={`fixed flex flex-col top-11 gap-5 pt-3 border w-[30%] transition-opacity duration-300 ${
                 activeItem === "about" ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
