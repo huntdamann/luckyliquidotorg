@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Slogan2 from '../../public/assets/slogan2.png'
-import BackgroundClover from "@/components/BackgroundClover";
+import BackgroundClover from "../components/BackgroundClover";
 
 const Hero = memo(function Hero() {
 
