@@ -97,10 +97,10 @@ export default function Home() {
             </span>
 
             <Image
-              className="text-[3rem]"
-              width={100}
+              className="text-[3rem] lg:mt-12"
+              width={150}
               height={100}
-              src="/assets/clover.png"
+              src="/assets/lucky_logo_nobg.png"
               alt="clover"
             />
           </motion.section>
