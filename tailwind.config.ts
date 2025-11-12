@@ -22,6 +22,10 @@ const config: Config = {
       animation: {
         aurora: "aurora 60s linear infinite",
       },
+      screens: {
+        // Custom "ipad" breakpoint for widths between 533px and 630px
+        'ipad': {'min': '459px', 'max': '630px'},
+      },
       keyframes: {
         aurora: {
           from: {

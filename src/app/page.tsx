@@ -200,12 +200,7 @@ export default function Home() {
         </div>
         <Hero />
 
-        {/* Our Story and About us */}
-        <section>
-          {openStory && (
-             <OurStory />
-          )}
-        </section>
+        
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
 
         
@@ -213,11 +208,11 @@ export default function Home() {
        <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
     
 
-      <button
+      {/* <button
         id="button-handle"
         ref={buttonRef}
         onClick={() => setOpenPopUp(!openPopUp)}
-        className={`text-white p-2 ${openPopUp ? "opacity-0" : "opacity-100"} absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[1rem] left-[38%] sm:left-[43%] md:left-[48%] transform -translate-x-1/2`}
+        className={`text-white p-2 ${openPopUp ? "opacity-0" : "opacity-100"} absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
       >
         <div
           ref={chevronRef}
@@ -225,7 +220,7 @@ export default function Home() {
         >
           <span>Join</span>
         </div>
-      </button>
+      </button> */}
 
 
 

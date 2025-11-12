@@ -8,7 +8,7 @@ import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Slogan2 from '../../public/assets/slogan2.png'
 
 
-export default function BackgroundClover() {
+export default function UpdateOurStory() {
 
     // Variants for staggered animation
   const containerVariants = {
@@ -36,39 +36,37 @@ export default function BackgroundClover() {
 
   return (
     <div className="ocean">
-        <div id="container">
-              <motion.section
-                className="flex  flex-col justify-center text-center gap-9 pt-[5rem]  min-h-screen items-center"
-                variants={containerVariants}
-                initial="hidden"
-                animate="show"
-              >
-                {/* Main Logo */}
-                <motion.div variants={itemVariants}>
-                  <Image priority className="opacity-100" id="leadlogo" alt="Lucky Liquid Logo" width={300} src={Lucky}/>
-                </motion.div>
         
-                {/* Secondary Logo */}
-                <motion.div variants={itemVariants}>
-                  <Image priority className="opacity-100" id="secondlogo" alt="Lucky Liquid Leperchaun Logo" width={300} src={Lucky2} />
-                </motion.div>
-        
-                {/* Slogan */}
-                <motion.div variants={itemVariants} className="text-3xl text-black font-[900] flex flex-col">
-                  <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} src={Slogan2} />
-                </motion.div>
-                <button
-                  id="button-handle"
-                  className={`text-white p-2 opacity-100 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
-                >
-                  <div
-                    className="flex justify-center items-center text-white"
-                  >
-                    <span>Join</span>
-                </div>
-              </button>
-              </motion.section>
+        <div className="flex flex-col gap-3 p-5">
+
+        <h1>Our Story</h1>
+            <span className="font-bold">
+              Lucky Tea was meant to shake things up...
+            </span>
+            <span>
+              From bold branding to unique presentation, we're doing things
+              differently. Created in Dallas, TX, Lucky Tea was brewed with one
+              idea in mind: to create a flavor-focused beverage that challenges
+              norms and pushes boundaries. Built for doers, our tea is brewed
+              with 100% real leaves, locally sourced honey, all-natural
+              sweeteners, and bottled in fully recyclable material.
+            </span>
+            <span>
+              But for us, tea is just the beginning. We're here to push the
+              limits of what a beverage brand can do. Our vision goes beyond the
+              bottle -- we're building a movement rooted in community. By 2030,
+              we aim to launch a nonprofit dedicated to empowering the next
+              generation through scholarships and youth activity centers,
+              starting right here in our own backyard.{" "}
+              <span className="font-bold">
+                It's more than just tea: this is a promise in a bottle. This is
+                what it means to Get Lucky.
+              </span>
+            </span>
+
+
         </div>
+         
 
 
     

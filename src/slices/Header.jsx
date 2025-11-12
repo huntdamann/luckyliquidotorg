@@ -43,6 +43,18 @@ export default function Header({
     if (closeMenu) closeMenu();
   };
 
+  const socials = [
+    { icon: faInstagram, label: "Instagram", navi: "https://www.instagram.com/waytoolucky_/" },
+    { icon: faTiktok, label: "TikTok", navi: "https://www.tiktok.com/@luckyteadtx" },
+    { icon: faFacebook, label: "Facebook", navi: "https://www.facebook.com/profile.php?id=61580219229816" },
+    { icon: faBluesky, label: "Bluesky", navi: "https://bsky.app/profile/waytoolucky.bsky.social" },
+  ];
+
+  const folderVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <header className="text-sm" id="paper-back">
       <nav className="text-white relative">
@@ -51,31 +63,25 @@ export default function Header({
         <ul className="flex flex-col gap-4">
           {/* SOCIALS */}
           <motion.li
-            id="header-elements"
-            initial={{ opacity: 1, y: 0 }}
+            className="relative cursor-pointer hover:text-green-400"
+            initial={{ y: 0, opacity: 1 }}
             animate={{
-              opacity: activeItem && activeItem !== "socials" ? 0 : 1,
               y: activeItem === "socials" ? yOffsets.socials : 0,
+              opacity: activeItem && activeItem !== "socials" ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
-            className="relative cursor-pointer active:text-[#d1a054] hover:text-green-400"
             onClick={() => handleItemClick("socials", toggleFollow)}
           >
             Socials
-            <div
-              id="social-folder"
-              className={`fixed top-[3rem] flex flex-col gap-6 pt-3 w-[200px] transition-all duration-300
-                ${activeItem === "socials"
-                  ? "opacity-100 pointer-events-auto z-50"
-                  : "opacity-0 pointer-events-none z-[-99]"
-                }`}
+            <motion.div
+              className="fixed top-[3rem] flex flex-col  pt-3 w-[200px]"
+              initial="hidden"
+              animate={activeItem === "socials" ? "visible" : "hidden"}
+              variants={folderVariants}
+              style={{ zIndex: activeItem === "socials" ? 50 : -1 , gap: '2rem', marginTop: '1rem'}}
+              transition={{ duration: 0.3 }}
             >
-              {[
-                { icon: faInstagram, label: "Instagram", navi: "https://www.instagram.com/waytoolucky_/" },
-                { icon: faTiktok, label: "TikTok", navi: "https://www.tiktok.com/@luckyteadtx" },
-                { icon: faFacebook, label: "Facebook", navi: "https://www.facebook.com/profile.php?id=61580219229816" },
-                { icon: faBluesky, label: "Bluesky", navi: "https://bsky.app/profile/waytoolucky.bsky.social" },
-              ].map(({ icon, label, navi }) => (
+              {socials.map(({ icon, label, navi }) => (
                 <a
                   key={label}
                   href={navi}
@@ -84,38 +90,37 @@ export default function Header({
                   rel="noopener noreferrer"
                 >
                   <motion.div
-                    key={activeItem === "socials"} // re-triggers animation when shown
+                  key={activeItem === "socials"}
                     {...rotateAnimation}
-                    className="flex items-center active:text-[#d1a054] flex-col justify-center"
+                    className="flex items-center flex-col justify-center"
                   >
                     <FontAwesomeIcon icon={icon} className="text-[18px]" />
                   </motion.div>
                   <span className="leading-none">{label}</span>
                 </a>
               ))}
-            </div>
+            </motion.div>
           </motion.li>
 
           {/* PRODUCTS */}
           <motion.li
-            initial={{ opacity: 1, y: 0 }}
-            animate={{
-              opacity: activeItem && activeItem !== "products" ? 0 : 1,
-              y: activeItem === "products" ? yOffsets.products : 0,
-            }}
-            id="header-elements"
-            transition={{ duration: 0.3 }}
             className="relative cursor-pointer text-xl"
+            initial={{ y: 0, opacity: 1 }}
+            animate={{
+              y: activeItem === "products" ? yOffsets.products : 0,
+              opacity: activeItem && activeItem !== "products" ? 0 : 1,
+            }}
+            transition={{ duration: 0.3 }}
             onClick={() => handleItemClick("products", openAbout)}
           >
             Our Products
-            <div
-              id="product-folder"
-              className={`fixed flex top-11 flex-col gap-5 pt-1 w-[20%] transition-all duration-300
-                ${activeItem === "products"
-                  ? "opacity-100 pointer-events-auto z-50"
-                  : "opacity-0 pointer-events-none z-[-1]"
-                }`}
+            <motion.div
+              className="fixed flex top-11 flex-col gap-5 pt-1 w-[20%]"
+              initial="hidden"
+              animate={activeItem === "products" ? "visible" : "hidden"}
+              variants={folderVariants}
+              style={{ zIndex: activeItem === "products" ? 50 : -1, gap: '2rem', marginTop: '1rem' }}
+              transition={{ duration: 0.3 }}
             >
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header"
@@ -123,44 +128,42 @@ export default function Header({
               >
                 Honey Gold
               </a>
-            </div>
+            </motion.div>
           </motion.li>
 
           {/* ABOUT */}
           <motion.li
-            initial={{ opacity: 1, y: 0 }}
-            animate={{
-              opacity: activeItem && activeItem !== "about" ? 0 : 1,
-              y: activeItem === "about" ? yOffsets.about : 0,
-            }}
-            id="header-elements"
-            transition={{ duration: 0.3 }}
             className="relative cursor-pointer"
+            initial={{ y: 0, opacity: 1 }}
+            animate={{
+              y: activeItem === "about" ? yOffsets.about : 0,
+              opacity: activeItem && activeItem !== "about" ? 0 : 1,
+            }}
+            transition={{ duration: 0.3 }}
             onClick={() => handleItemClick("about", openHome)}
           >
             About Us
-            <div
-              id="about-folder"
-              className={`fixed flex flex-col top-11 gap-5 pt-3 border w-[30%] transition-all duration-300
-                ${activeItem === "about"
-                  ? "opacity-100 pointer-events-auto z-50"
-                  : "opacity-0 pointer-events-none z-[-1]"
-                }`}
+            <motion.div
+              className="fixed flex flex-col top-11 gap-5 pt-3 border w-[30%]"
+              initial="hidden"
+              animate={activeItem === "about" ? "visible" : "hidden"}
+              variants={folderVariants}
+              style={{ zIndex: activeItem === "about" ? 50 : -1, gap: '2rem', marginTop: '1rem' }}
+              transition={{ duration: 0.3 }}
             >
               <a href="/about" className="border w-[200px]">Our Story</a>
-            </div>
+            </motion.div>
           </motion.li>
 
           {/* HOME */}
           <motion.li
-            initial={{ opacity: 1, y: 0 }}
-            animate={{
-              opacity: activeItem && activeItem !== "home" ? 0 : 1,
-              y: activeItem === "home" ? yOffsets.home : 0,
-            }}
-            id="header-elements"
-            transition={{ duration: 0.3 }}
             className="relative cursor-pointer"
+            initial={{ y: 0, opacity: 1 }}
+            animate={{
+              y: activeItem === "home" ? yOffsets.home : 0,
+              opacity: activeItem && activeItem !== "home" ? 0 : 1,
+            }}
+            transition={{ duration: 0.3 }}
             onClick={() => handleItemClick("home")}
           >
             <a href="/">Home</a>
