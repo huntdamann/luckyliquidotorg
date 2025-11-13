@@ -8,7 +8,7 @@ import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Slogan2 from '../../public/assets/slogan2.png'
 
 
-export default function BackgroundClover() {
+export default function BackgroundClover({open, setOpen}) {
 
     // Variants for staggered animation
   const containerVariants = {
@@ -58,8 +58,10 @@ export default function BackgroundClover() {
                   <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} src={Slogan2} />
                 </motion.div>
                 <button
-                  id="button-handle"
-                  className={`text-white p-2 opacity-100 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
+                  id="button-handle-2"
+                  onClick={() => setOpen(!open)}
+
+                  className={`text-white p-2 opacity-100 border-2 border-gray-400 ${open ? "opacity-0" : "opacity-100"} bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
                 >
                   <div
                     className="flex justify-center items-center text-white"

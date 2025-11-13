@@ -6,7 +6,7 @@ config.autoAddCss = false;
 
 import React, { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 import Image from "next/image";
 import Success from "../slices/Success";
@@ -50,88 +50,100 @@ const Popup = ({ refPop, refOut, refNo, setter }) => {
       scale: 0.95,
       zIndex: -1,
       pointerEvents: "none",
-      transition: { duration: 0.4, ease: "easeInOut" },
+      transition: { duration: 0.3, ease: "easeInOut" },
     },
     visible: {
       opacity: 1,
       scale: 1,
       zIndex: 999,
       pointerEvents: "auto",
-      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+      transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
     },
   };
 
   return (
-    <motion.div
-      ref={refPop}
-      id="popup-container"
-      variants={popupVariants}
-      initial="hidden"
-      animate={refNo ? "visible" : "hidden"}
-      className="border-2 shadow-md z-50 text-black bg-[#51B150] gap-[9rem] text-center rounded-xl fixed justify-between items-center border-green-700 left-5 flex flex-row"
+    <AnimatePresence>
+
+    {refNo && (
+
+<motion.div
+ref={refPop}
+id="popup-container"
+variants={popupVariants}
+initial="hidden"
+animate={refNo ? "visible" : ""}
+exit="hidden"
+className="border-2 shadow-md z-50 text-black bg-[#51B150] gap-[9rem] text-center rounded-xl fixed justify-between items-center border-green-700 left-5 flex flex-row"
+>
+<div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
+  {/* Product Photo */}
+  <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
+    <Image
+      src={PhotoNews}
+      alt="Product Photo"
+      layout="responsive"
+      width={500}
+      height={300}
+      quality={100}
+      sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
+      className="rounded-2xl"
+    />
+  </div>
+
+  {/* Close Button */}
+  <div
+    onClick={() => setter(!refNo)}
+    className={`absolute ${
+      status ? "opacity-0" : "opacity-100"
+    } top-2 right-2 active:text-white text-3xl cursor-pointer`}
+  >
+    <IoCloseSharp />
+  </div>
+
+  {/* Popup Text */}
+  <div className="flex flex-col text-center items-center justify-center gap-3">
+    <Image alt="Picture" src={Lucky} width={300} height={150} />
+    <Image alt="Lucky Logo" width={150} src={Lucky2} />
+    <Image alt="Title" width={350} src={Title} />
+
+    <span className="w-[16rem] font-mono">
+      Join the Lucky List and unlock exclusive perks
+    </span>
+
+    <form
+      onSubmit={handleUserSubmit}
+      className="rounded-md flex gap-2 justify-center items-center w-[15rem]"
     >
-      <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
-        {/* Product Photo */}
-        <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
-          <Image
-            src={PhotoNews}
-            alt="Product Photo"
-            layout="responsive"
-            width={500}
-            height={300}
-            quality={100}
-            sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
-            className="rounded-2xl"
-          />
-        </div>
+      <input
+        className="h-full w-full shadow-md rounded-md p-2"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+        required
+      />
+      <button
+        id="button-submit"
+        type="submit"
+        className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"
+      >
+        <span>Get Lucky</span>
+      </button>
 
-        {/* Close Button */}
-        <div
-          onClick={() => setter(!refNo)}
-          className={`absolute ${
-            status ? "opacity-0" : "opacity-100"
-          } top-2 right-2 active:text-white text-3xl cursor-pointer`}
-        >
-          <IoCloseSharp />
-        </div>
+      {status && <Success set={setter} refNo={refNo} />}
+    </form>
 
-        {/* Popup Text */}
-        <div className="flex flex-col text-center items-center justify-center gap-3">
-          <Image alt="Picture" src={Lucky} width={300} height={150} />
-          <Image alt="Lucky Logo" width={150} src={Lucky2} />
-          <Image alt="Title" width={350} src={Title} />
+    <span>Discounts, Special Flavors, Events, and More</span>
+  </div>
+</div>
+</motion.div>
 
-          <span className="w-[16rem] font-mono">
-            Join the Lucky List and unlock exclusive perks
-          </span>
 
-          <form
-            onSubmit={handleUserSubmit}
-            className="rounded-md flex gap-2 justify-center items-center w-[15rem]"
-          >
-            <input
-              className="h-full w-full shadow-md rounded-md p-2"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              required
-            />
-            <button
-              id="button-submit"
-              type="submit"
-              className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"
-            >
-              <span>Get Lucky</span>
-            </button>
+    )}
 
-            {status && <Success set={setter} refNo={refNo} />}
-          </form>
+   
+    </AnimatePresence>
 
-          <span>Discounts, Special Flavors, Events, and More</span>
-        </div>
-      </div>
-    </motion.div>
   );
 };
 

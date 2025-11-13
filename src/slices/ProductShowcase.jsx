@@ -25,7 +25,7 @@ const ProductShowcase = ({ setter, refNo }) => {
     const rect = buttonRef.current.getBoundingClientRect();
     console.log(rect.x)
     return {
-      x: rect.x - ( parentRect.x + 3 ), // relative to parent container
+      x: rect.x - ( parentRect.x  ), // relative to parent container
       width: rect.width,
     };
   };
@@ -65,18 +65,29 @@ const ProductShowcase = ({ setter, refNo }) => {
         <button
           ref={honeyButtonRef}
           onClick={handleHoneyGoldSelection}
-          className="honeygold-button"
+          className="image-container relative w-[550px] h-[300px]"
         >
-          <Image
-            src="/assets/honey-Active.png"
-            alt="HoneyGold Button"
-            width={150}
-            height={100}
-            priority
-            style={{ objectFit: "contain" }}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
-          />
+          {activeProduct === "honeygold" && (
+              <Image
+              src="/assets/honeygold2.png"
+              alt="HoneyGold Button"
+              fill
+              priority
+              style={{ objectFit: "contain", zIndex:9999 }}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
+            />
+            )}
+          
+          {activeProduct === "more" && (
+              <Image
+                src="/assets/honeygold-black.png"
+                alt="More Button"
+                fill
+                priority
+                style={{ objectFit: "contain" }}
+              />
+            )}
         </button>
 
         {/* Animated Slider */}
@@ -97,7 +108,7 @@ const ProductShowcase = ({ setter, refNo }) => {
 
         {/* More button */}
         <button onClick={handleMoreSelection} className="more-button">
-          <div ref={moreButtonRef} className="image-container relative w-[150px] h-[100px]">
+          <div ref={moreButtonRef} className="image-container relative w-[100px] h-[100px]">
             {activeProduct === "honeygold" && (
               <Image
                 src="/assets/more-nonActive.png"
@@ -215,8 +226,8 @@ const ProductShowcase = ({ setter, refNo }) => {
                 "_blank"
               )
             }
-            id="button-handle-2"
-            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 min-w-24"
+            id="button-handle"
+            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24"
           >
             <span>Get</span>
           </motion.button>
@@ -227,9 +238,9 @@ const ProductShowcase = ({ setter, refNo }) => {
             key="more-btn"
             exit={{ opacity: 0, y: 20 }}
             onClick={() => setter(!refNo)}
-            id="button-handle-2"
-            className="text-white p-2 border-2 hover:bg-red-500 border-gray-400 bg-[#51B150] active:bg-green-500 min-w-24"
-          >
+            id="button-handle"
+            className={`text-white p-2 opacity-100 border-2 border-gray-400 ${refNo ? "opacity-0" : "opacity-100"} bg-[#51B150] active:bg-green-500 rounded-md min-w-24`}
+            >
             <span>Join Newsletter</span>
           </motion.button>
         )}

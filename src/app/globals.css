@@ -27,6 +27,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   position: relative;
+  overflow-y: scroll;
 }
 
 .overlay2 {
@@ -226,7 +227,8 @@ body {
 
 
 #button-handle {
-  bottom: 1rem;
+  position: absolute;
+  bottom: 3rem;  
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
@@ -234,9 +236,7 @@ body {
   
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  border-radius: 1rem;
-  position: absolute;
-  bottom: 3rem;
+  bottom: 1rem;
 }
 
 #scroll-banner {

@@ -158,6 +158,31 @@ export default function Home() {
   const SLIDE_COUNT = 5
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
+  
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      console.log('open')
+
+      // If user scrolls down, set true; if up, set false
+      if (currentScrollY > lastScrollY) {
+        console.log('scrolling down')
+        setIsScrollingDown(true);
+      } else {
+        setIsScrollingDown(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
  
 
@@ -194,11 +219,11 @@ export default function Home() {
           className={`fixed top-6 right-6 z-50 transition-opacity duration-500
           }`}
         >
-          <div onClick={open ? closeMenu : openMenu} className="hamburger">
+          <div style={{opacity: isScrollingDown? "0" : "1"}} onClick={open ? closeMenu : openMenu} className="hamburger">
             <span></span>
           </div>
         </div>
-        <Hero />
+        <Hero setter={setOpenPopUp} refNo={openPopUp} />
 
         
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />

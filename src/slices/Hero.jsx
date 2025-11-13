@@ -8,7 +8,7 @@ import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Slogan2 from '../../public/assets/slogan2.png'
 import BackgroundClover from "../components/BackgroundClover";
 
-const Hero = memo(function Hero() {
+const Hero = ({ refNo, setter }) => {
 
   // Variants for staggered animation
   const containerVariants = {
@@ -26,13 +26,13 @@ const Hero = memo(function Hero() {
   };
 
   return (
-    <BackgroundClover>
+    <BackgroundClover open={refNo} setOpen={setter}>
 
 
    
     </BackgroundClover>
 
   );
-});
+}
 
 export default Hero;
