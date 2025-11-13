@@ -74,8 +74,8 @@ body {
 .product-controls {
   display: flex;
   justify-content: space-evenly;
-  z-index: 99;
   gap: 25rem;
+  position: relative;
 }
 .main {
   background: #826437;

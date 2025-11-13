@@ -59,21 +59,22 @@ const ProductShowcase = ({ setter, refNo }) => {
       {/* --- BUTTONS --- */}
       <div
         ref={controlsRef} // ✅ parent ref added
-        className="product-controls relative  gap-4 sm:gap-[3rem]"
+        className="product-controls"
       >
         {/* HoneyGold button */}
         <button
           ref={honeyButtonRef}
           onClick={handleHoneyGoldSelection}
-          className="image-container relative w-[550px] h-[300px]"
+          className="image-container relative"
         >
           {activeProduct === "honeygold" && (
               <Image
               src="/assets/honeygold2.png"
               alt="HoneyGold Button"
-              fill
+              width={150}
+              height={200}
               priority
-              style={{ objectFit: "contain", zIndex:9999 }}
+              style={{ objectFit: "contain", zIndex: 99999  }}
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
             />
@@ -83,9 +84,10 @@ const ProductShowcase = ({ setter, refNo }) => {
               <Image
                 src="/assets/honeygold-black.png"
                 alt="More Button"
-                fill
+                width={150}
+                height={200}
                 priority
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain",  zIndex: 99999 }}
               />
             )}
         </button>
@@ -103,7 +105,8 @@ const ProductShowcase = ({ setter, refNo }) => {
                 : dimensionsHoney.width,
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="slider-selection absolute bottom-0 h-[3px] bg-[#d1a054] rounded-md"
+          style={{zIndex: 1, position: "absolute"}}
+          className="slider-selection"
         />
 
         {/* More button */}
@@ -124,7 +127,7 @@ const ProductShowcase = ({ setter, refNo }) => {
                 alt="More Button"
                 fill
                 priority
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", zIndex: 999 }}
               />
             )}
           </div>
@@ -172,6 +175,7 @@ const ProductShowcase = ({ setter, refNo }) => {
         )}
       </AnimatePresence>
 
+        {/* Products */}
       <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
@@ -179,7 +183,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.6, ease: [0.9, 0, 0.2, 1] }}
             className="product-image"
           >
             {/* <Image
@@ -212,6 +216,7 @@ const ProductShowcase = ({ setter, refNo }) => {
         )}
       </AnimatePresence>
 
+        {/* Call to Action Buttons */}
       <AnimatePresence>
         {activeProduct === "honeygold" && (
           <motion.button

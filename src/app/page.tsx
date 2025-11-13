@@ -189,18 +189,6 @@ export default function Home() {
 
   return (
    <>
-
-
-{/* Google Fonts */}
-   <Head>
-
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com"/>
-      <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"/>
-
-   </Head>
-
-
    <Header
     toggleFollow={toggleFollow}
     openAbout={openAbout}
@@ -209,8 +197,6 @@ export default function Home() {
     closeHome={closeHome}
     closeMenu={closeMenu} // pass it here
     />
-
-
     {/* Hero Section */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
       {/* The Front of the Paper */}
@@ -219,40 +205,14 @@ export default function Home() {
           className={`fixed top-6 right-6 z-50 transition-opacity duration-500
           }`}
         >
-          <div style={{opacity: isScrollingDown? "0" : "1"}} onClick={open ? closeMenu : openMenu} className="hamburger">
+          <div onClick={open ? closeMenu : openMenu} className="hamburger">
             <span></span>
           </div>
         </div>
-        <Hero setter={setOpenPopUp} refNo={openPopUp} />
-
-        
+        <Hero setter={setOpenPopUp} refNo={openPopUp} />  
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
-
-        
+        <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
-       <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
-    
-
-      {/* <button
-        id="button-handle"
-        ref={buttonRef}
-        onClick={() => setOpenPopUp(!openPopUp)}
-        className={`text-white p-2 ${openPopUp ? "opacity-0" : "opacity-100"} absolute border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
-      >
-        <div
-          ref={chevronRef}
-          className="flex justify-center items-center text-white"
-        >
-          <span>Join</span>
-        </div>
-      </button> */}
-
-
-
-
-
-
-
       </div>
       
     </div>
