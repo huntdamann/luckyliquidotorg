@@ -179,13 +179,13 @@ const ProductShowcase = ({ setter, refNo }) => {
             transition={{ duration: 0.6, ease: [0.9, 0, 0.2, 1] }}
             className="product-image"
           >
-            {/* <Image
-              src="/assets/mobile_bottle_resized.png"
+            <Image
+              src="/assets/filled_bottle.png"
               alt="HoneyGold"
-              width={250}
+              width={200}
               height={800}
               priority
-            /> */}
+            />
           </motion.div>
         )}
 
