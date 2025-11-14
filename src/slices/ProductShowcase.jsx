@@ -62,34 +62,27 @@ const ProductShowcase = ({ setter, refNo }) => {
         className="product-controls"
       >
         {/* HoneyGold button */}
-        <button
-          ref={honeyButtonRef}
-          onClick={handleHoneyGoldSelection}
-          className="image-container relative"
-        >
-          {activeProduct === "honeygold" && (
+        <button onClick={handleHoneyGoldSelection} className="honeygold-button">
+          <div ref={honeyButtonRef} className="image-container relative w-[100px] h-[100px]">
+            {activeProduct === "honeygold" && (
               <Image
-              src="/assets/honeygold2.png"
-              alt="HoneyGold Button"
-              width={150}
-              height={200}
-              priority
-              style={{ objectFit: "contain", zIndex: 99999  }}
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..."
-            />
-            )}
-          
-          {activeProduct === "more" && (
-              <Image
-                src="/assets/honeygold-black.png"
-                alt="More Button"
-                width={150}
-                height={200}
+                src="/assets/honeygold2.png"
+                alt="HoneyGold Button"
+                fill
                 priority
-                style={{ objectFit: "contain",  zIndex: 99999 }}
+                style={{ objectFit: "contain", zIndex: 999 }}
               />
             )}
+            {activeProduct === "more" && (
+              <Image
+                src="/assets/honeygold-black.png"
+                alt="HoneyGold Button"
+                fill
+                priority
+                style={{ objectFit: "contain", zIndex: 999 }}
+              />
+            )}
+          </div>
         </button>
 
         {/* Animated Slider */}

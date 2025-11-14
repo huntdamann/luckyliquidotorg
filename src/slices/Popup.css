@@ -11,10 +11,10 @@
   border-radius: 1rem;
 }
 
-#popup-container {
+/* #popup-container {
   transform: translateX(-50%);
   box-sizing: border-box;
-}
+} */
 
 /* MOBILE + TABLET STYLING */
 @media only screen and (max-width: 1024px) {

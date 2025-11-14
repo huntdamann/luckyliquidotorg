@@ -21,7 +21,11 @@
     --foreground: #d1a054;
   }
 }
+html, body {
+  overflow: hidden;  /* ❗ prevents window scroll */
+  height: 100%;
 
+}
 
 body {
   color: var(--foreground);

@@ -113,7 +113,7 @@ export default function Header({
             transition={{ duration: 0.3 }}
             onClick={() => handleItemClick("products", openAbout)}
           >
-            Our Products
+            <span className="active:text-black focus:text-black">Our Products</span>
             <motion.div
               className="fixed flex top-11 flex-col gap-5 pt-1 w-[20%]"
               initial="hidden"
@@ -133,7 +133,7 @@ export default function Header({
 
           {/* ABOUT */}
           <motion.li
-            className="relative cursor-pointer"
+            className="relative active:text-black cursor-pointer"
             initial={{ y: 0, opacity: 1 }}
             animate={{
               y: activeItem === "about" ? yOffsets.about : 0,
