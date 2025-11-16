@@ -35,13 +35,13 @@ const Popup = ({ refPop, refOut, refNo, setter }) => {
     setStatus(data.message);
   };
 
-  // Automatically open after 10s
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      autoOpen(true);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, [refNo]);
+  // // Automatically open after 10s
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     autoOpen(true);
+  //   }, 10000);
+  //   return () => clearTimeout(timer);
+  // }, [refNo]);
 
   // Framer Motion animation variants
   const popupVariants = {
@@ -73,21 +73,22 @@ variants={popupVariants}
 initial="hidden"
 animate={refNo ? "visible" : ""}
 exit="hidden"
-className="border-2 shadow-md z-50 text-black bg-[#51B150] gap-[9rem] text-center rounded-xl fixed justify-between items-center border-green-700 left-5 flex flex-row"
+style={{willChange: "opacity, transform"}}
+className="border-2 shadow-md z-50 text-black bg-[#51B150]  gap-[9rem] text-center rounded-xl fixed justify-between items-center border-green-700 left-5 flex flex-row"
 >
 <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
   {/* Product Photo */}
   <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
-    <Image
-      src={PhotoNews}
-      alt="Product Photo"
-      layout="responsive"
-      width={500}
-      height={300}
-      quality={100}
-      sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, 600px"
-      className="rounded-2xl"
-    />
+  <Image
+  src={PhotoNews}
+  alt="Product Photo"
+  width={500}
+  height={300}
+  priority={false}
+  quality={70}
+  loading="lazy"
+/>
+
   </div>
 
   {/* Close Button */}

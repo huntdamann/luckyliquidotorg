@@ -69,7 +69,6 @@ const buttonVariants = {
                   <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} src={Slogan2} />
                 </motion.div>
                 <AnimatePresence>
-                  {!open && (    // <-- show button only when menu is NOT active
                     <motion.button
                       key="join-button"
                       id="button-handle-2"
@@ -84,7 +83,7 @@ const buttonVariants = {
                         <span>Join</span>
                       </div>
                     </motion.button>
-                  )}
+                  
               </AnimatePresence>
               </motion.section>
         </div>
