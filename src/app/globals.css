@@ -33,6 +33,28 @@ body {
   position: relative;
   overflow-y: scroll;
 }
+.menu-options {
+  color: white;
+  font-size: 1.2rem;
+  display: block;
+  width: auto;
+}
+.menu-options.tapped {
+  background-color: #d1a054;
+  border-radius: 6px;
+  transition: transform 120ms ease, background-color 120ms ease;
+
+
+}
+.tapped-a {
+  transform: scale(0.95);
+  background-color: #d1a054;
+  border-radius: 6px;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+.menu-options a {
+  color: white !important;
+}
 
 .overlay2 {
   position: fixed;
@@ -171,42 +193,11 @@ body {
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 
   nav {
     padding: 120px 34px;
     display: flex;
-
-    li {
-      display: block;
-      margin-bottom: 35px;
-      font-size: 20px;
-      text-decoration: none;
-      color: rgb(255, 255, 255);
-      transition: color 0.3s ease;
-    
-      /* Hover only affects li text, not links */
-     
-    
-      a {
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        gap: 1rem;
-        color: rgba(255, 255, 255, 0.85);
-        text-decoration: none;
-        transition: color 0.3s ease, transform 0.3s ease;
-    
-        /* Independent hover effect for the link */
-        &:hover {
-          color: #ffffff;      
-          transform: translateX(3px); 
-        }
-      }
-    }
-    
-    
+    height: 35rem;
   }
 }
 
@@ -527,9 +518,8 @@ body {
     background-color: #d1a054;
   }
 }
-.close:active {
+.close:after.tapped-a {
   background-color: #d1a054;
-  border-radius: 1rem;
 }
 
 #secondlogo {

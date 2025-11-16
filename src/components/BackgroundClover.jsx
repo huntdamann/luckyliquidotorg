@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import '../css/BackgroundClover.css'
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import Lucky from '../../public/assets/lucky-logo-demo.png'
 import Lucky2 from '../../public/assets/lucky_logo_nobg.png'
 import Slogan2 from '../../public/assets/slogan2.png'
@@ -32,6 +32,17 @@ export default function BackgroundClover({open, setOpen}) {
     },
   },
 };
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+    transition: { duration: 0.25 }
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.25 }
+  }
+};
+
 
 
   return (
@@ -57,18 +68,24 @@ export default function BackgroundClover({open, setOpen}) {
                 <motion.div variants={itemVariants} className="text-3xl text-black font-[900] flex flex-col">
                   <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} src={Slogan2} />
                 </motion.div>
-                <button
-                  id="button-handle-2"
-                  onClick={() => setOpen(!open)}
-
-                  className={`text-white p-2 opacity-100 border-2 border-gray-400 ${open ? "opacity-0" : "opacity-100"} bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] bottom-[-1rem] ipad: left-[38%] sm:left-[43%] md:left-[43%] lg:left-[46%] transform -translate-x-1/2`}
-                >
-                  <div
-                    className="flex justify-center items-center text-white"
-                  >
-                    <span>Join</span>
-                </div>
-              </button>
+                <AnimatePresence>
+                  {!open && (    // <-- show button only when menu is NOT active
+                    <motion.button
+                      key="join-button"
+                      id="button-handle-2"
+                      onClick={() => setOpen(!open)}
+                      variants={buttonVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      className={`text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 focus:bg-green-900 rounded-md min-w-24 animate-bounce z-[999] transform -translate-x-1/2`}
+                    >
+                      <div className="flex justify-center items-center text-white">
+                        <span>Join</span>
+                      </div>
+                    </motion.button>
+                  )}
+              </AnimatePresence>
               </motion.section>
         </div>
 

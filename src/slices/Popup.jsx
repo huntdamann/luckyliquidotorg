@@ -95,7 +95,7 @@ className="border-2 shadow-md z-50 text-black bg-[#51B150] gap-[9rem] text-cente
     onClick={() => setter(!refNo)}
     className={`absolute ${
       status ? "opacity-0" : "opacity-100"
-    } top-2 right-2 active:text-white text-3xl cursor-pointer`}
+    } top-2 right-2 border text-3xl cursor-pointer`}
   >
     <IoCloseSharp />
   </div>

@@ -15,6 +15,7 @@ export default function Header({
 }) {
   const [activeItem, setActiveItem] = useState(null);
 
+
   const yOffsets = {
     socials: 0,
     products: -70,
@@ -42,6 +43,20 @@ export default function Header({
     setActiveItem(null);
     if (closeMenu) closeMenu();
   };
+  function handleTap(e) {
+    const el = e.currentTarget;
+    el.classList.add("tapped");
+    setTimeout(() => {
+      el.classList.remove("tapped");
+    }, 150);  // just long enough to see the flash
+  }
+  function handleFolderTap(e) {
+    const el = e.currentTarget;
+    el.classList.add("tapped-a");
+    setTimeout(() => {
+      el.classList.remove("tapped-a");
+    }, 150);  // just long enough to see the flash
+  }
 
   const socials = [
     { icon: faInstagram, label: "Instagram", navi: "https://www.instagram.com/waytoolucky_/" },
@@ -57,13 +72,14 @@ export default function Header({
 
   return (
     <header className="text-sm" id="paper-back">
-      <nav className="text-white relative">
-        <div className="close" onClick={handleCloseMenu}></div>
+      <nav className="relative">
+        <div                 onTouchStart={(e) => handleFolderTap(e)}
+ className="close" onClick={handleCloseMenu}></div>
 
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-[3rem] justify-evenly">
           {/* SOCIALS */}
           <motion.li
-            className="relative cursor-pointer hover:text-green-400"
+            className="menu-options"
             initial={{ y: 0, opacity: 1 }}
             animate={{
               y: activeItem === "socials" ? yOffsets.socials : 0,
@@ -71,6 +87,7 @@ export default function Header({
             }}
             transition={{ duration: 0.3 }}
             onClick={() => handleItemClick("socials", toggleFollow)}
+            onTouchStart={(e) => handleTap(e)}
           >
             Socials
             <motion.div
@@ -88,6 +105,8 @@ export default function Header({
                   className="flex items-center gap-2 w-full text-[16px] text-left"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onTouchStart={handleFolderTap}
+
                 >
                   <motion.div
                   key={activeItem === "socials"}
@@ -104,16 +123,18 @@ export default function Header({
 
           {/* PRODUCTS */}
           <motion.li
-            className="relative cursor-pointer text-xl"
+            className="menu-options"
             initial={{ y: 0, opacity: 1 }}
             animate={{
               y: activeItem === "products" ? yOffsets.products : 0,
               opacity: activeItem && activeItem !== "products" ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
+            onTouchStart={(e) => handleTap(e)}
+
             onClick={() => handleItemClick("products", openAbout)}
           >
-            <span className="active:text-black focus:text-black">Our Products</span>
+            Our Products
             <motion.div
               className="fixed flex top-11 flex-col gap-5 pt-1 w-[20%]"
               initial="hidden"
@@ -124,7 +145,9 @@ export default function Header({
             >
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header"
-                className="text-[16px] w-[200px]"
+                className=""
+                onTouchStart={handleFolderTap}
+
               >
                 Honey Gold
               </a>
@@ -133,37 +156,43 @@ export default function Header({
 
           {/* ABOUT */}
           <motion.li
-            className="relative active:text-black cursor-pointer"
+            className="menu-options"
             initial={{ y: 0, opacity: 1 }}
             animate={{
               y: activeItem === "about" ? yOffsets.about : 0,
               opacity: activeItem && activeItem !== "about" ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
+            onTouchStart={(e) => handleTap(e)}
+
             onClick={() => handleItemClick("about", openHome)}
           >
             About Us
             <motion.div
-              className="fixed flex flex-col top-11 gap-5 pt-3 border w-[30%]"
+              className="fixed flex flex-col top-11 gap-5 pt-3  w-[30%]"
               initial="hidden"
               animate={activeItem === "about" ? "visible" : "hidden"}
               variants={folderVariants}
               style={{ zIndex: activeItem === "about" ? 50 : -1, gap: '2rem', marginTop: '1rem' }}
               transition={{ duration: 0.3 }}
             >
-              <a href="/about" className="border w-[200px]">Our Story</a>
+              <a href="/about"                   
+              onTouchStart={handleFolderTap}
+              className="">Our Story</a>
             </motion.div>
           </motion.li>
 
           {/* HOME */}
           <motion.li
-            className="relative cursor-pointer"
+            className="menu-options"
             initial={{ y: 0, opacity: 1 }}
             animate={{
               y: activeItem === "home" ? yOffsets.home : 0,
               opacity: activeItem && activeItem !== "home" ? 0 : 1,
             }}
             transition={{ duration: 0.3 }}
+            onTouchStart={(e) => handleTap(e)}
+
             onClick={() => handleItemClick("home")}
           >
             <a href="/">Home</a>
