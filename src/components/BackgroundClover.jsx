@@ -42,6 +42,13 @@ const buttonVariants = {
     transition: { duration: 0.25 }
   }
 };
+function handleTap(e) {
+  const el = e.currentTarget;
+  el.classList.add("tapped-cta");
+  setTimeout(() => {
+    el.classList.remove("tapped-cta");
+  }, 250);  // just long enough to see the flash
+}
 
 
 
@@ -73,11 +80,13 @@ const buttonVariants = {
                       key="join-button"
                       id="button-handle-2"
                       onClick={() => setOpen(!open)}
+                      onTouchStart={(e) => handleTap(e)}
+
                       variants={buttonVariants}
                       initial="hidden"
                       animate="visible"
                       exit="hidden"
-                      className={`text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 focus:bg-green-900 rounded-md min-w-24 animate-bounce z-[999] transform -translate-x-1/2`}
+                      className={`text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24 animate-bounce z-[999] transform -translate-x-1/2`}
                     >
                       <div className="flex justify-center items-center text-white">
                         <span>Join</span>

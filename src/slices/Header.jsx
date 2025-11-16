@@ -48,14 +48,14 @@ export default function Header({
     el.classList.add("tapped");
     setTimeout(() => {
       el.classList.remove("tapped");
-    }, 150);  // just long enough to see the flash
+    }, 250);  // just long enough to see the flash
   }
   function handleFolderTap(e) {
     const el = e.currentTarget;
     el.classList.add("tapped-a");
     setTimeout(() => {
       el.classList.remove("tapped-a");
-    }, 150);  // just long enough to see the flash
+    }, 350);  // just long enough to see the flash
   }
 
   const socials = [
@@ -85,7 +85,7 @@ export default function Header({
               y: activeItem === "socials" ? yOffsets.socials : 0,
               opacity: activeItem && activeItem !== "socials" ? 0 : 1,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{delay:0.2, duration: 0.7 }}
             onClick={() => handleItemClick("socials", toggleFollow)}
             onTouchStart={(e) => handleTap(e)}
           >
@@ -129,7 +129,7 @@ export default function Header({
               y: activeItem === "products" ? yOffsets.products : 0,
               opacity: activeItem && activeItem !== "products" ? 0 : 1,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ delay:0.2, duration: 0.3 }}
             onTouchStart={(e) => handleTap(e)}
 
             onClick={() => handleItemClick("products", openAbout)}
@@ -162,7 +162,7 @@ export default function Header({
               y: activeItem === "about" ? yOffsets.about : 0,
               opacity: activeItem && activeItem !== "about" ? 0 : 1,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{delay:0.2, duration: 0.3 }}
             onTouchStart={(e) => handleTap(e)}
 
             onClick={() => handleItemClick("about", openHome)}
@@ -190,7 +190,7 @@ export default function Header({
               y: activeItem === "home" ? yOffsets.home : 0,
               opacity: activeItem && activeItem !== "home" ? 0 : 1,
             }}
-            transition={{ duration: 0.3 }}
+            transition={{delay:0.2, duration: 0.3 }}
             onTouchStart={(e) => handleTap(e)}
 
             onClick={() => handleItemClick("home")}

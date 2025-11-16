@@ -29,6 +29,13 @@ const ProductShowcase = ({ setter, refNo }) => {
       width: rect.width,
     };
   };
+  function handleTap(e) {
+    const el = e.currentTarget;
+    el.classList.add("tapped-cta");
+    setTimeout(() => {
+      el.classList.remove("tapped-cta");
+    }, 250);  // just long enough to see the flash
+  }
   
 
   // Measure “More” button
@@ -180,7 +187,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             className="product-image"
           >
             <Image
-              src="/assets/filled_bottle.png"
+              src="/assets/bottle_filled.png"
               alt="HoneyGold"
               width={200}
               height={800}
@@ -224,8 +231,10 @@ const ProductShowcase = ({ setter, refNo }) => {
                 "_blank"
               )
             }
+            onTouchStart={(e) => handleTap(e)}
+
             id="button-handle"
-            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 rounded-md min-w-24"
+            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 focus:bg-green-900 rounded-md min-w-24"
           >
             <span>Get</span>
           </motion.button>
@@ -237,6 +246,8 @@ const ProductShowcase = ({ setter, refNo }) => {
             exit={{ opacity: 0, y: 20 }}
             onClick={() => setter(!refNo)}
             id="button-handle"
+            onTouchStart={(e) => handleTap(e)}
+
             className={`text-white p-2 opacity-100 border-2 border-gray-400 ${refNo ? "opacity-0" : "opacity-100"} bg-[#51B150] active:bg-green-500 rounded-md min-w-24`}
             >
             <span>Join Newsletter</span>

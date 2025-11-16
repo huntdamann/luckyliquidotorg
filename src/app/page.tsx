@@ -210,7 +210,7 @@ export default function Home() {
           </div>
         </div>
         <Hero setter={setOpenPopUp} refNo={openPopUp} />  
-        {/* <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} /> */}
+        <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
         <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
       </div>

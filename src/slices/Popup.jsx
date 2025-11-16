@@ -60,6 +60,13 @@ const Popup = ({ refPop, refOut, refNo, setter }) => {
       transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
     },
   };
+  function handleTap(e) {
+    const el = e.currentTarget;
+    el.classList.add("tapped-close");
+    setTimeout(() => {
+      el.classList.remove("tapped-close");
+    }, 150);  // just long enough to see the flash
+  }
 
   return (
     <AnimatePresence>
@@ -94,9 +101,9 @@ className="border-2 shadow-md z-50 text-black bg-[#51B150]  gap-[9rem] text-cent
   {/* Close Button */}
   <div
     onClick={() => setter(!refNo)}
-    className={`absolute ${
-      status ? "opacity-0" : "opacity-100"
-    } top-2 right-2 border text-3xl cursor-pointer`}
+    onTouchStart={handleTap}
+
+    className="close-popup"
   >
     <IoCloseSharp />
   </div>

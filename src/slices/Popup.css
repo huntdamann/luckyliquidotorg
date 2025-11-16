@@ -11,10 +11,24 @@
   border-radius: 1rem;
 }
 
-/* #popup-container {
-  transform: translateX(-50%);
-  box-sizing: border-box;
-} */
+#popup-container {
+}
+.close-popup {
+  position: absolute;
+  color: black;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+.tapped-close {
+  transform: scale(0.95);
+  color: #d1a054;
+  background-color: #4ade80;
+  border-radius: 6px;
+
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
 
 /* MOBILE + TABLET STYLING */
 @media only screen and (max-width: 1024px) {
@@ -46,6 +60,7 @@
     justify-content: center;
     padding: 3rem;
     width: 60rem;
+    border: 1px red solid;
     flex-direction: row; /* show image + content side by side */
   }
 }
