@@ -87,7 +87,7 @@ export default function Header({
             }}
             transition={{delay:0.2, duration: 0.7 }}
             onClick={() => handleItemClick("socials", toggleFollow)}
-            onTouchStart={(e) => handleTap(e)}
+            onTouchStart={handleTap}
           >
             Socials
             <motion.div
@@ -130,7 +130,7 @@ export default function Header({
               opacity: activeItem && activeItem !== "products" ? 0 : 1,
             }}
             transition={{ delay:0.2, duration: 0.3 }}
-            onTouchStart={(e) => handleTap(e)}
+            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("products", openAbout)}
           >
@@ -163,7 +163,7 @@ export default function Header({
               opacity: activeItem && activeItem !== "about" ? 0 : 1,
             }}
             transition={{delay:0.2, duration: 0.3 }}
-            onTouchStart={(e) => handleTap(e)}
+            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("about", openHome)}
           >
@@ -191,7 +191,7 @@ export default function Header({
               opacity: activeItem && activeItem !== "home" ? 0 : 1,
             }}
             transition={{delay:0.2, duration: 0.3 }}
-            onTouchStart={(e) => handleTap(e)}
+            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("home")}
           >
