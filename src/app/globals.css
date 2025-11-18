@@ -359,8 +359,10 @@ body {
   z-index: 10;
 
   &.tilt {
-    overflow: hidden;
     pointer-events: none;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+    -webkit-overflow-scrolling: none !important;
     #paper-front {
       transform: rotate(10deg) translateZ(0);
     }
