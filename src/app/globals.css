@@ -98,12 +98,13 @@ body {
 
 .product-showcase-container {
 
-  min-height: 100vh;
+  min-height: 110vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5rem;
+  padding: 3rem;
+  border: 1px red solid;
   
   
 }
@@ -379,12 +380,13 @@ body {
 }
 
 #product-showcase {
-  height: 100dvh;
+  height: 200dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 1px red solid;
 
   z-index: 10;
   background: linear-gradient(#d1a054, white);
