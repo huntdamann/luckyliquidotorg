@@ -23,6 +23,7 @@
 }
 html, body {
   height: 100%;
+  overflow: hidden;
 
 }
 
@@ -370,11 +371,11 @@ body {
   box-shadow: 0 0 20px rgba(black, 0.7);
   transform-origin: center 70%;
   transition: all 0.3s ease;
-  height: 100dvh;
+  height: 200dvh;
 }
 
 #product-showcase {
-  height: 50%;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
