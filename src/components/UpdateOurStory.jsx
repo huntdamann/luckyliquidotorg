@@ -37,7 +37,7 @@ export default function UpdateOurStory() {
   return (
     <div className="ocean">
         
-        <div className="flex flex-col gap-3 p-5">
+        <main className="flex flex-col items-center  gap-3 p-5">
 
         <h1>Our Story</h1>
             <span className="font-bold">
@@ -63,9 +63,14 @@ export default function UpdateOurStory() {
                 what it means to Get Lucky.
               </span>
             </span>
+            <Image alt="Lucky Logo" width={150} height={100} src='/assets/lucky_logo_nobg.png' />
 
 
-        </div>
+
+            
+
+
+        </main>
          
 
 

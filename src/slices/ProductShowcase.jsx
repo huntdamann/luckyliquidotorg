@@ -3,14 +3,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
+import Selector from '../components/Selector'
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const ProductShowcase = ({ setter, refNo }) => {
   const [activeProduct, setActiveProduct] = useState("honeygold");
+  const options = ["Honey Gold", "More"]
 
   const moreButtonRef = useRef(null);
   const honeyButtonRef = useRef(null);
-  const controlsRef = useRef(null); // ✅ NEW parent ref
+  const controlsRef = useRef(null);
 
   const [dimensions, setDimensions] = useState({ x: 0, width: 0 });
   const [dimensionsHoney, setDimensionsHoney] = useState({ x: 0, width: 0 });
@@ -18,41 +20,44 @@ const ProductShowcase = ({ setter, refNo }) => {
   const phoneQuery = useMediaQuery("(min-width: 360px)");
   const tabletQuery = useMediaQuery("(max-width: 630px)");
 
-  // ✅ Reusable function to measure a button relative to parent
+  // ORIGINAL getRelativeRect
   const getRelativeRect = (buttonRef) => {
     if (!buttonRef.current || !controlsRef.current) return { x: 0, width: 0 };
+
     const parentRect = controlsRef.current.getBoundingClientRect();
     const rect = buttonRef.current.getBoundingClientRect();
-    console.log(rect.x)
+
     return {
-      x: rect.x - ( parentRect.x  ), // relative to parent container
+      x: rect.x - parentRect.x,
       width: rect.width,
     };
   };
+
   function handleTap(e) {
     const el = e.currentTarget;
     el.classList.add("tapped-cta");
     setTimeout(() => {
       el.classList.remove("tapped-cta");
-    }, 250);  // just long enough to see the flash
+    }, 250);
   }
-  
 
-  // Measure “More” button
-  useEffect(() => {
-    const update = () => setDimensions(getRelativeRect(moreButtonRef));
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [activeProduct]);
+  // ORIGINAL effect for “More” button
+  // Measure More button
+useEffect(() => {
+  const update = () => setDimensions(getRelativeRect(moreButtonRef));
+  update();
+  window.addEventListener("resize", update);
+  return () => window.removeEventListener("resize", update);
+}, []);
 
-  // Measure “HoneyGold” button
-  useEffect(() => {
-    const update = () => setDimensionsHoney(getRelativeRect(honeyButtonRef));
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [activeProduct]);
+// Measure HoneyGold button
+useEffect(() => {
+  const update = () => setDimensionsHoney(getRelativeRect(honeyButtonRef));
+  update();
+  window.addEventListener("resize", update);
+  return () => window.removeEventListener("resize", update);
+}, []);
+
 
   const handleMoreSelection = () => setActiveProduct("more");
   const handleHoneyGoldSelection = () => setActiveProduct("honeygold");
@@ -63,78 +68,12 @@ const ProductShowcase = ({ setter, refNo }) => {
         activeProduct === "honeygold" ? "main" : "more"
       }`}
     >
-      {/* --- BUTTONS --- */}
-      <div
-        ref={controlsRef} // ✅ parent ref added
-        className="product-controls"
-      >
-        {/* HoneyGold button */}
-        <button onClick={handleHoneyGoldSelection} className="honeygold-button">
-          <div ref={honeyButtonRef} className="image-container relative w-[100px] h-[100px]">
-            {activeProduct === "honeygold" && (
-              <Image
-                src="/assets/honeygold2.png"
-                alt="HoneyGold Button"
-                fill
-                priority
-                style={{ objectFit: "contain", zIndex: 999 }}
-              />
-            )}
-            {activeProduct === "more" && (
-              <Image
-                src="/assets/honeygold-black.png"
-                alt="HoneyGold Button"
-                fill
-                priority
-                style={{ objectFit: "contain", zIndex: 999 }}
-              />
-            )}
-          </div>
-        </button>
+    <Selector options={options} activeP={activeProduct} setter={setActiveProduct} />
 
-        {/* Animated Slider */}
-        <motion.div
-          animate={{
-            x:
-              activeProduct === "more"
-                ? dimensions.x
-                : dimensionsHoney.x,
-            width:
-              activeProduct === "more"
-                ? dimensions.width
-                : dimensionsHoney.width,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          style={{zIndex: 1, position: "absolute"}}
-          className="slider-selection"
-        />
+      {/* BUTTONS */}
+     
 
-        {/* More button */}
-        <button onClick={handleMoreSelection} className="more-button">
-          <div ref={moreButtonRef} className="image-container relative w-[100px] h-[100px]">
-            {activeProduct === "honeygold" && (
-              <Image
-                src="/assets/more-nonActive.png"
-                alt="More Button"
-                fill
-                priority
-                style={{ objectFit: "contain" }}
-              />
-            )}
-            {activeProduct === "more" && (
-              <Image
-                src="/assets/more-Active.png"
-                alt="More Button"
-                fill
-                priority
-                style={{ objectFit: "contain", zIndex: 999 }}
-              />
-            )}
-          </div>
-        </button>
-      </div>
-
-      {/* --- ANIMATIONS --- */}
+      {/* ANIMATIONS */}
       <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
@@ -175,7 +114,7 @@ const ProductShowcase = ({ setter, refNo }) => {
         )}
       </AnimatePresence>
 
-        {/* Products */}
+      {/* PRODUCT IMAGES */}
       <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
@@ -187,9 +126,9 @@ const ProductShowcase = ({ setter, refNo }) => {
             className="product-image"
           >
             <Image
-              src="/assets/bottle_filled.png"
+              src="/assets/new_bottle.png"
               alt="HoneyGold"
-              width={200}
+              width={500}
               height={800}
               priority
             />
@@ -206,9 +145,9 @@ const ProductShowcase = ({ setter, refNo }) => {
             className="product-title"
           >
             <Image
-              src="/assets/getlucky.png"
+              src="/assets/new_flavors.png"
               alt="Coming Soon"
-              width={500}
+              width={800}
               height={100}
               priority
             />
@@ -216,7 +155,7 @@ const ProductShowcase = ({ setter, refNo }) => {
         )}
       </AnimatePresence>
 
-        {/* Call to Action Buttons */}
+      {/* CALL TO ACTION BUTTONS */}
       <AnimatePresence>
         {activeProduct === "honeygold" && (
           <motion.button
@@ -232,11 +171,10 @@ const ProductShowcase = ({ setter, refNo }) => {
               )
             }
             onTouchStart={(e) => handleTap(e)}
-
             id="button-handle"
             className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 focus:bg-green-900 rounded-md min-w-24"
           >
-            <span>Get</span>
+            <span>Get Lucky!</span>
           </motion.button>
         )}
 
@@ -247,10 +185,11 @@ const ProductShowcase = ({ setter, refNo }) => {
             onClick={() => setter(!refNo)}
             id="button-handle"
             onTouchStart={(e) => handleTap(e)}
-
-            className={`text-white p-2 opacity-100 border-2 border-gray-400 ${refNo ? "opacity-0" : "opacity-100"} bg-[#51B150] active:bg-green-500 rounded-md min-w-24`}
-            >
-            <span>Join Newsletter</span>
+            className={`text-white p-2 opacity-100 border-2 border-gray-400 ${
+              refNo ? "opacity-0" : "opacity-100"
+            } bg-[#51B150] active:bg-green-500 rounded-md min-w-24`}
+          >
+            <span>Get Lucky!</span>
           </motion.button>
         )}
       </AnimatePresence>

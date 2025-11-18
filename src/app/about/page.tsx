@@ -65,7 +65,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Dark Overlay */}
           <motion.section
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -73,14 +72,11 @@ export default function Home() {
             className="our_story"
           >
             <UpdateOurStory />
+            {/* Space Divider */}
+            <div className="h-[20%]">sjsjfsjefjsf</div>
 
-            <Image
-              className="text-[3rem] lg:mt-12"
-              width={150}
-              height={100}
-              src="/assets/lucky_logo_nobg.png"
-              alt="clover"
-            />
+
+            
           </motion.section>
         </div>
       </div>
