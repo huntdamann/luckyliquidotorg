@@ -21,19 +21,12 @@
     --foreground: #d1a054;
   }
 }
-html, body {
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
 
-
-}
 
 body {
   color: var(--foreground);
   background: var(--background);
   position: relative;
-  overflow-y: scroll;
 }
 .menu-options {
   color: white;
@@ -41,15 +34,18 @@ body {
   display: block;
   width: auto;
   padding: 0.5rem;
+  cursor: pointer;
 }
-.menu-options.tapped {
+.menu-options:active {
   background-color: #d1a054;
-
+  color: #008000;
   border-radius: 6px;
-  transition: transform 120ms ease, background-color 120ms ease;
+  transition: transform 120ms ease, background-color 0.1s ease;
+  transform: scale(0.55);
 
 
 }
+
 .tapped-a {
   transform: scale(0.95);
   background-color: #d1a054;
@@ -354,15 +350,11 @@ body {
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll;
-  overscroll-behavior: contain; /* VERY IMPORTANT */
-  -webkit-overflow-scrolling: auto; /* prevents iOS momentum overscroll */
   z-index: 10;
 
   &.tilt {
     pointer-events: none;
-    overflow: hidden !important;
-    overscroll-behavior: none !important;
-    -webkit-overflow-scrolling: none !important;
+    overflow: hidden;
     #paper-front {
       transform: rotate(10deg) translateZ(0);
     }
@@ -377,7 +369,7 @@ body {
   box-shadow: 0 0 20px rgba(black, 0.7);
   transform-origin: center 70%;
   transition: all 0.3s ease;
-  height: 200dvh;
+  height: 100dvh;
 }
 
 #product-showcase {

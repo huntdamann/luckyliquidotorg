@@ -43,20 +43,8 @@ export default function Header({
     setActiveItem(null);
     if (closeMenu) closeMenu();
   };
-  function handleTap(e) {
-    const el = e.currentTarget;
-    el.classList.add("tapped");
-    setTimeout(() => {
-      el.classList.remove("tapped");
-    }, 250);  // just long enough to see the flash
-  }
-  function handleFolderTap(e) {
-    const el = e.currentTarget;
-    el.classList.add("tapped-a");
-    setTimeout(() => {
-      el.classList.remove("tapped-a");
-    }, 350);  // just long enough to see the flash
-  }
+ 
+  
 
   const socials = [
     { icon: faInstagram, label: "Instagram", navi: "https://www.instagram.com/waytoolucky_/" },
@@ -73,12 +61,12 @@ export default function Header({
   return (
     <header className="text-sm" id="paper-back">
       <nav className="relative">
-        <div                 onTouchStart={(e) => handleFolderTap(e)}
- className="close" onClick={handleCloseMenu}></div>
+        <div className="close" onClick={handleCloseMenu}></div>
 
         <ul className="flex flex-col gap-[3rem] justify-evenly">
           {/* SOCIALS */}
           <motion.li
+            role="button"
             className="menu-options"
             initial={{ y: 0, opacity: 1 }}
             animate={{
@@ -87,7 +75,6 @@ export default function Header({
             }}
             transition={{delay:0.2, duration: 0.7 }}
             onClick={() => handleItemClick("socials", toggleFollow)}
-            onTouchStart={handleTap}
           >
             Socials
             <motion.div
@@ -105,7 +92,6 @@ export default function Header({
                   className="flex items-center gap-2 w-full text-[16px] text-left"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onTouchStart={handleFolderTap}
 
                 >
                   <motion.div
@@ -130,7 +116,6 @@ export default function Header({
               opacity: activeItem && activeItem !== "products" ? 0 : 1,
             }}
             transition={{ delay:0.2, duration: 0.3 }}
-            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("products", openAbout)}
           >
@@ -146,7 +131,6 @@ export default function Header({
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header"
                 className=""
-                onTouchStart={handleFolderTap}
 
               >
                 Honey Gold
@@ -163,7 +147,6 @@ export default function Header({
               opacity: activeItem && activeItem !== "about" ? 0 : 1,
             }}
             transition={{delay:0.2, duration: 0.3 }}
-            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("about", openHome)}
           >
@@ -177,7 +160,6 @@ export default function Header({
               transition={{ duration: 0.3 }}
             >
               <a href="/about"                   
-              onTouchStart={handleFolderTap}
               className="">Our Story</a>
             </motion.div>
           </motion.li>
@@ -191,7 +173,6 @@ export default function Header({
               opacity: activeItem && activeItem !== "home" ? 0 : 1,
             }}
             transition={{delay:0.2, duration: 0.3 }}
-            onTouchStart={handleTap}
 
             onClick={() => handleItemClick("home")}
           >

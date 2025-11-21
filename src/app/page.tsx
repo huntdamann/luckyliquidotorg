@@ -88,22 +88,10 @@ export default function Home() {
 
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
-  }, [open])
+  }, [open, close])
  
 
-  // const openStoryPage = () => {
-
-  //   setOpenStory(prev => !prev);
-  //   gsap.to(chevronRef.current, {
-  //     opacity: 0
-  //   })
-  //   gsap.to(popupRef.current, {
-  //     opacity: 0
-  //   })
-  //   console.log('Opening Our Story Page')
-  //   setClose(true);
-  //   setOpen(false)
-  // }
+  
   const openMenu = () => {
 
     if (paperFrontRef.current) {
@@ -158,31 +146,6 @@ export default function Home() {
   const SLIDE_COUNT = 5
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
-  
-  const [isScrollingDown, setIsScrollingDown] = useState(false);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      console.log('open')
-
-      // If user scrolls down, set true; if up, set false
-      if (currentScrollY > lastScrollY) {
-        console.log('scrolling down')
-        setIsScrollingDown(true);
-      } else {
-        setIsScrollingDown(false);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
  
 
@@ -209,7 +172,8 @@ export default function Home() {
             <span></span>
           </div>
         </div>
-        <Hero setter={setOpenPopUp} refNo={openPopUp} />  
+        <Hero setter={setOpenPopUp} refNo={openPopUp} /> 
+ 
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
         <Popup refPop={popupRef} refOut={overlayRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
