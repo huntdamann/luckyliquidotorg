@@ -132,9 +132,10 @@ useEffect(() => {
             <Image
               src="/assets/new_bottle.png"
               alt="HoneyGold"
-              width={500}
-              height={800}
+              fill
               priority
+              style={{objectFit: 'contain'}}
+
             />
           </motion.div>
         )}
@@ -146,14 +147,14 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="product-title"
+            className="product-image"
           >
             <Image
               src="/assets/new_flavors.png"
               alt="Coming Soon"
-              width={800}
-              height={100}
+              fill
               priority
+              style={{objectFit: 'contain'}}
             />
           </motion.div>
         )}
@@ -176,7 +177,7 @@ useEffect(() => {
             }
             onTouchStart={(e) => handleTap(e)}
             id="button-handle"
-            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 focus:bg-green-900 rounded-md min-w-24"
+            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24"
           >
             <span>Get Lucky!</span>
           </motion.button>
@@ -191,7 +192,7 @@ useEffect(() => {
             onTouchStart={(e) => handleTap(e)}
             className={`text-white p-2 opacity-100 border-2 border-gray-400 ${
               refNo ? "opacity-0" : "opacity-100"
-            } bg-[#51B150] active:bg-green-500 rounded-md min-w-24`}
+            } bg-[#51B150] active:bg-green-500 active:scale-95 rounded-md min-w-24`}
           >
             <span>Get Lucky!</span>
           </motion.button>

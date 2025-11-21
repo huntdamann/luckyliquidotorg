@@ -37,6 +37,7 @@
   right: 1rem;
   font-size: 1.5rem;
 }
+
 .tapped-close {
   transform: scale(0.95);
   color: #d1a054;

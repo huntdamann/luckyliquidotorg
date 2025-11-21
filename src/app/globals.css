@@ -41,8 +41,15 @@ body {
   color: #008000;
   border-radius: 6px;
   transition: transform 120ms ease, background-color 0.1s ease;
-  transform: scale(0.55);
+  transform: scale(0.97);
 
+
+}
+.close:active {
+  background-color: #d1a054;
+  border-radius: 6px;
+  transition: transform 120ms ease, background-color 0.1s ease;
+  
 
 }
 
@@ -99,7 +106,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem;
+
   
   
 }
@@ -107,7 +114,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  border: 1px red solid;
+
 }
 .main {
   background: #826437;
@@ -123,9 +130,11 @@ body {
   margin-top: -1rem;
 }
 .product-image {
-  margin-top: -5rem;
+  width: 25rem;
+  height: 25rem;
   position: absolute;
-  top: 20.5rem;
+  object-fit: contain;
+  bottom: 2rem;
 }
 
 .slider-selection:hover {
@@ -522,9 +531,7 @@ body {
   &:after {
     transform: translateY(-50%) rotate(-45deg);
   }
-  &:after:active {
-    background-color: #d1a054;
-  }
+  
 }
 .close:after.tapped-a {
   background-color: #d1a054;
@@ -566,12 +573,15 @@ body {
  
 }
 
-@media (max-width: 375px) {
+@media (min-width: 320px) and (max-width: 375px) {
   #button-handle {
     bottom: 1rem;
   }
+  .product-image {
+    bottom: 5rem;
+  }
 }
-@media (max-width: 440px) {
+@media (min-width: 376px) and (max-width: 440px) {
   #button-handle {
     bottom: 1rem;
   }
@@ -580,4 +590,27 @@ body {
     justify-content: unset;
     z-index: 99;
   }
+  .product-image {
+    bottom: 3rem;
+  }
 }
+@media (min-width: 441px) and (max-width: 768px) {
+  #button-handle {
+    bottom: 1rem;
+  }
+  .product-controls {
+    display: flex;
+    justify-content: unset;
+    z-index: 99;
+  }
+  .product-image {
+    bottom: 1rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1440px) {
+  .product-title {
+    margin-top: -3rem;
+  }
+}
+
+

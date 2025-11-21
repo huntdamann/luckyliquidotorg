@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faBluesky, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Header({
   toggleFollow,
@@ -59,7 +59,8 @@ export default function Header({
   };
 
   return (
-    <header className="text-sm" id="paper-back">
+  
+    <motion.header initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="text-sm" id="paper-back">
       <nav className="relative">
         <div className="close" onClick={handleCloseMenu}></div>
 
@@ -180,6 +181,7 @@ export default function Header({
           </motion.li>
         </ul>
       </nav>
-    </header>
+    </motion.header>
+    
   );
 }

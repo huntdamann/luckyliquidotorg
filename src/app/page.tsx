@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import Image from "next/image";
 import { EmblaOptionsType } from 'embla-carousel'
 import { useGSAP } from "@gsap/react";
-import { motion, useInView } from 'motion/react';
+import { AnimatePresence, motion, useInView } from 'motion/react';
 import gsap from "gsap";
 
 
@@ -152,14 +152,20 @@ export default function Home() {
 
   return (
    <>
-   <Header
+
+    <AnimatePresence mode='wait'>
+    {open &&  <Header
     toggleFollow={toggleFollow}
     openAbout={openAbout}
     closeAbout={closeAbout}
     openHome={openHome}
     closeHome={closeHome}
     closeMenu={closeMenu} // pass it here
-    />
+    />}
+
+    </AnimatePresence>
+   
+  
     {/* Hero Section */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
       {/* The Front of the Paper */}
