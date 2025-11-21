@@ -4,8 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from 'motion/react'
 // Imported Images
-import More_Active from '/assets/more-active.png'
-import More_Not from '/assets/more-nonactive.png'
+
 
 export default function Selector({ options, activeP, setter }) {
 
@@ -100,8 +99,8 @@ export default function Selector({ options, activeP, setter }) {
                     <Image
                     src={
                         activeP === "more"
-                        ? More_Active
-                        : More_Not
+                        ? "/assets/more-active.png"
+                        : "/assets/more-active.png"
                     }
                     alt="More Button"
                     fill

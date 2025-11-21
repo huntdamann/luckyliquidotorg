@@ -6,9 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Selector from '../components/Selector'
 import useMediaQuery from "../hooks/useMediaQuery";
 
-// Imported Images
-import More_Active from '../../public/assets/more-active.png'
-import More_Not from '../../public/assets/more-nonactive.png'
+
 
 const ProductShowcase = ({ setter, refNo }) => {
   const [activeProduct, setActiveProduct] = useState("honeygold");
