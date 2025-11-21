@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from 'motion/react'
 // Imported Images
-import More_Active from '../../public/assets/more-active.png'
-import More_Not from '../../public/assets/more-nonactive.png'
+import More_Active from '/assets/more-active.png'
+import More_Not from '/assets/more-nonactive.png'
 
 export default function Selector({ options, activeP, setter }) {
 
