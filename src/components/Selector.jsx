@@ -71,7 +71,7 @@ export default function Selector({ options, activeP, setter }) {
   return (
     <>
 
-          <div ref={containerRef} className="flex text-center relative gap-[2rem] justify-center items-center w-120">
+          <div ref={containerRef} className="flex text-center relative gap-[5rem] justify-center items-center w-120">
             <button onClick={handleHoneyGoldSelection} ref={textRef} className="">
                     <div
                     
@@ -80,8 +80,8 @@ export default function Selector({ options, activeP, setter }) {
                     <Image
                     src={
                         activeP === "honeygold"
-                        ? "/assets/hg-active.png"
-                        : "/assets/hg-nonactive.png"
+                        ? "/assets/honey_on.png"
+                        : "/assets/honey_off.png"
                     }
                     alt="HoneyGold Button"
                     fill
@@ -91,16 +91,16 @@ export default function Selector({ options, activeP, setter }) {
                 </div>
                 
                 </button>
-            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 75 : positions.more.x - positions.slider.x + 75, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="slider-selection"/>
+            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 75 : positions.more.x - positions.slider.x + 40, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="slider-selection"/>
                 <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent">
                     <div
-                    className="image-container"
+                    className="image-container-2"
                     >
                     <Image
                     src={
                         activeP === "more"
-                        ? "/assets/more_1.png"
-                        : "/assets/more_2.png"
+                        ? "/assets/more_on.png"
+                        : "/assets/more_off.png"
                     }
                     alt="More Button"
                     fill

@@ -142,7 +142,6 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 4rem;
-  border: 1px red solid;
 
   
   
@@ -164,7 +163,8 @@ body {
 
 
 .product-title {
-  margin-top: -1rem;
+  position: absolute;
+  top: 10rem;
 }
 .product-image {
   width: 25rem;
@@ -205,7 +205,15 @@ body {
 .image-container {
   position: relative;
   width: 150px;   /* ✅ same width */
-  height: 150px;  /* ✅ same height */
+  height: 30px;  /* ✅ same height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-container-2 {
+  position: relative;
+  width: 80px;   /* ✅ same width */
+  height: 30px;  /* ✅ same height */
   display: flex;
   align-items: center;
   justify-content: center;
