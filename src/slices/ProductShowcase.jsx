@@ -60,6 +60,23 @@ useEffect(() => {
   return () => window.removeEventListener("resize", update);
 }, []);
 
+// Product animation
+useEffect(() => {
+  const product = document.querySelector('.banner .product');
+  const soda = product.querySelector('.soda');
+
+  const animate = () => {
+    soda.style.setProperty('--left', '-1000px');
+    setTimeout(() => {
+      soda.style.setProperty('--left', '-185px');
+    }, 3000);
+  };
+
+  product.addEventListener('click', animate);
+
+  return () => product.removeEventListener('click', animate);
+}, []);
+
 
   const handleMoreSelection = () => setActiveProduct("more");
   const handleHoneyGoldSelection = () => setActiveProduct("honeygold");
@@ -125,16 +142,22 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.9, 0, 0.2, 1] }}
-            className="product-image"
+            className="banner"
           >
-            <Image
+            <div className="product">
+
+              <div className="soda">
+
+              </div>
+            </div>
+            {/* <Image
               src="/assets/new_bottle.png"
               alt="HoneyGold"
               fill
               priority
               style={{objectFit: 'contain'}}
 
-            />
+            /> */}
           </motion.div>
         )}
 

@@ -22,6 +22,42 @@
   }
 }
 
+.banner {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner .product {
+  background-color: red;
+  width: 500px;
+  height: 500px;
+  display: flex;              /* enable flexbox */
+  justify-content: center;    /* center horizontally */
+  align-items: center;
+  
+  transition: 0.7s;
+  z-index: 9999;
+  --left: -185px;
+}
+.banner .product .soda {
+  background: url('/assets/spark_label.png') var(--left) 0,  url('/assets/can.png');
+  background-size: 600px auto,  auto 100%;
+  width: 230px;
+  aspect-ratio: 2 / 4;
+  background-blend-mode: multiply;
+  mask-image: url('/assets/can.png');
+  mask-size: auto 100%;
+  transition: 0.7s;
+}
+/* When tapped */
+.banner .product .trigger:checked + .soda {
+  --left: -1000px;
+}
+.banner .product:hover {
+  --left: -1000px;
+}
+
 
 body {
   color: var(--foreground);
