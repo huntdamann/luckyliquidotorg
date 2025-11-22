@@ -29,11 +29,11 @@
 }
 
 .banner .product {
-  background-color: red;
+  /* background-color: red; */
   width: 500px;
   height: 500px;
-  display: flex;              /* enable flexbox */
-  justify-content: center;    /* center horizontally */
+  display: flex;              
+  justify-content: center;    
   align-items: center;
   
   transition: 0.7s;
