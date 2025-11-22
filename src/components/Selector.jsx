@@ -99,8 +99,8 @@ export default function Selector({ options, activeP, setter }) {
                     <Image
                     src={
                         activeP === "more"
-                        ? "/assets/more-active.png"
-                        : "/assets/more-active.png"
+                        ? "/assets/more_1.png"
+                        : "/assets/more_2.png"
                     }
                     alt="More Button"
                     fill
