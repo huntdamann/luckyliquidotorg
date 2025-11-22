@@ -45,7 +45,7 @@
   background-size: 600px auto,  auto 100%;
   width: 150px;
   aspect-ratio: 4 / 10.5;
-  background-blend-mode: multiply;
+  background-blend-mode: normal;
   mask-image: url('/assets/blank_bottle.png');
   mask-size: auto 100%;
   transition: 1.7s;
