@@ -23,9 +23,10 @@
 }
 
 .banner {
-  height: 100vh;
+  height: 60vh;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  top: 11rem;
 }
 
 .banner .product {
@@ -163,8 +164,8 @@ body {
 
 
 .product-title {
-  position: absolute;
-  top: 10rem;
+
+  margin-top: 2rem;
 }
 .product-image {
   width: 25rem;
@@ -625,6 +626,9 @@ body {
   .product-image {
     bottom: 5rem;
   }
+  .banner {
+    height: 70dvh;
+  }
 }
 @media (min-width: 376px) and (max-width: 440px) {
   #button-handle {
@@ -637,6 +641,9 @@ body {
   }
   .product-image {
     bottom: 3rem;
+  }
+  .banner {
+    height: 70dvh;
   }
 }
 @media (min-width: 441px) and (max-width: 768px) {
@@ -653,9 +660,7 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 1440px) {
-  .product-title {
-    margin-top: -3rem;
-  }
+  
 }
 
 
