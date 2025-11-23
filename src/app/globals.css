@@ -169,7 +169,6 @@ body {
   width: 100vw;
   position: relative;
   overflow-x: hidden;
-  overflow-y: visible;
   z-index: 10;
 
   &.tilt {
@@ -218,8 +217,7 @@ body {
   }
   
 }
-
-/* #paper-back {
+ #paper-back {
   width: 100%;
   height: 100vh;
   background-color: green;
@@ -234,7 +232,7 @@ body {
   flex-direction: column;
 
  
-} */
+} 
 .navigation {
   padding: 120px 34px;
   display: flex;
