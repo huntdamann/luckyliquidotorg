@@ -149,7 +149,9 @@ export default function Holder() {
           </div>
         </div>
         <Hero setter={setOpenPopUp} refNo={openPopUp} /> 
-        <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
+        <Hero setter={setOpenPopUp} refNo={openPopUp} /> 
+
+        {/* <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} /> */}
         <Popup refPop={popupRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
       </div>
