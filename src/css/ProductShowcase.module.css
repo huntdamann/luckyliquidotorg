@@ -1,15 +1,13 @@
 .banner {
-    height: 60vh;
+    height: 50vh;
     overflow: hidden;
     position: absolute;
-    top: 11rem;
-    border: 1px red solid;
+    top: 16rem;
   }
   
   .banner .product {
     width: 300px;
     height: 300px;
-    border: 1px blue solid;
 
     display: flex;              
     justify-content: center;    
@@ -17,24 +15,21 @@
     
     transition: 0.7s;
     z-index: 9999;
-    --left: -210px;
+    --left: -195px;
   }
   .banner .product .soda {
-    background: url('/assets/Label_clear.png') var(--left) -60px , url('/assets/blank_bottle.png');
-    background-size: 600px auto,  auto 100%;
-    width: 180px;
+    background: url('/assets/Label_clear.png') var(--left) -68px , url('/assets/blank_bottle.png');
+    background-size: 500px auto,  auto 100%;
+    width: 110px;
     aspect-ratio: 4 / 10.5;
     background-blend-mode: normal;
     mask-image: url('/assets/blank_bottle.png');
     mask-size: auto 100%;
     transition: 1.7s;
   }
-  /* When tapped */
-  .banner .product .trigger:checked + .soda {
-    --left: -1000px;
-  }
+  
   .banner .product:hover {
-    --left: -1425px;
+    --left: -1195px;
   }
   .product-showcase-container {
 
@@ -115,19 +110,19 @@
     position: absolute;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
-  .image-container {
+  /* .image-container {
     position: relative;
-    width: 150px;   /* ✅ same width */
-    height: 30px;  /* ✅ same height */
+    width: 150px;   
+    height: 30px;  /
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .image-container-2 {
     position: relative;
-    width: 80px;   /* ✅ same width */
-    height: 30px;  /* ✅ same height */
+    width: 80px;  
+    height: 30px;  
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */

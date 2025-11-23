@@ -64,9 +64,9 @@ const ProductShowcase = ({ setter, refNo }) => {
     const soda = product.querySelector(`.${styles.soda}`);
 
     const animate = () => {
-      soda.style.setProperty('--left', '-1000px');
+      soda.style.setProperty('--left', '-1195px');
       setTimeout(() => {
-        soda.style.setProperty('--left', '-185px');
+        soda.style.setProperty('--left', '-195px');
       }, 3000);
     };
 

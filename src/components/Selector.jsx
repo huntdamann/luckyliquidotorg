@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from 'motion/react'
-import '../css/ProductShowcase.module.css'
+import { styles } from '../css/ProductShowcase.module.css'
 // Imported Images
 
 
@@ -72,11 +72,11 @@ export default function Selector({ options, activeP, setter }) {
   return (
     <>
 
-          <div ref={containerRef} className="flex text-center relative gap-[5rem] justify-center items-center w-120">
-            <button onClick={handleHoneyGoldSelection} ref={textRef} className="border p-2">
+          <div ref={containerRef} className="flex text-center relative gap-[3rem] justify-center items-center w-120">
+            <button onClick={handleHoneyGoldSelection} ref={textRef} className="p-2">
                     <div
                     
-                    className="image-container"
+                    className="relative w-[150px] h-[30px] flex items-center justify-center"
                      >
                     <Image
                     src={
@@ -87,15 +87,15 @@ export default function Selector({ options, activeP, setter }) {
                     alt="HoneyGold Button"
                     fill
                     priority
-                    style={{ objectFit: "contain", zIndex: 999 }}
+                    style={{ objectFit: "contain", zIndex: 599 }}
                     />
                 </div>
                 
                 </button>
-            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 85 : positions.more.x - positions.slider.x + 50, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="slider-selection"/>
-                <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent border p-2">
+            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 85 : positions.more.x - positions.slider.x + 50, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="h-[50px] bg-[#A1E6B3] rounded-2xl absolute"/>
+                <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent p-2">
                     <div
-                    className="image-container-2"
+                    className="relative w-[80px] h-[30px] flex items-center justify-center"
                     >
                     <Image
                     src={
@@ -106,7 +106,7 @@ export default function Selector({ options, activeP, setter }) {
                     alt="More Button"
                     fill
                     priority
-                    style={{ objectFit: "contain", zIndex: 999 }}
+                    style={{ objectFit: "contain", zIndex: 599 }}
                     className=""
                     />
                 </div>

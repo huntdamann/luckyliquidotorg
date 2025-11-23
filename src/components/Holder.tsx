@@ -8,6 +8,7 @@ import Header from '../slices/Header'
 import Hero from '../slices/Hero'
 import ProductShowcase from '../slices/ProductShowcase'
 import Testimonials from '../slices/Testimonials'
+import { motion, AnimatePresence } from 'motion/react'
 
 
 
@@ -57,15 +58,15 @@ export default function Holder() {
     paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
   };
 
-  // useEffect(() => {
-  //   updateTransformOrigin(); // initial calcualtion
-  // }, [open, close])
- 
   useEffect(() => {
-    requestAnimationFrame(() => {
-      updateTransformOrigin();
-    });
-  }, []);
+    updateTransformOrigin(); // initial calcualtion
+  }, [open, close])
+ 
+  // useEffect(() => {
+  //   requestAnimationFrame(() => {
+  //     updateTransformOrigin();
+  //   });
+  // }, [open, close]);
   
   
   const openMenu = () => {
@@ -122,7 +123,7 @@ export default function Holder() {
   return (
    <>
 
-    {/* <AnimatePresence mode='wait'>
+    <AnimatePresence mode='wait'>
     {open &&  <Header
     toggleFollow={toggleFollow}
     openAbout={openAbout}
@@ -133,7 +134,7 @@ export default function Holder() {
     />}
 
     </AnimatePresence>
-    */}
+   
   
     {/* Hero Section */}
     <div id="paper-window" ref={windowRef} className={open? 'tilt' : ''}>
