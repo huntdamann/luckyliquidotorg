@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from 'motion/react'
+import '../css/ProductShowcase.module.css'
 // Imported Images
 
 
@@ -72,7 +73,7 @@ export default function Selector({ options, activeP, setter }) {
     <>
 
           <div ref={containerRef} className="flex text-center relative gap-[5rem] justify-center items-center w-120">
-            <button onClick={handleHoneyGoldSelection} ref={textRef} className="">
+            <button onClick={handleHoneyGoldSelection} ref={textRef} className="border p-2">
                     <div
                     
                     className="image-container"
@@ -91,8 +92,8 @@ export default function Selector({ options, activeP, setter }) {
                 </div>
                 
                 </button>
-            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 75 : positions.more.x - positions.slider.x + 40, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="slider-selection"/>
-                <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent">
+            <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 85 : positions.more.x - positions.slider.x + 50, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="slider-selection"/>
+                <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent border p-2">
                     <div
                     className="image-container-2"
                     >

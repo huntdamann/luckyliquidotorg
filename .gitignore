@@ -3,6 +3,7 @@ node_modules/
 .next/
 out/
 
+move_later/
 next-env.d.ts
 
 src/app/api/

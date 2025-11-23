@@ -16,7 +16,7 @@ import Title from "../../public/assets/new_word.png";
 import Lucky from "../../public/assets/lucky-logo-demo.png";
 import PhotoNews from "../../public/assets/IMG_0438.jpeg";
 
-const Popup = ({ refPop, refOut, refNo, setter }) => {
+const Popup = ({ refPop, refNo, setter }) => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(null);
   const [auto, autoOpen] = useState(false);
@@ -71,77 +71,82 @@ const Popup = ({ refPop, refOut, refNo, setter }) => {
   return (
     <AnimatePresence>
 
+      {refNo && (
 
-      <motion.div
-      ref={refPop}
-      variants={popupVariants}
-      initial="hidden"
-      animate={refNo ? "visible" : ""}
-      style={{willChange: "opacity, transform"}}
-      className="container-pop"
+<motion.div
+ref={refPop}
+variants={popupVariants}
+initial="hidden"
+animate={refNo ? "visible" : ""}
+style={{willChange: "opacity, transform"}}
+className="container-pop"
+>
+  <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
+    {/* Product Photo */}
+    <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
+      <Image
+      src={PhotoNews}
+      alt="Product Photo"
+      width={500}
+      height={300}
+      priority={false}
+      quality={70}
+      loading="lazy"
+    />
+
+    </div>
+
+    {/* Close Button */}
+    <div
+      onClick={() => setter(!refNo)}
+      onTouchStart={handleTap}
+
+      className="close-popup"
+    >
+      <IoCloseSharp />
+    </div>
+
+    {/* Popup Text */}
+    <div className="flex flex-col text-center items-center justify-center gap-3">
+      <Image alt="Picture" src={Lucky} width={300} height={150} />
+      <Image alt="Lucky Logo" width={150} src={Lucky2} />
+      <Image alt="Title" width={350} src={Title} />
+
+      <span className="w-[16rem] font-mono">
+        Join the Lucky List and unlock exclusive perks
+      </span>
+
+      <form
+        onSubmit={handleUserSubmit}
+        className="rounded-md flex gap-2 justify-center items-center w-[15rem]"
       >
-        <div className="h-full w-full flex items-center gap-[8rem] justify-center flex-row">
-          {/* Product Photo */}
-          <div className="image min-w-[40%] min-h-[60%] rounded-2xl overflow-hidden">
-            <Image
-            src={PhotoNews}
-            alt="Product Photo"
-            width={500}
-            height={300}
-            priority={false}
-            quality={70}
-            loading="lazy"
-          />
+        <input
+          className="h-full w-full shadow-md rounded-md p-2"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <button
+          id="button-submit"
+          type="submit"
+          className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"
+        >
+          <span>Get Lucky</span>
+        </button>
 
-          </div>
+        {status && <Success set={setter} refNo={refNo} />}
+      </form>
 
-          {/* Close Button */}
-          <div
-            onClick={() => setter(!refNo)}
-            onTouchStart={handleTap}
+      <span>Discounts, Special Flavors, Events, and More</span>
+    </div>
+  </div>
+</motion.div>
 
-            className="close-popup"
-          >
-            <IoCloseSharp />
-          </div>
 
-          {/* Popup Text */}
-          <div className="flex flex-col text-center items-center justify-center gap-3">
-            <Image alt="Picture" src={Lucky} width={300} height={150} />
-            <Image alt="Lucky Logo" width={150} src={Lucky2} />
-            <Image alt="Title" width={350} src={Title} />
-
-            <span className="w-[16rem] font-mono">
-              Join the Lucky List and unlock exclusive perks
-            </span>
-
-            <form
-              onSubmit={handleUserSubmit}
-              className="rounded-md flex gap-2 justify-center items-center w-[15rem]"
-            >
-              <input
-                className="h-full w-full shadow-md rounded-md p-2"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required
-              />
-              <button
-                id="button-submit"
-                type="submit"
-                className="rounded-md bg-green-400 active:bg-green-600 shadow-md h-[2rem] lg:w-[10rem] w-[7rem]"
-              >
-                <span>Get Lucky</span>
-              </button>
-
-              {status && <Success set={setter} refNo={refNo} />}
-            </form>
-
-            <span>Discounts, Special Flavors, Events, and More</span>
-          </div>
-        </div>
-      </motion.div>
+      )}
+      
 
 
 

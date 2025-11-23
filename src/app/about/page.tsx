@@ -6,7 +6,7 @@ import Header from "@/slices/Header";
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
-import UpdateOurStory from '../../components/UpdateOurStory'
+import UpdateOurStory from '../../components/about/UpdateOurStory'
 export default function Home() {
   const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);

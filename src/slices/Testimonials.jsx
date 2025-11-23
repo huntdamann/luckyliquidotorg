@@ -1,11 +1,9 @@
-"use client"
 
 import React, { useRef, memo } from "react";
 import Image from "next/image";
-import { motion, useInView } from 'motion/react';
 import Testimonials1 from '../../public/assets/Testimonial-removebg-preview.png'
 import Testimonials2 from '../../public/assets/Testimonial_2-removebg-preview.png'
-import EmblaCarousel from '../components/EmblaCarousel';
+import EmblaCarousel from '../components/ui/EmblaCarousel';
 
 
 const Testimonials = React.memo(function Testimonials() {

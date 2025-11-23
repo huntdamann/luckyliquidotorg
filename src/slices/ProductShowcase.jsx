@@ -3,10 +3,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import Selector from '../components/Selector'
+import Selector from '../components/Selector';
 import useMediaQuery from "../hooks/useMediaQuery";
 
-
+// ✅ Correct CSS module import
+import styles from '../css/ProductShowcase.module.css';
 
 const ProductShowcase = ({ setter, refNo }) => {
   const [activeProduct, setActiveProduct] = useState("honeygold");
@@ -22,7 +23,6 @@ const ProductShowcase = ({ setter, refNo }) => {
   const phoneQuery = useMediaQuery("(min-width: 360px)");
   const tabletQuery = useMediaQuery("(max-width: 630px)");
 
-  // ORIGINAL getRelativeRect
   const getRelativeRect = (buttonRef) => {
     if (!buttonRef.current || !controlsRef.current) return { x: 0, width: 0 };
 
@@ -35,64 +35,53 @@ const ProductShowcase = ({ setter, refNo }) => {
     };
   };
 
-  function handleTap(e) {
+  const handleTap = (e) => {
     const el = e.currentTarget;
-    el.classList.add("tapped-cta");
+    el.classList.add(styles["tapped-cta"]);
     setTimeout(() => {
-      el.classList.remove("tapped-cta");
+      el.classList.remove(styles["tapped-cta"]);
     }, 250);
-  }
-
-  // ORIGINAL effect for “More” button
-  // Measure More button
-useEffect(() => {
-  const update = () => setDimensions(getRelativeRect(moreButtonRef));
-  update();
-  window.addEventListener("resize", update);
-  return () => window.removeEventListener("resize", update);
-}, []);
-
-// Measure HoneyGold button
-useEffect(() => {
-  const update = () => setDimensionsHoney(getRelativeRect(honeyButtonRef));
-  update();
-  window.addEventListener("resize", update);
-  return () => window.removeEventListener("resize", update);
-}, []);
-
-// Product animation
-useEffect(() => {
-  const product = document.querySelector('.banner .product');
-  const soda = product.querySelector('.soda');
-
-  const animate = () => {
-    soda.style.setProperty('--left', '-1000px');
-    setTimeout(() => {
-      soda.style.setProperty('--left', '-185px');
-    }, 3000);
   };
 
-  product.addEventListener('click', animate);
+  useEffect(() => {
+    const update = () => setDimensions(getRelativeRect(moreButtonRef));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
-  return () => product.removeEventListener('click', animate);
-}, []);
+  useEffect(() => {
+    const update = () => setDimensionsHoney(getRelativeRect(honeyButtonRef));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
+  useEffect(() => {
+    const product = document.querySelector(`.${styles.banner} .${styles.product}`);
+    if (!product) return;
 
-  const handleMoreSelection = () => setActiveProduct("more");
-  const handleHoneyGoldSelection = () => setActiveProduct("honeygold");
+    const soda = product.querySelector(`.${styles.soda}`);
+
+    const animate = () => {
+      soda.style.setProperty('--left', '-1000px');
+      setTimeout(() => {
+        soda.style.setProperty('--left', '-185px');
+      }, 3000);
+    };
+
+    product.addEventListener('click', animate);
+    return () => product.removeEventListener('click', animate);
+  }, []);
 
   return (
     <section
-      className={`product-showcase-container ${
-        activeProduct === "honeygold" ? "main" : "more"
+      className={`${styles["product-showcase-container"]} ${
+        activeProduct === "honeygold" ? styles.main : styles.more
       }`}
     >
-    <Selector options={options} activeP={activeProduct} setter={setActiveProduct} />
+      <Selector options={options} activeP={activeProduct} setter={setActiveProduct} />
 
-      {/* BUTTONS */}
-     
-
-      {/* ANIMATIONS */}
       <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
@@ -101,14 +90,13 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="product-title"
+            className={styles["product-title"]}
           >
             <Image
               src="/assets/honeygold2.png"
               alt="HoneyGold"
               width={500}
               height={100}
-              priority
             />
           </motion.div>
         )}
@@ -120,20 +108,18 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="product-title"
+            className={styles["product-title"]}
           >
             <Image
               src="/assets/comingsoon.png"
               alt="Coming Soon"
               width={500}
               height={100}
-              priority
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* PRODUCT IMAGES */}
       <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
@@ -142,22 +128,11 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.9, 0, 0.2, 1] }}
-            className="banner"
+            className={styles.banner}
           >
-            <div className="product">
-
-              <div className="soda">
-
-              </div>
+            <div className={styles.product}>
+              <div className={styles.soda}></div>
             </div>
-            {/* <Image
-              src="/assets/new_bottle.png"
-              alt="HoneyGold"
-              fill
-              priority
-              style={{objectFit: 'contain'}}
-
-            /> */}
           </motion.div>
         )}
 
@@ -168,20 +143,18 @@ useEffect(() => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="product-image"
+            className={styles["product-image"]}
           >
             <Image
               src="/assets/new_flavors.png"
               alt="Coming Soon"
               fill
-              priority
-              style={{objectFit: 'contain'}}
+              style={{ objectFit: "contain" }}
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* CALL TO ACTION BUTTONS */}
       <AnimatePresence>
         {activeProduct === "honeygold" && (
           <motion.button
@@ -211,7 +184,7 @@ useEffect(() => {
             onClick={() => setter(!refNo)}
             id="button-handle"
             onTouchStart={(e) => handleTap(e)}
-            className={`text-white p-2 opacity-100 border-2 border-gray-400 ${
+            className={`text-white p-2 border-2 border-gray-400 ${
               refNo ? "opacity-0" : "opacity-100"
             } bg-[#51B150] active:bg-green-500 active:scale-95 rounded-md min-w-24`}
           >

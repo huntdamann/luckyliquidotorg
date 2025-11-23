@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faBluesky, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { motion, AnimatePresence } from "motion/react";
+import "../css/Header.module.css"
 
 export default function Header({
   toggleFollow,
@@ -61,7 +62,7 @@ export default function Header({
   return (
   
     <motion.header initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="text-sm" id="paper-back">
-      <nav className="relative">
+      <nav className="navigation">
         <div className="close" onClick={handleCloseMenu}></div>
 
         <ul className="flex flex-col gap-[3rem] justify-evenly">

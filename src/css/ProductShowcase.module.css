@@ -1,0 +1,133 @@
+.banner {
+    height: 60vh;
+    overflow: hidden;
+    position: absolute;
+    top: 11rem;
+    border: 1px red solid;
+  }
+  
+  .banner .product {
+    width: 300px;
+    height: 300px;
+    border: 1px blue solid;
+
+    display: flex;              
+    justify-content: center;    
+    align-items: center;
+    
+    transition: 0.7s;
+    z-index: 9999;
+    --left: -210px;
+  }
+  .banner .product .soda {
+    background: url('/assets/Label_clear.png') var(--left) -60px , url('/assets/blank_bottle.png');
+    background-size: 600px auto,  auto 100%;
+    width: 180px;
+    aspect-ratio: 4 / 10.5;
+    background-blend-mode: normal;
+    mask-image: url('/assets/blank_bottle.png');
+    mask-size: auto 100%;
+    transition: 1.7s;
+  }
+  /* When tapped */
+  .banner .product .trigger:checked + .soda {
+    --left: -1000px;
+  }
+  .banner .product:hover {
+    --left: -1425px;
+  }
+  .product-showcase-container {
+
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+  
+    
+    
+  }
+  .product-controls {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  
+  }
+  .main {
+    background: #826437;
+    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+  }
+  .more {
+    background: #826437;
+    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+  }
+  
+  
+  .product-title {
+  
+    margin-top: 2rem;
+  }
+  .product-image {
+    width: 25rem;
+    height: 25rem;
+    position: absolute;
+    object-fit: contain;
+    bottom: 2rem;
+  }
+  
+  .slider-selection:hover {
+    transform: scale(1.1);
+  
+  }
+  .honeygold-button {
+    z-index: 999;
+    border: 1px red solid;
+  
+  }
+
+  .product-showcase-container {
+
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+  
+    
+    
+  }
+
+  .main {
+    background: #826437;
+    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+  }
+  .more {
+    background: #826437;
+    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+  }
+
+  .slider-selection {
+    height: 50px;
+    background-color: #A1E6B3;
+    border-radius: 1rem;
+    position: absolute;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .image-container {
+    position: relative;
+    width: 150px;   /* ✅ same width */
+    height: 30px;  /* ✅ same height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .image-container-2 {
+    position: relative;
+    width: 80px;   /* ✅ same width */
+    height: 30px;  /* ✅ same height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

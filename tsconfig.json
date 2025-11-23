@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "./types.d.ts", "src/components/Jar.js", "src/components/Bubbles.tsx", "src/components/ViewCanvas.tsx", "src/components/Clover.js", "src/components/Scene.js", "src/slices/OurStory.jsx", "src/app/api/subscriber/route.js", "src/app/api/subscriber/route.js", "src/components/EmblaCarousel.jsx", "src/components/BackgroundClover.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "./types.d.ts", "src/components/Jar.js", "src/components/Bubbles.tsx", "src/components/ViewCanvas.tsx", "src/components/Clover.js", "src/components/Scene.js", "src/slices/OurStory.jsx", "src/app/api/subscriber/route.js", "src/app/api/subscriber/route.js", "src/components/ui/EmblaCarousel.jsx", "src/components/ui/BackgroundClover.jsx"],
   "exclude": ["node_modules"]
 }
