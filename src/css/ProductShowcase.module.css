@@ -33,7 +33,7 @@
   }
   .product-showcase-container {
 
-    min-height: 100dvh;
+    min-height: 100svh;
     position: relative;
     display: flex;
     flex-direction: column;
