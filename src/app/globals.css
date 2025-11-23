@@ -29,6 +29,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   position: relative;
+  overflow-y: scroll;
 }
 
 
