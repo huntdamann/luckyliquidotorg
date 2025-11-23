@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 import Image from "next/image";
 import Success from "../slices/Success";
-
+import './Popup.css'
 import Lucky2 from "../../public/assets/lucky_logo_nobg.png";
 import Title from "../../public/assets/new_word.png";
 import Lucky from "../../public/assets/lucky-logo-demo.png";
