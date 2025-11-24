@@ -30,6 +30,11 @@ body {
   background: var(--background);
   position: relative;
 }
+body.tilt-lock {
+  overflow: hidden; /* lock scroll */
+  height: 100vh;    /* prevent extra mobile viewport scroll */
+}
+
 
 
 .overlay2 {
@@ -174,7 +179,7 @@ body {
 
   &.tilt {
     pointer-events: none;
-    overflow: hidden;
+    overflow-y: hidden;
     #paper-front {
       transform: rotate(10deg) translateZ(0);
     }
@@ -329,10 +334,6 @@ body {
   scale: 0.9;
 }
 
-/* When item is open, shift it according to --offset */
-/* .nav-item[style] {
-  transform: translateY(var(--offset));
-} */
 
 .nav-button {
   color: white;

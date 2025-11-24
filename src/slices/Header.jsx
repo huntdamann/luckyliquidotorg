@@ -58,7 +58,7 @@ export default function Header({ closeMenu }) {
             {(open) => (
               <>
               <li>
-                <a className="flex items-center justify-center gap-2" href="">
+                <a target='_blank' rel="noopener noreferrer" className="flex items-center justify-center gap-2" href="https://www.instagram.com/waytoolucky_/">
                   <motion.div
                     animate={{ rotateY: open ? 360 : 0 }}
                     transition={{ duration: 0.4 }}
@@ -69,7 +69,7 @@ export default function Header({ closeMenu }) {
                 </a>
               </li>
               <li className="">
-                <a className="flex items-center justify-center gap-2" href="">
+                <a target='_blank' rel="noopener noreferrer" className="flex items-center justify-center gap-2" href="https://www.tiktok.com/@luckyteadtx">
                   <motion.div
                     animate={{ rotateY: open ? 360 : 0 }}
                     transition={{ duration: 0.4 }}
@@ -80,7 +80,7 @@ export default function Header({ closeMenu }) {
                 </a>
               </li>
               <li>
-                <a  className="flex items-center justify-center gap-2" href="">
+                <a target='_blank' rel="noopener noreferrer" className="flex items-center justify-center gap-2" href="https://www.facebook.com/profile.php?id=61580219229816">
                   <motion.div
                     animate={{ rotateY: open ? 360 : 0 }}
                     transition={{ duration: 0.4 }}
@@ -91,14 +91,14 @@ export default function Header({ closeMenu }) {
                 </a>
               </li>
               <li>
-                <a className="flex items-center justify-center gap-2" href="">
+                <a target='_blank' rel="noopener noreferrer" className="flex items-center justify-center gap-2" href="https://bsky.app/profile/waytoolucky.bsky.social">
                   <motion.div
                     animate={{ rotateY: open ? 360 : 0 }}
                     transition={{ duration: 0.4 }}
                   >
                     <FaBluesky />
                   </motion.div>
-                  <span>Blueskies</span>
+                  <span>Bluesky</span>
                 </a>
               </li>
               
@@ -118,7 +118,7 @@ export default function Header({ closeMenu }) {
           >
             {(open) => (
               <>
-                <li><a href="">Honey Gold</a></li>
+                <li><a target='_blank' rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header">Honey Gold</a></li>
               </>
             )}
           </NavItem>
@@ -134,12 +134,12 @@ export default function Header({ closeMenu }) {
           >
             {(open) => (
               <>
-                <li><a href="">Our Story</a></li>
+                <li><a href="/about">Our Story</a></li>
               </>
             )}
           </NavItem>
           
-          <li><button>Home</button></li>
+          <li><a href="/" style={{opacity: openItem !== null ? 0 : 1, fontSize: "1.55rem"}}>Home</a></li>
 
 
         </ul>

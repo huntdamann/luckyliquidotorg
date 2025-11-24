@@ -63,6 +63,19 @@ export default function Holder() {
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
   })
+  useEffect(() => {
+    const body = document.body;
+  
+    if (open) {
+      body.classList.add("tilt-lock");
+    } else {
+      body.classList.remove("tilt-lock");
+    }
+  
+    // Cleanup in case component unmounts while open
+    return () => body.classList.remove("tilt-lock");
+  }, [open]);
+  
  
   // useEffect(() => {
   //   requestAnimationFrame(() => {
