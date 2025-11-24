@@ -19,8 +19,8 @@ export default function NavItem({
         if (isOpen) onToggle();
       }
     };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    document.addEventListener("pointerdown", handleClick);
+    return () => document.removeEventListener("pointerdown", handleClick);
   }, [isOpen, onToggle]);
 
   // Determine if this item should be dimmed
@@ -92,6 +92,7 @@ export default function NavItem({
               alignItems: "start",
               justifyContent: "start",
               textAlign: "center",
+              opacity: 0,
             }}
           >
             {children(isOpen)}
