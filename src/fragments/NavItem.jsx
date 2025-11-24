@@ -62,8 +62,7 @@ export default function NavItem({
 
           className={`
             absolute left-0 flex flex-col gap-8 items-center justify-center text-white
-            transition-all duration-200
-            ${isOpen ? "opacity-100 pointer-events-auto z-[50]" : "opacity-0 pointer-events-none"}
+            transition-all duration-200}
           `}
           style={{top: "3.5rem", gap: "1rem", alignItems: "center", justifyContent: "end", textAlign: "center"}}
         >
