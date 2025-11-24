@@ -49,11 +49,6 @@ export default function Home() {
   return (
     <main>
       <Header
-        toggleFollow={toggleFollow}
-        openAbout={() => {}}
-        closeAbout={() => {}}
-        openHome={() => {}}
-        closeHome={() => {}}
         closeMenu={closeMenu}
       />
 
