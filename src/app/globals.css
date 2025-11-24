@@ -95,7 +95,7 @@ body {
 /* //actual content */
 #container {
   section {
-    height: 100dvh;
+    height: 100lvh;
     text-align: center;
     
     &:first-of-type {
@@ -165,7 +165,7 @@ body {
   }
 }
 #paper-window {
-  min-height: 100dvh;
+  min-height: 100lvh;
   width: 100vw;
   position: relative;
   overflow-x: hidden;
@@ -189,7 +189,7 @@ body {
   box-shadow: 0 0 20px rgba(black, 0.7);
   transform-origin: center 70%;
   transition: all 0.3s ease;
-  min-height: 100dvh;
+  min-height: 100lvh;
 }  
 .close {
   position: fixed;
