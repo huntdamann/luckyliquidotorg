@@ -1,6 +1,6 @@
 "use client"; 
 import { useRef, useEffect } from "react"; 
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function NavItem({ 
     label,
@@ -27,6 +27,8 @@ export default function NavItem({
     const hideThisItem = isSomeItemOpen && !isOpen;
   
     return (
+
+    
       <motion.li
         animate={{ 
           y: isOpen ? offset : 0,
@@ -52,8 +54,11 @@ export default function NavItem({
           {label}
         </motion.button>
   
+        <AnimatePresence>
+
         <motion.ul
         initial={false}
+        exit={{opacity: 0}}
              animate={{ 
                 pointerEvents: isOpen ? "auto" : "none",
                 opacity: isOpen? 1 : 0,
@@ -69,6 +74,8 @@ export default function NavItem({
         >
           {children(isOpen)}
         </motion.ul>
+        </AnimatePresence>
+
       </motion.li>
     );
   }
