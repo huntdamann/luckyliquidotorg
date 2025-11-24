@@ -318,6 +318,66 @@ body {
   margin-left: 2em;
 }
 
+.nav-item {
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.3s ease, opacity 0.3s ease, scale 0.3s ease;
+}
+
+.nav-item.dimmed {
+  opacity: 0;
+  scale: 0.9;
+}
+
+/* When item is open, shift it according to --offset */
+/* .nav-item[style] {
+  transform: translateY(var(--offset));
+} */
+
+.nav-button {
+  color: white;
+  font-size: 1.55rem;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+  background: #d1a054;
+  border-radius: 10px;
+}
+.nav-item.open {
+  transform: translateY(var(--offset));
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 3.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  justify-content: start;
+  align-items: start;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+
+.dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.25s ease,
+    visibility 0s;
+}
 
 
 

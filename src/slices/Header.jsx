@@ -44,7 +44,7 @@ export default function Header({ closeMenu }) {
         
         <div className="close" onClick={handleCloseMenu}></div>
 
-        <ul className="flex border flex-col  gap-[5rem] justify-evenly">
+        <ul className="flex border text-white flex-col  gap-[5rem] justify-evenly">
 
           {/* SOCIALS */}
           <NavItem
