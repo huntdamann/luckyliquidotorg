@@ -26,8 +26,8 @@ export default function Header({ closeMenu }) {
   };
 
   const handleCloseMenu = () => {
-    setOpenItem(null);   // 🔥 close dropdowns
-    if (closeMenu) closeMenu(); // 🔥 call your original closeMenu fn
+    setOpenItem(null);   
+    if (closeMenu) closeMenu(); 
   };
 
   return (
@@ -41,7 +41,7 @@ export default function Header({ closeMenu }) {
     >
       <nav className="navigation">
 
-        {/* 🔥 YOUR ORIGINAL CLOSE BUTTON */}
+        
         <div className="close" onClick={handleCloseMenu}></div>
 
         <ul className="flex border flex-col  gap-[5rem] justify-evenly">

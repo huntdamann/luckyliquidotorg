@@ -79,13 +79,11 @@ export default function Holder() {
     }
     setOpen(true);
     setClose(false)
-    console.log('opening....');
 
   }
   const closeMenu = () => {
     setOpen(false);
     setClose(true);
-    console.log('closing....');
 
   }
 

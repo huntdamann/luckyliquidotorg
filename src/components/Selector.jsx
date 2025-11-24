@@ -86,6 +86,8 @@ export default function Selector({ options, activeP, setter }) {
                     }
                     alt="HoneyGold Button"
                     fill
+                    sizes="100vw"
+
                     priority
                     style={{ objectFit: "contain", zIndex: 60 }}
                     />
@@ -105,6 +107,8 @@ export default function Selector({ options, activeP, setter }) {
                     }
                     alt="More Button"
                     fill
+                    sizes="100vw"
+
                     priority
                     style={{ objectFit: "contain", zIndex: 599 }}
                     className=""
