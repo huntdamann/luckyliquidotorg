@@ -1,76 +1,150 @@
 "use client";
 
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faBluesky, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { motion, AnimatePresence } from "motion/react";
-import "../css/Header.module.css"
+import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
+import { motion } from "motion/react";
+import NavItem from "../fragments/NavItem";
+import "../css/Header.module.css";
+import { FaBluesky } from "react-icons/fa6";
 
-export default function Header({
-  toggleFollow,
-  openAbout,
-  closeAbout,
-  openHome,
-  closeHome,
-  closeMenu,
-}) {
-  const [activeItem, setActiveItem] = useState(null);
-
+export default function Header({ closeMenu }) {
+  const [openItem, setOpenItem] = useState(null);
 
   const yOffsets = {
     socials: 0,
-    products: -70,
-    about: -140,
+    products: -80,
+    about: -150,
     home: 0,
   };
 
-  const rotateAnimation = {
-    initial: { rotateY: 0 },
-    animate: { rotateY: 360 },
-    transition: { duration: 0.8, ease: "easeInOut" },
-  };
-
-  const handleItemClick = (itemName, callback) => {
-    if (activeItem === itemName) {
-      setActiveItem(null);
-      if (callback) callback(false);
+  const handleToggle = (label) => {
+    if (openItem === label) {
+      setOpenItem(null);
     } else {
-      setActiveItem(itemName);
-      if (callback) callback(true);
+      setOpenItem(label);
     }
   };
 
   const handleCloseMenu = () => {
-    setActiveItem(null);
-    if (closeMenu) closeMenu();
-  };
- 
-  
-
-  const socials = [
-    { icon: faInstagram, label: "Instagram", navi: "https://www.instagram.com/waytoolucky_/" },
-    { icon: faTiktok, label: "TikTok", navi: "https://www.tiktok.com/@luckyteadtx" },
-    { icon: faFacebook, label: "Facebook", navi: "https://www.facebook.com/profile.php?id=61580219229816" },
-    { icon: faBluesky, label: "Bluesky", navi: "https://bsky.app/profile/waytoolucky.bsky.social" },
-  ];
-
-  const folderVariants = {
-    hidden: { opacity: 0, y: -10, zIndex: -99 },
-    visible: { opacity: 1, y: 0 },
+    setOpenItem(null);   // 🔥 close dropdowns
+    if (closeMenu) closeMenu(); // 🔥 call your original closeMenu fn
   };
 
   return (
-  
-    <motion.header initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="text-sm" id="paper-back">
+
+    <>
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      id="paper-back"
+    >
       <nav className="navigation">
+
+        {/* 🔥 YOUR ORIGINAL CLOSE BUTTON */}
         <div className="close" onClick={handleCloseMenu}></div>
 
-        <ul className="flex border border-red-500 flex-col gap-[3rem] justify-evenly">
-         <li><span>Home</span></li>
-        
+        <ul className="flex border flex-col  gap-[5rem] justify-evenly">
+
+          {/* SOCIALS */}
+          <NavItem
+            label="Socials"
+            offset={yOffsets.socials}
+            isOpen={openItem === "Socials"}
+            onToggle={() => handleToggle("Socials")}
+            isSomeItemOpen={openItem !== null}
+
+          >
+            {(open) => (
+              <>
+              <li>
+                <a className="flex items-center justify-center gap-2" href="">
+                  <motion.div
+                    animate={{ rotateY: open ? 360 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <FaInstagram className="text-white" />
+                  </motion.div>
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li className="">
+                <a className="flex items-center justify-center gap-2" href="">
+                  <motion.div
+                    animate={{ rotateY: open ? 360 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <FaTiktok className="text-white" />
+                  </motion.div>
+                  <span>TikTok</span>
+                </a>
+              </li>
+              <li>
+                <a  className="flex items-center justify-center gap-2" href="">
+                  <motion.div
+                    animate={{ rotateY: open ? 360 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <FaFacebook className="text-white" />
+                  </motion.div>
+                  <span>Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a className="flex items-center justify-center gap-2" href="">
+                  <motion.div
+                    animate={{ rotateY: open ? 360 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <FaBluesky />
+                  </motion.div>
+                  <span>Blueskies</span>
+                </a>
+              </li>
+              
+              </>
+            
+            )}
+          </NavItem>
+
+          {/* PRODUCTS */}
+          <NavItem
+            label="Our Products"
+            offset={yOffsets.products}
+            isOpen={openItem === "Our Products"}
+            onToggle={() => handleToggle("Our Products")}
+            isSomeItemOpen={openItem !== null}
+
+          >
+            {(open) => (
+              <>
+                <li><a href="">Honey Gold</a></li>
+              </>
+            )}
+          </NavItem>
+
+          {/* About Us */}
+          <NavItem
+            label="About"
+            offset={yOffsets.about}
+            isOpen={openItem === "About"}
+            onToggle={() => handleToggle("About")}
+            isSomeItemOpen={openItem !== null}
+
+          >
+            {(open) => (
+              <>
+                <li><a href="">Our Story</a></li>
+              </>
+            )}
+          </NavItem>
+          
+          <li><button>Home</button></li>
+
+
         </ul>
       </nav>
     </motion.header>
-    
+    </>
   );
 }

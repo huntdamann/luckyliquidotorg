@@ -1,0 +1,75 @@
+"use client"; 
+import { useRef, useEffect } from "react"; 
+import { motion } from "motion/react";
+
+export default function NavItem({ 
+    label,
+    offset,
+    isOpen,
+    isSomeItemOpen,
+    onToggle,
+    children 
+  }) {
+    const buttonRef = useRef(null);
+  
+    // Click outside to close
+    useEffect(() => {
+      const handleClick = (e) => {
+        if (!buttonRef.current?.parentNode.contains(e.target)) {
+          if (isOpen) onToggle();
+        }
+      };
+      document.addEventListener("click", handleClick);
+      return () => document.removeEventListener("click", handleClick);
+    }, [isOpen, onToggle]);
+  
+    // Determine whether this item should be hidden
+    const hideThisItem = isSomeItemOpen && !isOpen;
+  
+    return (
+      <motion.li
+        animate={{ 
+          y: isOpen ? offset : 0,
+          opacity: hideThisItem ? 0 : 1,    // 🔥 hide others
+          scale: hideThisItem ? 0.9 : 1, 
+        }}
+        transition={{ duration: 0.3 }}
+        className={`relative `}
+        >
+        <motion.button
+          ref={buttonRef}
+          className="text-white"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+          onClick={onToggle}
+          style={{fontSize: "1.55rem"}}
+          whileTap={{
+            scale: 0.95,
+            backgroundColor: "#d1a054",
+            borderRadius: "10px",
+          }}
+        >
+          {label}
+        </motion.button>
+  
+        <motion.ul
+             animate={{ 
+                pointerEvents: isOpen ? "auto" : "none",
+                opacity: isOpen? 1 : 0,
+                
+              }}
+              transition={{delay: isOpen && label !== "Socials" ? 0.3 : 0}}
+
+          className={`
+            absolute left-0 flex flex-col gap-8 items-center justify-center text-white
+            transition-all duration-200
+            ${isOpen ? "opacity-100 pointer-events-auto z-[50]" : "opacity-0 pointer-events-none"}
+          `}
+          style={{top: "3.5rem", gap: "1rem", alignItems: "center", justifyContent: "end", textAlign: "center"}}
+        >
+          {children(isOpen)}
+        </motion.ul>
+      </motion.li>
+    );
+  }
+  

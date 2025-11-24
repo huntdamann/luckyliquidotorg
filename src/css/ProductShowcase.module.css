@@ -33,7 +33,7 @@
   }
   .product-showcase-container {
 
-    min-height: 100svh;
+    min-height: 100lvh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -71,11 +71,11 @@
     bottom: 2rem;
   }
   .product-image-2 {
-    width: 25rem;
-    height: 25rem;
+    width: 20rem;
+    height: 20rem;
     position: absolute;
     object-fit: contain;
-    top: 10rem
+    top: 10rem;
   }
   
   .slider-selection:hover {

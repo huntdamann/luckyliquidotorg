@@ -125,11 +125,6 @@ export default function Holder() {
 
     <AnimatePresence mode='wait'>
     {open &&  <Header
-    toggleFollow={toggleFollow}
-    openAbout={openAbout}
-    closeAbout={closeAbout}
-    openHome={openHome}
-    closeHome={closeHome}
     closeMenu={closeMenu} // pass it here
     />}
 
