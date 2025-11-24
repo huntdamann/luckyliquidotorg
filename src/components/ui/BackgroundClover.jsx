@@ -87,6 +87,7 @@ export default function BackgroundClover({refNo, setter}) {
             width={300}
             height={300}
             /></div>
+            
 </div>
   );
 }
