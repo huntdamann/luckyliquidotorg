@@ -72,7 +72,7 @@ export default function Selector({ options, activeP, setter }) {
   return (
     <>
 
-          <div ref={containerRef} className="flex text-center relative gap-[3rem] justify-center items-center w-120">
+          <div ref={containerRef} className="flex  text-center relative gap-[3rem] justify-center items-center w-120">
             <button onClick={handleHoneyGoldSelection} ref={textRef} className="p-2">
                     <div
                     
@@ -95,13 +95,13 @@ export default function Selector({ options, activeP, setter }) {
             <motion.div ref={sliderRef} animate={{x: activeP === "honeygold" ? positions.honey.x - positions.slider.x + 85 : positions.more.x - positions.slider.x + 50, width: activeP === "honeygold" ? positions.honey.width : positions.more.width}} className="h-[50px] bg-[#A1E6B3] rounded-2xl absolute"/>
                 <button onClick={handleMoreSelection} ref={text2Ref} className="bg-transparent p-2">
                     <div
-                    className="relative w-[80px] h-[30px] flex items-center justify-center"
+                    className="relative w-[70px] h-[30px] flex items-center justify-center"
                     >
                     <Image
                     src={
                         activeP === "more"
-                        ? "/assets/more_on.png"
-                        : "/assets/more_off.png"
+                        ? "/assets/more_off.png"
+                        : "/assets/more_on.png"
                     }
                     alt="More Button"
                     fill
