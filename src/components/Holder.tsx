@@ -60,7 +60,7 @@ export default function Holder() {
 
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
-  }, [open, close])
+  }, [open])
  
   // useEffect(() => {
   //   requestAnimationFrame(() => {

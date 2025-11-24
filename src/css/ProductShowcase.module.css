@@ -70,6 +70,13 @@
     object-fit: contain;
     bottom: 2rem;
   }
+  .product-image-2 {
+    width: 25rem;
+    height: 25rem;
+    position: absolute;
+    object-fit: contain;
+    top: 10rem
+  }
   
   .slider-selection:hover {
     transform: scale(1.1);
