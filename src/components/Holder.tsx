@@ -51,16 +51,18 @@ export default function Holder() {
   const updateTransformOrigin = () => {
     if (!windowRef.current || !paperFrontRef.current) return;
 
-    const scrollTop = windowRef.current.scrollTop;
+    const scrollTop = window.scrollY;
     const pageHeight = paperFrontRef.current.offsetHeight;
     const equation = ((scrollTop + offset) / pageHeight) * 100;
+    
+
 
     paperFrontRef.current.style.transformOrigin = `center ${equation}%`;
   };
 
   useEffect(() => {
     updateTransformOrigin(); // initial calcualtion
-  }, [open])
+  })
  
   // useEffect(() => {
   //   requestAnimationFrame(() => {

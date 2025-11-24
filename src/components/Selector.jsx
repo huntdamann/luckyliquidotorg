@@ -87,7 +87,7 @@ export default function Selector({ options, activeP, setter }) {
                     alt="HoneyGold Button"
                     fill
                     priority
-                    style={{ objectFit: "contain", zIndex: 599 }}
+                    style={{ objectFit: "contain", zIndex: 60 }}
                     />
                 </div>
                 

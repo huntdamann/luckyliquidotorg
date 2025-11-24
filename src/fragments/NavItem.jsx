@@ -53,6 +53,7 @@ export default function NavItem({
         </motion.button>
   
         <motion.ul
+        initial={false}
              animate={{ 
                 pointerEvents: isOpen ? "auto" : "none",
                 opacity: isOpen? 1 : 0,

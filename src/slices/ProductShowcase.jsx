@@ -35,14 +35,6 @@ const ProductShowcase = ({ setter, refNo }) => {
     };
   };
 
-  const handleTap = (e) => {
-    const el = e.currentTarget;
-    el.classList.add(styles["tapped-cta"]);
-    setTimeout(() => {
-      el.classList.remove(styles["tapped-cta"]);
-    }, 250);
-  };
-
   useEffect(() => {
     const update = () => setDimensions(getRelativeRect(moreButtonRef));
     update();
@@ -70,8 +62,8 @@ const ProductShowcase = ({ setter, refNo }) => {
       }, 3000);
     };
 
-    product.addEventListener('click', animate);
-    return () => product.removeEventListener('click', animate);
+    product.addEventListener("touchstart", animate);
+    return () => product.removeEventListener('touchstart', animate);
   }, []);
 
   return (
@@ -169,7 +161,6 @@ const ProductShowcase = ({ setter, refNo }) => {
                 "_blank"
               )
             }
-            onTouchStart={(e) => handleTap(e)}
             id="button-handle"
             className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24"
           >
@@ -183,7 +174,6 @@ const ProductShowcase = ({ setter, refNo }) => {
             exit={{ opacity: 0, y: 20 }}
             onClick={() => setter(!refNo)}
             id="button-handle"
-            onTouchStart={(e) => handleTap(e)}
             className={`text-white p-2 border-2 border-gray-400 ${
               refNo ? "opacity-0" : "opacity-100"
             } bg-[#51B150] active:bg-green-500 active:scale-95 rounded-md min-w-24`}
