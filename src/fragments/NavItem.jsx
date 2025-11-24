@@ -13,15 +13,15 @@ export default function NavItem({
   const buttonRef = useRef(null);
 
   // Click outside to close
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (!buttonRef.current?.parentNode.contains(e.target)) {
-        if (isOpen) onToggle();
-      }
-    };
-    document.addEventListener("pointerdown", handleClick);
-    return () => document.removeEventListener("pointerdown", handleClick);
-  }, [isOpen, onToggle]);
+//   useEffect(() => {
+//     const handleClick = (e) => {
+//       if (!buttonRef.current?.parentNode.contains(e.target)) {
+//         if (isOpen) onToggle();
+//       }
+//     };
+//     document.addEventListener("pointerdown", handleClick);
+//     return () => document.removeEventListener("pointerdown", handleClick);
+//   }, [isOpen, onToggle]);
 
   // Determine if this item should be dimmed
   const hideThisItem = isSomeItemOpen && !isOpen;
