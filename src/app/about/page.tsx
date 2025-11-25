@@ -68,7 +68,7 @@ export default function Home() {
           >
             <UpdateOurStory />
             {/* Space Divider */}
-            <div className="h-[20%] opacity-0">sjsjfsjefjsf</div>
+            <div className="h-[30lvh] opacity-0">sjsjfsjefjsf</div>
 
 
             

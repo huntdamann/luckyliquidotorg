@@ -61,7 +61,10 @@ export default function UpdateOurStory() {
                 what it means to Get Lucky.
               </span>
             </span>
+            <div className="mt-14">
             <Image alt="Lucky Logo" width={150} height={100} src='/assets/lucky_logo_nobg.png' />
+
+            </div>
 
 
 
