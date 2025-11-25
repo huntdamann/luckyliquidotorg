@@ -58,7 +58,7 @@ const ProductShowcase = ({ setter, refNo }) => {
     const animate = () => {
       soda.style.setProperty('--left', '-1195px');
       setTimeout(() => {
-        soda.style.setProperty('--left', '-195px');
+        soda.style.setProperty('--left', '-190px');
       }, 3000);
     };
 

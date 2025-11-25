@@ -82,7 +82,7 @@ export default function Selector({ options, activeP, setter }) {
                     src={
                         activeP === "honeygold"
                         ? "/assets/honey_on.png"
-                        : "/assets/honey_off.png"
+                        : "/assets/honey_on.png"
                     }
                     alt="HoneyGold Button"
                     fill
@@ -103,7 +103,7 @@ export default function Selector({ options, activeP, setter }) {
                     src={
                         activeP === "more"
                         ? "/assets/more_off.png"
-                        : "/assets/more_on.png"
+                        : "/assets/more_off.png"
                     }
                     alt="More Button"
                     fill

@@ -15,13 +15,13 @@
     
     transition: 0.7s;
     z-index: 9999;
-    --left: -195px;
+    --left: -190px;
   }
   .banner .product .soda {
-    background: url('/assets/Label_clear.png') var(--left) -68px , url('/assets/blank_bottle.png');
+    background: url('/assets/Label_clear.png') var(--left) -30px , url('/assets/bottle_final.png');
     background-size: 500px auto,  auto 100%;
-    width: 110px;
-    aspect-ratio: 4 / 10.5;
+    width: 120px;
+    aspect-ratio: 4 / 11.5;
     background-blend-mode: normal;
     mask-image: url('/assets/blank_bottle.png');
     mask-size: auto 100%;

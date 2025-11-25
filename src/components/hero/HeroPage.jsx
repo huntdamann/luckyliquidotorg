@@ -25,7 +25,7 @@ return (
 
       {/* Slogan */}
       <motion.div variants={itemVariants} initial="hidden" animate="show" className="text-3xl text-black font-[900] flex flex-col">
-        <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} height={50} src='/assets/slogan4.png' />
+        <Image priority id='slogan' alt="Lucky Liquid Slogan" width={300} height={50} src='/assets/slogan2.png' />
       </motion.div>
 
        {/* Join Button */}
