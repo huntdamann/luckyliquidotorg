@@ -138,7 +138,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             className={styles["product-image-2"]}
           >
             <Image
-              src="/assets/new_flavors.png"
+              src="/assets/flavors.png"
               alt="Coming Soon"
               fill
               style={{ objectFit: "contain" }}
