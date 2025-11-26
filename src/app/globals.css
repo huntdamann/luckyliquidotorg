@@ -332,6 +332,7 @@ body.tilt-lock {
 .nav-item.dimmed {
   opacity: 0;
   scale: 0.9;
+  pointer-events: none;
 }
 
 
