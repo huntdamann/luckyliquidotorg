@@ -2,6 +2,7 @@ import React, {  } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { PreScreen } from "../components/ui/Prescreen";
+import LenisScrollProvider  from '@/lib/lenis'
 
 
 export const metadata: Metadata = {
@@ -31,7 +32,11 @@ export default function RootLayout({
 
       <main>
 
-        {children}
+      <LenisScrollProvider>
+
+          {children}
+
+      </LenisScrollProvider>
       </main>
 
       </body>

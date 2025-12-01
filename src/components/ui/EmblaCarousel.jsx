@@ -6,8 +6,8 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaClover } from "react-icons/fa6";
 
-import '../css/embla.css'
-import '../css/base.css'
+import '../../css/embla.css'
+import '../../css/base.css'
 
 
 

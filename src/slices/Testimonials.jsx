@@ -14,26 +14,11 @@ const Testimonials = React.memo(function Testimonials() {
     <>
 
      {/* Testimonials */}
-     <section className="min-h-screen bg-[#d1a054] flex flex-col items-center justify-center py-16 px-4">
-     <div className="flex flex-col items-center gap-6 mb-8">
-       <Image
-         priority
-         alt="Testimonial Section"
-         width={250}
-         src={Testimonials1}
-         className="rounded-lg object-contain"
-       />
-       <Image
-         priority
-         alt="Lucky Liquid Leprechaun Logo"
-         width={250}
-         src={Testimonials2}
-         className="rounded-lg object-contain"
-       />
-     </div>
+     <section style={{border: "1px red solid"}} className="bg-[#d1a054] flex flex-col min-w-screen items-center justify-center">
+     
 
      {/* Carousel Section */}
-     <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
+     <div className="relative border mx-auto overflow-hidden">
        {/* Left Blur Overlay */}
        <div className="hidden md:block absolute left-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" />
 
