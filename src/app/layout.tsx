@@ -1,5 +1,6 @@
 import React, {  } from "react";
-import type { Metadata } from "next";
+import type { Metadata, } from "next";
+import  Head  from "next/head";
 import "./globals.css";
 import { PreScreen } from "../components/ui/Prescreen";
 import LenisScrollProvider  from '@/lib/lenis'
@@ -21,6 +22,13 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
+      <Head>
+      <link
+          href="https://fonts.googleapis.com/css?family=Fredoka+One"
+          rel="stylesheet"
+        />
+
+      </Head>
   
       <body
         className={` antialiased`}

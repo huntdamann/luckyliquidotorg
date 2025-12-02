@@ -14,7 +14,7 @@ export function PreScreen({}: Props) {
     const [animationComplete, setAnimationComplete] = useState(false)
     const timelineRef = useRef(gsap.timeline())
 
-    useEffect(() => {
+    useGSAP(() => {
       const tl = gsap.timeline();
       tl.to(".bar2", {
         delay: 1,

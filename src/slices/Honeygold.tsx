@@ -1,14 +1,51 @@
 "use client";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import './Honeygold.css'
 
 import Header from "@/slices/Header";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
+import View from '../hooks/View'
 import Testimonials from "./Testimonials";
+import FunFacts from "../fragments/FunFacts"
 import { EmblaOptionsType } from 'embla-carousel'
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import  Lenis  from "lenis";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 
 
 export default function Honeygold() {
+
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.1, // smoothness
+    });
+  
+    // Sync ScrollTrigger on scroll
+    lenis.on("scroll", ScrollTrigger.update);
+  
+    // RAF loop for Lenis
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+  
+    requestAnimationFrame(raf);
+  
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+
+  const triggerRef = useRef<HTMLElement | null>(null)
+
   const windowRef = useRef<HTMLDivElement | null>(null);
   const paperFrontRef = useRef<HTMLDivElement | null>(null);
 
@@ -48,9 +85,42 @@ export default function Honeygold() {
   };
 
   const toggleFollow = () => setFollowTouch((prev) => !prev);
+  const [progress, setProgress] = useState(0);
+
+ 
+  useGSAP(() => {
+
+    const fruits = gsap.utils.toArray<HTMLSpanElement>(".fruits");
+    
+    // Timeline that reveals fruits in order
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: "top top",
+        end: "+=2000",      // scroll distance
+        pin: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          setProgress(self.progress); // progress = 0 → 1
+        }
+      }
+    });
 
 
+    fruits.forEach((fruit, index) => {
+      tl.from(fruit, {
+        opacity: 0,
+        y: 100,
+        duration: 0.5,
+        ease: "power3.out"
+      }, index * 0.3); // each appears later in the timeline
+    });
 
+   
+  }, { scope: triggerRef });
+
+  
+  
   const OPTIONS: EmblaOptionsType = { loop: true }
   const SLIDE_COUNT = 5
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
@@ -70,14 +140,54 @@ export default function Honeygold() {
           </div>
 
           <section
-          style={{border: "1px red solid"}}
-            className="border flex flex-col  justify-center items-center"
+          style={{}}
+            className="text-center"
           >
-            <Image alt="Honey Gold" width={250} height={300} src='/assets/honeygold2.png'/>
-            <Testimonials />
-            {/* Space Divider */}
-            <div className="h-[30lvh] opacity-0">sjsjfsjefjsf</div>
+            <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/>
+            <span>Honey Gold</span>
+            {/* <Testimonials /> */}
 
+            <section className="ingredients-section">
+              <h2>Ingredients</h2>
+              <div className="nutrition">
+                <Image src='/assets/nutrition.png' alt="Nutrition Label for HoneyGold" fill style={{objectFit: 'contain'}}/>
+              </div>
+              
+              <span className="nutrition-text">
+                
+                Filtered water, brewed tea, cane sugar, natural flavors, lemon juice, lime juice, natural sweeteners 
+
+              </span>
+              <span className="nutrition-text">
+                
+              Contains: Caffeine, honey (not suitable for infants under 1 year)
+              </span>
+
+            </section>
+            <section className="fun-facts">
+              <h2>Fun Facts</h2>
+              <FunFacts />
+              <FunFacts />
+              <FunFacts />
+
+              
+            </section>
+           
+            <section ref={triggerRef} className="scroll-container">
+
+              <div className="fruit">
+              <span className="fruits peach">Peach</span>
+                <span className="fruits ">Mango</span>
+                <span className="fruits">Lemon</span>
+                <span className="fruits">Lime</span>
+              </div>
+
+              <View scrollprogress={progress} />
+
+               
+
+            </section>
+            
 
             
           </section>
