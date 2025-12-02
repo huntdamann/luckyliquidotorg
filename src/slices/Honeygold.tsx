@@ -141,7 +141,7 @@ export default function Honeygold() {
 
           <section
           style={{}}
-            className="text-center"
+            className="text-center text-black"
           >
             <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/>
             <span>Honey Gold</span>
