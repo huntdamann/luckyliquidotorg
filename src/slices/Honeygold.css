@@ -1,5 +1,6 @@
 .fruits {
-    font-family: "Fredoka One", sans-serif;
+    font-family: var(--font-fredoka), sans-serif;
+    font-weight: 900;    
     font-size: 2em;
     color: #6FEF6D;
 }
@@ -31,7 +32,8 @@
 
 h2 {
     font-size: 2.5em;
-    font-family: 'Fredoka One', cursive;
+    font-family: var(--font-fredoka), sans-serif;
+    font-weight: 900;
     
 }
 

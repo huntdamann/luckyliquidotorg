@@ -5,11 +5,18 @@ import "./globals.css";
 import { PreScreen } from "../components/ui/Prescreen";
 import LenisScrollProvider  from '@/lib/lenis'
 
+import { Fredoka } from 'next/font/google';
+
 
 export const metadata: Metadata = {
   title: "Lucky Liquid",
   description: "Homemade Tea Beverages & Tea Blends",
 };
+const fredoka = Fredoka({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'], // choose what you need
+  variable: '--font-fredoka', // optional CSS variable
+});
 
 
 
@@ -31,7 +38,7 @@ export default function RootLayout({
       </Head>
   
       <body
-        className={` antialiased`}
+        className={`${fredoka.variable} antialiased`}
       >
         
 
