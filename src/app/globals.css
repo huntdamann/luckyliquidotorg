@@ -101,6 +101,7 @@ body.tilt-lock {
 #container {
   section {
     height: 100lvh;
+    height: 100dvh;
     text-align: center;
     
     &:first-of-type {
@@ -171,6 +172,7 @@ body.tilt-lock {
 }
 #paper-window {
   min-height: 100lvh;
+  min-height: 100dvh;
   width: 100vw;
   position: relative;
   overflow-x: hidden;
@@ -195,6 +197,7 @@ body.tilt-lock {
   transform-origin: center 70%;
   transition: all 0.3s ease;
   min-height: 100lvh;
+  min-height: 100dvh;
 }  
 .close {
   position: fixed;
