@@ -165,10 +165,10 @@ export default function Honeygold() {
             justifyContent: "center",
             alignItems: "center"
             }}>
-              <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/>
+              {/* <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/> */}
 
             </div>
-            {/* <h1>Honey Gold</h1> */}
+            <h1>Honey Gold</h1>
             {/* <Testimonials /> */}
 
             <section className="ingredients-section">

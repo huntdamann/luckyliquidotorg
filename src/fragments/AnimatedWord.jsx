@@ -53,11 +53,7 @@ export default function AnimatedCharacters({ text }) {
                     <motion.span
                     key={i}
                     variants={child}
-                    style={{display: "inline-block",  textShadow: `
-                        -2px -2px 0 black,
-                         2px -2px 0 black,
-                        -2px  2px 0 black,
-                         2px  2px 0 black `
+                    style={{display: "inline-block",
                     }}
                     >
 
