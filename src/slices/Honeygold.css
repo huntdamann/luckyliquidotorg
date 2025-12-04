@@ -27,6 +27,7 @@
     justify-content: center;
     padding: 1rem;
     gap: 1.5rem;
+    margin-top: 3rem;
     
 }
 
@@ -36,6 +37,17 @@ h2 {
     font-weight: 900;
     
 }
+h1 {
+    font-size: 3em;
+    font-family: var(--font-fredoka), sans-serif;
+    font-weight: 900;
+    color: #b27f34;
+    text-shadow:     -2px -2px 0 black,
+                         2px -2px 0 black,
+                        -2px  2px 0 black,
+                         2px  2px 0 black;
+    
+}
 
 .fun-facts {
     display: flex;
@@ -43,6 +55,7 @@ h2 {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    margin-top: 2rem;
 }
 
 .scroll-container {
@@ -50,17 +63,19 @@ h2 {
     position: relative;
 }
 .fruits .peach {
-    bottom: 0;
-    position: fixed;
+    transform: translateY(100px);   /* adjust px */
+
 }
 .fruit {
-   position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 75%;
   height: 75%;
   display: flex;
-  gap: 15rem;
+  flex-wrap: wrap;            /* allows wrapping on small screens */
+  justify-content: center;     /* centers items when they wrap */
+  gap: 3rem;
 
 }

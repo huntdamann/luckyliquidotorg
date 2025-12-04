@@ -22,6 +22,23 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Honeygold() {
 
 
+  const facts = [
+    {
+        number: "1.",
+        info: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi."
+    },
+    {
+        number: "2.",
+        info: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi."
+    },
+    {
+        number: "3.",
+        info: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi."
+    },
+]
+
+
+
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1, // smoothness
@@ -143,8 +160,15 @@ export default function Honeygold() {
           style={{}}
             className="text-center text-black"
           >
-            <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/>
-            <span>Honey Gold</span>
+            <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+            }}>
+              <Image alt="Honey Gold" width={300} height={300} src='/assets/honeygold2.png'/>
+
+            </div>
+            {/* <h1>Honey Gold</h1> */}
             {/* <Testimonials /> */}
 
             <section className="ingredients-section">
@@ -166,9 +190,9 @@ export default function Honeygold() {
             </section>
             <section className="fun-facts">
               <h2>Fun Facts</h2>
-              <FunFacts />
-              <FunFacts />
-              <FunFacts />
+              <FunFacts number={facts[0].number} info={facts[0].info} />
+              <FunFacts number={facts[1].number} info={facts[1].info} />
+              <FunFacts number={facts[2].number} info={facts[2].info} />
 
               
             </section>

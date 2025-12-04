@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-export default function FunFacts() {
+export default function FunFacts( {number, info} ) {
 
 
     const facts = [
@@ -26,11 +26,11 @@ export default function FunFacts() {
         <>
             <div className="info-container">
                 <div className="number">
-                    {facts[0].number}
+                    {number}
                 </div>
                 <div className="circle"></div>
                 <div className="fact-information">
-                    {facts[1].info}
+                    {info}
                 </div>
             </div>
         

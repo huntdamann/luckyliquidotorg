@@ -14,7 +14,7 @@ function RotatingModel({ progress }) {
   });
 
   return (
-    <mesh ref={modelRef} position={[0,0,0]}>
+    <mesh ref={modelRef} scale={0.8} position={[0,0.5,0]}>
       <boxGeometry />
       <meshStandardMaterial color="orange" />
     </mesh>

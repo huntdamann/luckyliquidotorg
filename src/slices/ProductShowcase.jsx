@@ -5,8 +5,8 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import Selector from '../components/Selector';
 import useMediaQuery from "../hooks/useMediaQuery";
+import AnimatedWord from '../fragments/AnimatedWord'
 
-// ✅ Correct CSS module import
 import styles from '../css/ProductShowcase.module.css';
 
 const ProductShowcase = ({ setter, refNo }) => {
@@ -102,12 +102,9 @@ const ProductShowcase = ({ setter, refNo }) => {
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             className={styles["product-title"]}
           >
-            <Image
-              src="/assets/comingsoon.png"
-              alt="Coming Soon"
-              width={500}
-              height={100}
-            />
+            <AnimatedWord text="Coming Soon" />
+            
+
           </motion.div>
         )}
       </AnimatePresence>
@@ -166,6 +163,7 @@ const ProductShowcase = ({ setter, refNo }) => {
           >
             <span>Get Lucky!</span>
           </motion.button>
+          
         )}
 
         {activeProduct === "more" && (
