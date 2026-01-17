@@ -25,11 +25,11 @@ export default function Honeygold() {
   const facts = [
     {
         number: "1.",
-        info: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi."
+        info: "Bold flavor, less sugar than Snapple."
     },
     {
         number: "2.",
-        info: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi."
+        info: "We keep it local. Dallas-sourced honey only."
     },
     {
         number: "3.",
@@ -107,7 +107,11 @@ export default function Honeygold() {
  
   useGSAP(() => {
 
-    const fruits = gsap.utils.toArray<HTMLSpanElement>(".fruits");
+    const peach = gsap.utils.toArray<HTMLSpanElement>(".peach");
+    const mango = gsap.utils.toArray<HTMLSpanElement>(".mango");
+    const lime = gsap.utils.toArray<HTMLSpanElement>(".lime");
+    const lemon = gsap.utils.toArray<HTMLSpanElement>(".lemon");
+
     
     // Timeline that reveals fruits in order
     const tl = gsap.timeline({
@@ -122,16 +126,18 @@ export default function Honeygold() {
         }
       }
     });
-
-
-    fruits.forEach((fruit, index) => {
-      tl.from(fruit, {
-        opacity: 0,
-        y: 100,
-        duration: 0.5,
-        ease: "power3.out"
-      }, index * 0.3); // each appears later in the timeline
-    });
+    tl.from(peach, {
+      opacity: 0,
+    }, 0.1)
+    tl.from(mango, {
+      opacity: 0,
+    }, 0.2)
+    tl.from(lime, {
+      opacity: 0,
+    }, 0.4)
+    tl.from(lemon, {
+      opacity: 0,
+    }, 0.3)
 
    
   }, { scope: triggerRef });
@@ -200,13 +206,14 @@ export default function Honeygold() {
             <section ref={triggerRef} className="scroll-container">
 
               <div className="fruit">
-              <span className="fruits peach">Peach</span>
-                <span className="fruits ">Mango</span>
-                <span className="fruits">Lemon</span>
-                <span className="fruits">Lime</span>
+              <span style={{transform: "translateY(100px)"}} className="fruits peach">Peach</span>
+                <span className="fruits mango ">Mango</span>
+                <span className="fruits lemon">Lemon</span>
+                <span style={{transform: "translateY(100px)"}} className="fruits lime">Lime</span>
               </div>
 
               <View scrollprogress={progress} />
+              <span className="bottom-title">HONEY GOLD</span>
 
                
 

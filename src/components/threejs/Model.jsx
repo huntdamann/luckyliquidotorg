@@ -13,7 +13,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 
-export default function Model(props) {
+export default function Model({progress}) {
   const bottleRef = useRef<Group>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
