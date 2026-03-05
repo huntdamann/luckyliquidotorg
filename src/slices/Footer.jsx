@@ -2,36 +2,45 @@
 
 import React, { useRef, memo } from "react";
 import { motion, useInView } from 'motion/react';
+import { FaTiktok, FaInstagram, FaFacebook } from "react-icons/fa";
+
 
 const Footer = React.memo(function Footer() {
 
 
     const footerRef = useRef(null)
-    const isInView = useInView(footerRef, {amount: 0.5})
-
-    // useEffect (() => {
-    //     if (isInView) {
-    
-    //       gsap.to(buttonRef.current, {opacity: 0})
-    //     }
-    //     else {
-    //       gsap.to(buttonRef.current, {opacity: 1})
-    //     }
-    //   })
-    
 
   return (
-        <motion.footer
+    <motion.footer
         ref={footerRef}
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center text-xs min-h-6 text-[#d1a054] bg-orange-500 py-6"
+        style={{  height: "auto", minHeight: "30vh", backgroundColor: "green", padding: "30px", gap: "10px"}}
+        className="flex flex-col items-center gap-7 p-12"
         >
-        © 2025 — Crafted by 
-        <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
+          <div style={{display: "flex", justifyContent: "space-around", gap: "20px"}} className="flex justify-around">
+            <a href="https://www.instagram.com/waytoolucky_/">
+              <FaInstagram style={{fontSize: "24px"}} className="text-[2rem]" />
+            </a>
+            <a href="https://www.tiktok.com/@luckyteadtx">
+              <FaTiktok style={{fontSize: "24px"}} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61580219229816">
+              <FaFacebook style={{fontSize: "24px"}} />
+            </a>
+           
+          </div>
+
+          <div style={{display: "flex", gap: "15px", fontFamily: "var(--font-fredoka), sans-serif"}} className="flex gap-12">
+            <a className="cursor-pointer" href="/about">About</a>
+            <span>Contact</span>
+            <span>Privacy Policy</span>
+
+
+          </div>
+        © 2025 —
+        {/* <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
         HUMANNDESIGN
-        </a>
+        </a> */}
+        <span>LuckyLiquids. All Rights Reserved</span>
     </motion.footer>
   );
 });

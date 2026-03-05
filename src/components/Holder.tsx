@@ -7,6 +7,8 @@ import Popup from '../slices/Popup'
 import Header from '../slices/Header'
 import Hero from '../slices/Hero'
 import ProductShowcase from '../slices/ProductShowcase'
+import CTA from '../slices/CTA'
+import Footer from '../slices/Footer'
 import Testimonials from '../slices/Testimonials'
 import { motion, AnimatePresence } from 'motion/react'
 
@@ -152,14 +154,16 @@ export default function Holder() {
           className={`fixed top-6 right-6 z-50 transition-opacity duration-500
           }`}
         >
+
+          {/* Hamburger */}
           <div onClick={open ? closeMenu : openMenu} className="hamburger">
             <span></span>
           </div>
         </div>
         <Hero setter={setOpenPopUp} refNo={openPopUp} /> 
-        {/* <Hero setter={setOpenPopUp} refNo={openPopUp} />  */}
-
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
+        <CTA />
+        <Footer />
         <Popup refPop={popupRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
       </div>

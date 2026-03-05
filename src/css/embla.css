@@ -11,10 +11,19 @@
     margin: auto;
     --slide-height: 19rem;
     --slide-spacing: 1rem;
-    --slide-size: 70%;
+    --slide-size: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    margin-top: 20px;
+
+
   }
   .embla__viewport {
     overflow: hidden;
+    width: 50%;
+
   }
   .embla__container {
     display: flex;
@@ -39,6 +48,7 @@
     background: #1b1b1b; /* Add this for contrast */
     color: whitesmoke;
     user-select: none;
+    border: 3px #51B150 solid;
   }
   
   .embla__controls {

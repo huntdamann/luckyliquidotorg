@@ -144,7 +144,17 @@ const ProductShowcase = ({ setter, refNo }) => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+        <div id="button-container">
+          <button className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
+            click
+          </button>
+          <button className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
+              <a href="/ourproducts/honeygold">here</a>
+
+          </button>
+        </div>
+
+      {/* <AnimatePresence>
         {activeProduct === "honeygold" && (
           <motion.button
             key="honeygold-btn"
@@ -164,6 +174,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             <span>Get Lucky!</span>
           </motion.button>
           
+          
         )}
 
         {activeProduct === "more" && (
@@ -179,7 +190,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             <span>Get Lucky!</span>
           </motion.button>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </section>
   );
 };

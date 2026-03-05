@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+import Image from "next/image";
 
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -32,7 +33,7 @@ export default function EmblaCarousel() {
           <div className="embla__slide">
             <div className='embla__slide__number'>
 
-                1
+                <Image width={200} height={200} src='/assets/lucky_tee_1.png'  alt='Lucky T-shirt Design 1'/>
 
             </div>
             
@@ -40,7 +41,8 @@ export default function EmblaCarousel() {
           <div className="embla__slide">
             <div className='embla__slide__number'>
 
-                2
+             <Image width={150} height={150} src='/assets/lucky_tee_2.png'  alt='Lucky T-shirt Design 2'/>
+
 
             </div>
             
@@ -48,7 +50,8 @@ export default function EmblaCarousel() {
           <div className="embla__slide">
             <div className='embla__slide__number'>
 
-                3
+            <Image width={200} height={200} src='/assets/lucky-logo-demo.png'  alt='Lucky T-shirt Design 2'/>
+
 
             </div>
             
