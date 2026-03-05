@@ -13,7 +13,7 @@ const Footer = React.memo(function Footer() {
   return (
     <motion.footer
         ref={footerRef}
-        style={{  height: "auto", minHeight: "30vh", backgroundColor: "green", padding: "30px", gap: "10px"}}
+        style={{ color: "black",  height: "auto", minHeight: "30vh", backgroundColor: "green", padding: "30px", gap: "10px"}}
         className="flex flex-col items-center gap-7 p-12"
         >
           <div style={{display: "flex", justifyContent: "space-around", gap: "20px"}} className="flex justify-around">

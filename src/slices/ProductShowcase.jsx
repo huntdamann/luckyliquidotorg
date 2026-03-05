@@ -146,10 +146,10 @@ const ProductShowcase = ({ setter, refNo }) => {
 
         <div id="button-container">
           <button className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
-            click
+            Get Lucky!
           </button>
           <button className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
-              <a href="/ourproducts/honeygold">here</a>
+              <a href="/ourproducts/honeygold">More Info</a>
 
           </button>
         </div>
