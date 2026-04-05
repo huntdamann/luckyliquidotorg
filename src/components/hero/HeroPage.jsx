@@ -5,6 +5,7 @@ import { motion, AnimatePresence }  from 'motion/react'
 import Image from 'next/image'
 import '../../css/Hero.module.css'
 import InteractiveGradient from '../threejs/webgl/InteractiveGradient'
+import GradientWithGUI from '../threejs/webgl/InteractiveGradient'
 
 
 export default function HeroPage ({contentRef ,gradient ,open, setOpen}) {
@@ -25,19 +26,7 @@ return (
     >
       <div ref={gradient} className='relative'>
 
-      <InteractiveGradient
-              brushSize={50.0}
-              brushStrength={0.5}
-              distortionAmount={2.5}
-              fluidDecay={0.98}
-              trailLength={0.8}
-              stopDecay={0.85}
-              color1="#009A44"  // mint / light cyan
-              color2="#d1a054"  // deep purple
-              color3="#d1a054"  // electric blue
-              color4="#d1a054"  // sky blue
-              colorIntensity={1.0}
-              softness={8.0}
+      <GradientWithGUI
             />
 
       </div>

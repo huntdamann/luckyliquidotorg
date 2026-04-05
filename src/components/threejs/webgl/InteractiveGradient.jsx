@@ -1,8 +1,64 @@
 "use client";
 
-import { useEffect, useRef, RefObject } from "react";
+import { useEffect, useRef, RefObject, useState } from "react";
 import * as THREE from "three";
 import { vertexShader, fluidShader, displayShader } from "./shaders.js";
+import GUI from "lil-gui";
+
+const GradientWithGUI = () => {
+  const [params, setParams] = useState({
+    brushSize: 25.0,
+    brushStrength: 0.5,
+    distortionAmount: 2.5,
+    fluidDecay: 0.98,
+    trailLength: 0.8,
+    stopDecay: 0.85,
+    color1: "#b8fff7",
+    color2: "#6e3466",
+    color3: "#0133ff",
+    color4: "#66d1fe",
+    colorIntensity: 1.0,
+    softness: 1.0,
+  });
+
+  const guiRef = useRef(null);
+
+  useEffect(() => {
+    const gui = new GUI();
+    guiRef.current = gui;
+
+    // Use a proxy object so lil-gui mutations trigger React state updates
+    const proxy = { ...params };
+
+    const update = (key) => (value) => {
+      setParams((prev) => ({ ...prev, [key]: value }));
+    };
+
+    const fluidFolder = gui.addFolder("Fluid");
+    fluidFolder.add(proxy, "brushSize", 1, 100).onChange(update("brushSize"));
+    fluidFolder.add(proxy, "brushStrength", 0, 10).onChange(update("brushStrength"));
+    fluidFolder.add(proxy, "fluidDecay", 0.9, 2).onChange(update("fluidDecay"));
+    fluidFolder.add(proxy, "trailLength", 0, 5).onChange(update("trailLength"));
+    fluidFolder.add(proxy, "stopDecay", 0.5, 2).onChange(update("stopDecay"));
+
+    const displayFolder = gui.addFolder("Display");
+    displayFolder.add(proxy, "distortionAmount", 0, 10).onChange(update("distortionAmount"));
+    displayFolder.add(proxy, "colorIntensity", 0, 10).onChange(update("colorIntensity"));
+    displayFolder.add(proxy, "softness", 0, 20).onChange(update("softness"));
+
+    const colorFolder = gui.addFolder("Colors");
+    colorFolder.addColor(proxy, "color1").onChange(update("color1"));
+    colorFolder.addColor(proxy, "color2").onChange(update("color2"));
+    colorFolder.addColor(proxy, "color3").onChange(update("color3"));
+    colorFolder.addColor(proxy, "color4").onChange(update("color4"));
+
+    return () => {
+      gui.destroy();
+    };
+  }, []); // Only run once — onChange handlers close over setParams
+
+  return <InteractiveGradient {...params} />;
+};
 
 const InteractiveGradient = ({
   brushSize = 25.0,
@@ -23,6 +79,10 @@ const InteractiveGradient = ({
   const rendererRef = useRef(null);
   const animationRef = useRef(null);
   const sceneDataRef = useRef(null);
+
+
+
+
 
   const hexToRgb = (hex) => {
     const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -247,4 +307,5 @@ const InteractiveGradient = ({
   return <div ref={canvasRef} className="gradient-canvas" />;
 };
 
-export default InteractiveGradient;
+// export default InteractiveGradient;
+export default GradientWithGUI;
