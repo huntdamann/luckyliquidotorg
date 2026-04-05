@@ -7,7 +7,7 @@ import { Float, Environment } from '@react-three/drei'
 import { Model } from '@/components/threejs/Bottle'
 
 
-const sceneMap = {
+const sceneMap:  Record<string, React.ReactElement> = {
     bottle: <Model progress={300} />,
     
 }
