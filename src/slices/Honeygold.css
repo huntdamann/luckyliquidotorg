@@ -60,9 +60,15 @@ h1 {
     height: 100lvh;
     position: relative;
 }
-.fruits .peach {
-    transform: translateY(500px);   /* adjust px */
-
+#mango {
+ 
+    transform: translateY(100px);
+}
+#peach, .lime {
+ transform: translateY(40px);
+}
+#lemon {
+    transform: unset;
 }
 .fruit {
   position: absolute;
@@ -79,7 +85,7 @@ h1 {
 }
 .bottom-title {
     position: absolute;
-    bottom: 3rem;
+    bottom: 1rem;
     left: 50%;
     font-family: var(--font-fredoka), sans-serif;
     font-size: 3em;
@@ -89,4 +95,15 @@ h1 {
     -webkit-text-stroke: 2px black;
 
 
+}
+
+@media (min-width: 320px) {
+
+    #lemon, #lime {
+        transform: translateY(40px);
+       }
+    #peach, #mango {
+        transform: unset;
+    }
+    
 }

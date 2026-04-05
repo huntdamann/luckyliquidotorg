@@ -13,7 +13,7 @@ const Footer = React.memo(function Footer() {
   return (
     <motion.footer
         ref={footerRef}
-        style={{ color: "black",  height: "auto", minHeight: "30vh", backgroundColor: "green", padding: "30px", gap: "10px"}}
+        style={{ color: "white",  height: "auto", minHeight: "30vh", backgroundColor: "green", padding: "30px", gap: "10px"}}
         className="flex flex-col items-center gap-7 p-12"
         >
           <div style={{display: "flex", justifyContent: "space-around", gap: "20px"}} className="flex justify-around">
@@ -36,7 +36,7 @@ const Footer = React.memo(function Footer() {
 
 
           </div>
-        © 2025 —
+        © 2026 —
         {/* <a href="https://humanndesign.com" target="_blank" className="font-semibold hover:underline ml-1">
         HUMANNDESIGN
         </a> */}

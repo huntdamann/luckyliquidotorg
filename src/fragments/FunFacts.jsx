@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from 'next/image'
 
 
 export default function FunFacts( {number, info} ) {
@@ -25,10 +25,8 @@ export default function FunFacts( {number, info} ) {
 
         <>
             <div className="info-container">
-                <div className="number">
-                    {number}
-                </div>
-                <div className="circle"></div>
+               <Image src='/assets/clover.png' width={30} height={20} alt="Lucky Liquid Alternative Logo" />
+
                 <div className="fact-information">
                     {info}
                 </div>

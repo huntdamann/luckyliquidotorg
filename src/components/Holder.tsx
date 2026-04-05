@@ -8,6 +8,8 @@ import Header from '../slices/Header'
 import Hero from '../slices/Hero'
 import ProductShowcase from '../slices/ProductShowcase'
 import CTA from '../slices/CTA'
+import  MarketMarquee  from '../slices/MarketMarquee'
+import SocialCTA from '../slices/SocialCTA'
 import Footer from '../slices/Footer'
 import Testimonials from '../slices/Testimonials'
 import { motion, AnimatePresence } from 'motion/react'
@@ -102,28 +104,10 @@ export default function Holder() {
 
   }
 
-  const openHome = () => {
-    setHomeTouch(true);
-  }
-  const closeHome = () => {
-    setHomeTouch(false);
-  }
-  const openAbout = () => {
-    setAboutTouch(true);
-  }
-  const closeAbout = () => {
-    setAboutTouch(false);
-  }
+  
   
 
-  const toggleFollow = () => {
-    if (followUsTouch === true) {
-      setFollowTouch(false)
-    }
-    else {
-      setFollowTouch(true)
-    }
-  }
+  
  
   
 
@@ -159,13 +143,45 @@ export default function Holder() {
           <div onClick={open ? closeMenu : openMenu} className="hamburger">
             <span></span>
           </div>
+
         </div>
         <Hero setter={setOpenPopUp} refNo={openPopUp} /> 
         <ProductShowcase setter={setOpenPopUp} refNo={openPopUp} />
+        <SocialCTA />
         <CTA />
-        <Footer />
+        <section className="text-black flex flex-col justify-evenly text-center h-[70dvh] p-2">
+        <svg viewBox="0 0 600 24" className="w-full mb-6" height="24">
+            <path
+              d="M0 12 C50 4,100 20,150 12 S250 4,300 12 S400 20,450 12 S550 4,600 12"
+              stroke="#1D9E75" strokeWidth="2.5" strokeLinecap="round" fill="none"
+            />
+          </svg>
+          <div className=" mx-80">
+            <h2> Sip the TEA in real life!</h2>
+            <span className="font-display  w-[50px] ">Come taste your soon to be favorite tea in person. Find us at a Dallas markets near you! We'll be the ones with the good vibes and better brews.</span>
+            
+          </div>
+          
+          <MarketMarquee />
+          <p className="text-sm text-green-800 font-semibold">
+    <span className="inline-block animate-wiggle">📍</span>{" "}
+    Follow us on Instagram for updated dates & spots
+  </p>
+        </section>
         <Popup refPop={popupRef} refNo={openPopUp} setter={setOpenPopUp}  /> 
   
+        {/* <div className="fixed flex gap-4 flex-col border w-[400px] p-3 rounded-md text-black bottom-3 right-6">
+              <span className="cookie-heading">Cookie Notice</span>
+              <p className="text-black w-[auto]   font-semibold">This website uses cookies to ensure a smooth user experience and to analyze performance and traffic on our website. 
+                We also share information about your use of our site with our social media and analytics partners.
+                <span className="underline">Privacy Policy</span>
+              </p>
+              <div className="flex gap-3">
+                <button className="bg-green border-green-500 text-center border-2 rounded-md w-24">Accept</button>
+                <button className="bg-green border-green-500 text-center border-2 rounded-md w-24">Decline</button>
+
+              </div>
+        </div> */}
       </div>
       
     </div>

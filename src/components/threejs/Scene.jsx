@@ -42,7 +42,7 @@ function RotatingModel({ progress }) {
 
 
           
-        </mesh>
+      </mesh>
   );
 }
 
@@ -54,7 +54,7 @@ export default function Scene({ progress }) {
     style={{ }}
     
   >
-   <Perf position="top-right" />
+   {/* <Perf position="top-right" /> */}
 
     {/* <mesh position={[0, 0, -2]}>
       <planeGeometry args={[10, 10]} />
@@ -65,10 +65,38 @@ export default function Scene({ progress }) {
 
     <ambientLight intensity={0.823} />
     
-    <AccumulativeShadows temporal frames={100} alphaTest={0.9} color="#3ead5d" colorBlend={1} opacity={0.8} scale={20}>
+    {/* <AccumulativeShadows temporal frames={100} alphaTest={0.9} color="#3ead5d" colorBlend={1} opacity={0.8} scale={20}>
         <RandomizedLight radius={10} ambient={0.5} intensity={Math.PI} position={[2.5, 8, -2.5]} bias={0.001} />
-    </AccumulativeShadows>
-    <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/dancing_hall_1k.hdr" backgroundBlurriness={1} />
+    </AccumulativeShadows> */}
+    {/* <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/dancing_hall_1k.hdr" backgroundBlurriness={1} /> */}
+
+
+
+  </Canvas>
+  )
+}
+const Product = () => {
+  
+  return (
+    <Canvas
+    camera={{ position: [0, 0, 5], fov: 45 }}
+    style={{ }}
+    
+  >
+   {/* <Perf position="top-right" /> */}
+
+    <mesh position={[0, 0, -2]}>
+      <planeGeometry args={[10, 10]} />
+      <meshStandardMaterial color="gold" />
+
+    </mesh>
+
+    <ambientLight intensity={0.823} />
+    
+    {/* <AccumulativeShadows temporal frames={100} alphaTest={0.9} color="#3ead5d" colorBlend={1} opacity={0.8} scale={20}>
+        <RandomizedLight radius={10} ambient={0.5} intensity={Math.PI} position={[2.5, 8, -2.5]} bias={0.001} />
+    </AccumulativeShadows> */}
+    {/* <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/dancing_hall_1k.hdr" backgroundBlurriness={1} /> */}
 
 
 

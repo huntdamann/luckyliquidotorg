@@ -51,11 +51,11 @@
   }
   .main {
     background: #826437;
-    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+    background: linear-gradient(0deg, rgb(64, 130, 55) 0%, rgba(209, 160, 84, 1) 98%);
   }
   .more {
     background: #826437;
-    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
+    background: linear-gradient(0deg, rgb(63, 130, 55) 0%, rgba(209, 160, 84, 1) 98%);
   }
   
   
@@ -102,14 +102,7 @@
     
   }
 
-  .main {
-    background: #826437;
-    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
-  }
-  .more {
-    background: #826437;
-    background: linear-gradient(0deg, rgba(130, 100, 55, 1) 0%, rgba(209, 160, 84, 1) 98%);
-  }
+  
 
   .slider-selection {
     height: 50px;

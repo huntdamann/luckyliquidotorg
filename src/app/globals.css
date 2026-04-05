@@ -13,6 +13,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,35 +90,44 @@ h2 {
   font-weight: 800;
   font-size: 36px;
 }
-
+#button-handle:hover {
+    background-color: #83cc81;
+} 
 #button-handle {
   
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    rgba(21, 14, 14, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 #button-container {
   position: absolute;
   bottom: 3rem;  
   display: flex;
   gap: 30px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
 }
+
 #button-handle-2 {
   
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   bottom: 1rem;
 }
+
+.cookie-heading {
+  font-family: "Fredoka One", cursive;
+  font-size: 1.2em;
+}
 /* //actual content */
 #container {
+  position: relative;
+  height: 150svh;
+  height: 150dvh;
   section {
-    height: 100svh;
-    height: 100dvh;
+    height: 150svh;
+    height: 150dvh;
     text-align: center;
     
     &:first-of-type {
-      padding-top: 10vh;
       h1 {
         font-size: 45px;
       }

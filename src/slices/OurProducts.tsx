@@ -6,9 +6,7 @@ import Header from "@/slices/Header";
 import { motion, AnimatePresence } from 'motion/react'
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Testimonials from "./Testimonials";
-import { EmblaOptionsType } from 'embla-carousel'
-
+import Viewer from "@/providers/Viewer";
 
 export default function OurProducts() {
   const windowRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +14,9 @@ export default function OurProducts() {
 
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-  const [userClick, setUserClick] = useState(1)
+  const [userClick, setUserClick] = useState(false)
+  const [teeClick, setTeeClick] = useState(false)
+
   const [followUsTouch, setFollowTouch] = useState(false);
   const offset = 1800;
 
@@ -30,8 +30,8 @@ export default function OurProducts() {
   };
 
   function handleUser() {
-    console.log('User Clicked ')
-    setUserClick(2);
+    setUserClick(true)
+    
   }
 
   useEffect(() => {
@@ -70,6 +70,21 @@ export default function OurProducts() {
       ease: "power3.out"
     }
   }
+  const leftAnimationState = {
+    
+    hidden: {
+      opacity: 0,
+      ease: "power3.out",
+      pointerEvents: "none",
+      x: 300,
+      duration: 1,
+
+    },
+    visible: {
+      opacity: 1,
+      ease: "power3.out"
+    }
+  }
 
   const toggleFollow = () => setFollowTouch((prev) => !prev);
 
@@ -78,9 +93,7 @@ export default function OurProducts() {
 
   return (
     <main>
-      <Header
-        closeMenu={closeMenu}
-      />
+     
 
       <div id="paper-window" ref={windowRef} className={open ? "tilt" : ""}>
         <div ref={paperFrontRef} id="paper-front">
@@ -91,20 +104,92 @@ export default function OurProducts() {
           </div>
 
           <section
-          style={{border: "1px red solid"}}
             className="our-products"
           >
-            <motion.div variants={rightAnimationState} initial="visible" animate={userClick === 2 ? 'hidden' : 'visible'} onClick={handleUser} className="drinks">
-              <div className="picture-container">
-                <Image alt="fjf" src='/assets/blank_bottle.png' width={100} height={100} />
-                <div className="drink-title">Drinks</div>
 
-                {/* <Image alt="Drinks" src='/assets/blank_bottle.png' fill/> */}
-              </div>
-            </motion.div>
-            <div className="other">
-              Other
+            <div>
+            <h1 className="product-heading">
+              Our Products
+            </h1>
+            <span></span>
             </div>
+            
+            <div className="flex gap-10">
+
+              <div className="relative">
+
+
+                  <motion.div  variants={rightAnimationState} initial="visible" animate={userClick === true ? 'hidden' : 'visible'} onClick={handleUser} className="drinks">
+                    <div className="picture-container">
+                      <Viewer modelSelect="bottle" />
+                      {/* <Image alt="fjf" src='/assets/blank_bottle.png' width={100} height={100} /> */}
+                      <div className="drink-title">Drinks</div>
+
+                      {/* <Image alt="Drinks" src='/assets/blank_bottle.png' fill/> */}
+                    </div>
+                  </motion.div>
+                  <AnimatePresence>
+
+                    {
+                      userClick && (
+                        <motion.ul initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.4}} className="drink-dropdown">
+                          <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.6}} className="product-container">
+                            Honey Gold
+                          </motion.li>
+                          {/* <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.7}} className="product-container">
+                            More Soon
+                          </motion.li> */}
+                          <motion.li onClick={() => setUserClick(!userClick)} className="text-black">
+                            Back
+                          </motion.li>
+                        
+                        </motion.ul>
+                      )
+                    }
+                  </AnimatePresence>
+                  
+
+              </div>
+              <div className="relative">
+                  <motion.div variants={leftAnimationState} initial="visible" onClick={() => setTeeClick(!teeClick)} animate={teeClick === true ? 'hidden' : 'visible'} className="tees">
+                  <div className="picture-container">
+                      <Viewer modelSelect="" />
+                      {/* <Image alt="fjf" src='/assets/blank_bottle.png' width={100} height={100} /> */}
+                      <div className="drink-title">Tees</div>
+
+                      {/* <Image alt="Drinks" src='/assets/blank_bottle.png' fill/> */}
+                    </div>
+                  </motion.div>
+                  <AnimatePresence>
+
+{
+                    teeClick && (
+                      <motion.ul initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.4}} className="tee-dropdown">
+                        <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.4}} className="product-container">
+                          Tee 1
+                        </motion.li>
+                        <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.6}} className="product-container">
+                          Tee 2
+                        </motion.li>
+                        <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.8}} className="product-container">
+                          Tea 3
+                        </motion.li>
+                        {/* <motion.li initial={{opacity: 0, y: -20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.7}} className="product-container">
+                          More Soon
+                        </motion.li> */}
+                        <motion.li onClick={() => setTeeClick(!teeClick)} className="text-black">
+                          Back
+                        </motion.li>
+                      
+                      </motion.ul>
+                    )
+                  }
+                  </AnimatePresence>
+              </div>
+              
+             
+            </div>
+           
 
             
           </section>

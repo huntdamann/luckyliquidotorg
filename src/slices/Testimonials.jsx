@@ -16,7 +16,7 @@ const Testimonials = React.memo(function Testimonials() {
      
 
      {/* Carousel Section */}
-     <div className="relative border mx-auto overflow-hidden">
+     <div className="relative  mx-auto overflow-hidden">
        {/* Left Blur Overlay */}
        {/* <div className="hidden md:block absolute left-0 top-0 h-full w-20 pointer-events-none z-10 bg-white/10 backdrop-blur-sm" /> */}
 

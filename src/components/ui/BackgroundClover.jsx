@@ -3,14 +3,14 @@ import '../../css/BackgroundClover.css'
 import HeroPage  from '../hero/HeroPage'
 
 
-export default function BackgroundClover({refNo, setter}) {
+export default function BackgroundClover({content, gradient,refNo, setter}) {
 
   return (
     <div className="ocean">
        
 
 
-       <HeroPage open={refNo} setOpen={setter} />
+       <HeroPage contentRef={content} gradient={gradient} open={refNo} setOpen={setter} />
 
         <div className="bubble bubble--1">
             <Image

@@ -13,6 +13,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import  Lenis  from "lenis";
+import Footer from "./Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +40,7 @@ export default function Honeygold() {
 
 
 
+// Lenis
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1, // smoothness
@@ -107,10 +109,10 @@ export default function Honeygold() {
  
   useGSAP(() => {
 
-    const peach = gsap.utils.toArray<HTMLSpanElement>(".peach");
-    const mango = gsap.utils.toArray<HTMLSpanElement>(".mango");
-    const lime = gsap.utils.toArray<HTMLSpanElement>(".lime");
-    const lemon = gsap.utils.toArray<HTMLSpanElement>(".lemon");
+    const peach = gsap.utils.toArray<HTMLSpanElement>("#peach");
+    const mango = gsap.utils.toArray<HTMLSpanElement>("#mango");
+    const lime = gsap.utils.toArray<HTMLSpanElement>("#lime");
+    const lemon = gsap.utils.toArray<HTMLSpanElement>("#lemon");
 
     
     // Timeline that reveals fruits in order
@@ -149,10 +151,12 @@ export default function Honeygold() {
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
-    <main>
-      <Header
-        closeMenu={closeMenu}
-      />
+    <>
+    
+    {/* <Header
+    closeMenu={closeMenu}
+  />
+      */}
 
       <div id="paper-window" ref={windowRef} className={open ? "tilt" : ""}>
         <div ref={paperFrontRef} id="paper-front">
@@ -194,22 +198,22 @@ export default function Honeygold() {
               </span>
 
             </section>
-            <section className="fun-facts">
+            {/* <section className="fun-facts">
               <h2>Fun Facts</h2>
               <FunFacts number={facts[0].number} info={facts[0].info} />
               <FunFacts number={facts[1].number} info={facts[1].info} />
               <FunFacts number={facts[2].number} info={facts[2].info} />
 
               
-            </section>
+            </section> */}
            
             <section ref={triggerRef} className="scroll-container">
 
               <div className="fruit">
-              <span style={{transform: "translateY(100px)"}} className="fruits peach">Peach</span>
-                <span className="fruits mango ">Mango</span>
-                <span className="fruits lemon">Lemon</span>
-                <span style={{transform: "translateY(100px)"}} className="fruits lime">Lime</span>
+              <span id="peach"  className="fruits">Peach</span>
+                <span id="mango" className="fruits">Mango</span>
+                <span id="lemon" className="fruits">Lemon</span>
+                <span id="lime" className="fruits">Lime</span>
               </div>
 
               <View scrollprogress={progress} />
@@ -218,12 +222,16 @@ export default function Honeygold() {
                
 
             </section>
+            {/* <Footer /> */}
+
             
 
             
           </section>
         </div>
       </div>
-    </main>
+
+    </>
+
   );
 }

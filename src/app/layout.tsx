@@ -3,6 +3,8 @@ import type { Metadata, } from "next";
 import  Head  from "next/head";
 import "./globals.css";
 import { PreScreen } from "../components/ui/Prescreen";
+import Footer from '../slices/Footer'
+import Header from "@/slices/Header";
 import LenisScrollProvider  from '@/lib/lenis'
 
 import { Fredoka } from 'next/font/google';
@@ -45,14 +47,15 @@ export default function RootLayout({
     
         <PreScreen />
 
-      <main>
-
       <LenisScrollProvider>
 
           {children}
+           <Footer />
+
 
       </LenisScrollProvider>
-      </main>
+      {/* <Footer /> */}
+
 
       </body>
      

@@ -1,0 +1,86 @@
+/* social-cta.css */
+.social-cta {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    color: black;
+    min-height: 60dvh;
+    background-color: rgb(64, 130, 55);
+    flex-direction: column;
+    display: flex;
+    gap: 50px;
+    padding-top: 70px;
+  }
+  
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+  
+  .headline {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  
+  .subtext {
+    color: #666;
+    font-size: 15px;
+    max-width: 400px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+  
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border: 1.5px solid #9eef94;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    min-width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  }
+  
+  .social-btn:hover {
+    border-color: var(--hover-color);
+    color: var(--hover-color);
+    transform: translateY(-2px);
+  }
+  
+  .social-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  
+  .social-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .social-name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #d1a054;
+  }
+  
+  .social-handle {
+    font-size: 14px;
+    color: black;
+    font-weight: 800;
+  }
