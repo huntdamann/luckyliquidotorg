@@ -5,10 +5,11 @@ import { useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Float, Environment } from '@react-three/drei'
 import { Model } from '@/components/threejs/Bottle'
-
+import { ShirtOne } from '@/components/threejs/ShirtOne'
 
 const sceneMap:  Record<string, React.ReactElement> = {
     bottle: <Model progress={300} />,
+    shirtone: <ShirtOne />,
     
 }
 
@@ -31,10 +32,10 @@ export default function Viewer({ modelSelect }: { modelSelect: string }) {
             <Canvas camera={{ position: [0, 0, 5], fov: 20 }}>
                 <ambientLight intensity={1.8} />
                 <pointLight intensity={5} position={[0, 6, 0]} />
-                <Float>
+                {/* <Float> */}
                     <Scene3D modelSelect={modelSelect} />
-                </Float>
-                {/* <Environment preset="city" /> */}
+                {/* </Float> */}
+                <Environment preset="city" background={false} />
             </Canvas>
         </div>
     )

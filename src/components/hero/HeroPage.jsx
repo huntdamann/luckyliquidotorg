@@ -25,9 +25,9 @@ return (
       style={{ position: "relative"}}
     >
       <div ref={gradient} className='relative'>
-
+{/* 
       <GradientWithGUI
-            />
+            /> */}
 
       </div>
      

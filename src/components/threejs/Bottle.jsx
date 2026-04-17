@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
+import { Float, Environment } from '@react-three/drei'
+
 export function Model({progress}) {
     const { nodes, materials } = useGLTF('/lowpoly1.glb')
     const modelRef = useRef();
@@ -11,7 +13,8 @@ export function Model({progress}) {
       });
 
     return (
-      <group  scale={[0.5, 0.5, 0.5]} position={[0.3, -.5, 0]} dispose={null}>
+      <Float>
+            <group  scale={[0.5, 0.5, 0.5]} position={[0.3, -0.9, 0]} dispose={null}>
         <group ref={modelRef} position={[-0.632, 2.209, -0.178]} scale={0.473}>
           <mesh
             castShadow
@@ -33,6 +36,8 @@ export function Model({progress}) {
           />
         </group>
       </group>
+      </Float>
+    
     )
   }
   

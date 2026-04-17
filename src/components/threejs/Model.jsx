@@ -13,36 +13,14 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 
-export default function Model({progress}) {
+export default function Model() {
   const bottleRef = useRef<Group>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
-  useGSAP(
-    () => {
-      if (!bottleRef.current) return;
-
-
-      console.log("This runs")
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".scroll-container",
-          endTrigger: ".scroll-container",
-          pin: true,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
-
-
-    },
-    { dependencies: [isDesktop] },
-  );
-//   model.rotation.z = isMobile ? 0 : THREE.MathUtils.degToRad(-25);
 
   const { nodes, materials } = useGLTF('/assets/bottle.glb')
   return (
-    <group  {...props} position={[7,-5,7]}  dispose={null}>
+    <group  position={[7,-7,7]}  dispose={null}>
       <mesh
         castShadow
         receiveShadow

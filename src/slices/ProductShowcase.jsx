@@ -5,14 +5,19 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import Selector from '../components/Selector';
 import useMediaQuery from "../hooks/useMediaQuery";
-import AnimatedWord from '../fragments/AnimatedWord'
-
-import styles from '../css/ProductShowcase.module.css';
+import AnimatedWord from '../fragments/AnimatedWord';
+import Viewer from "@/providers/Viewer";
+import '../css/ProductShowcase.css';
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const ProductShowcase = ({ setter, refNo }) => {
   const [activeProduct, setActiveProduct] = useState("honeygold");
-  const options = ["Honey Gold", "More"]
+  const options = ["Honey Gold", "More"];
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
   const moreButtonRef = useRef(null);
   const honeyButtonRef = useRef(null);
   const controlsRef = useRef(null);
@@ -50,10 +55,10 @@ const ProductShowcase = ({ setter, refNo }) => {
   }, []);
 
   useEffect(() => {
-    const product = document.querySelector(`.${styles.banner} .${styles.product}`);
+    const product = document.querySelector(".banner .product");
     if (!product) return;
 
-    const soda = product.querySelector(`.${styles.soda}`);
+    const soda = product.querySelector(".soda");
 
     const animate = () => {
       soda.style.setProperty('--left', '-1195px');
@@ -68,13 +73,68 @@ const ProductShowcase = ({ setter, refNo }) => {
 
   return (
     <section
-      className={`${styles["product-showcase-container"]} ${
-        activeProduct === "honeygold" ? styles.main : styles.more
+      className={`product-showcase-container ${
+        activeProduct === "honeygold" ? "main" : "more"
       }`}
     >
       <Selector options={options} activeP={activeProduct} setter={setActiveProduct} />
-
+      <div className="middle-section">
       <AnimatePresence mode="wait">
+      {activeProduct === "honeygold" && (
+        <div className="product-selections">
+          <button className="product">
+             <span className="product-g">Honey Gold</span>
+
+          </button>
+         
+         
+        </div>
+      )}
+       {activeProduct === "more" && (
+           <div className="product-selections">
+           <motion.button initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="product">
+              <span className="product-t">Tee 1</span>
+            </motion.button>
+            <motion.button initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="product">
+              <span className="product-t">Tee 2</span>
+            </motion.button>
+            <motion.button initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="product">
+              <span className="product-t">Tee 3</span>
+            </motion.button>
+          
+          
+         </div>
+        )}
+      </AnimatePresence>
+        <div className="three-model">
+          <div className="model">
+            <Viewer modelSelect={activeProduct === "honeygold" ? "bottle" : "shirtone"}/>
+
+          </div>
+         
+          
+        </div>
+        <div className="fact-container">
+      <div className="fun-fact" onClick={toggleDropdown} style={{ cursor: "pointer" }}>
+        <FaPlus />
+      </div>
+        <div className={`fact ${isDropdownVisible ? "visible" : "hidden"}`}>
+        <h3>Fun Fact</h3>
+        <p>Dylan T. is one of the coldest P's out in the game in 2026</p>
+      </div>
+      
+    </div>
+      </div>
+      <div className="bottom-section">
+
+        <button className="cta-buy">
+          BUY
+        </button>
+        <button className="cta-info">
+          INFO
+        </button>
+      </div>
+      {/* <AnimatePresence mode="wait">
         {activeProduct === "honeygold" && (
           <motion.div
             key="honeygold"
@@ -82,7 +142,7 @@ const ProductShowcase = ({ setter, refNo }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className={styles["product-title"]}
+            className="product-title"
           >
             <Image
               src="/assets/honeygold2.png"
@@ -100,95 +160,10 @@ const ProductShowcase = ({ setter, refNo }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className={styles["product-title"]}
+            className="product-title"
           >
             <AnimatedWord text="Coming Soon" />
-            
-
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence mode="wait">
-        {activeProduct === "honeygold" && (
-          <motion.div
-            key="honeygold-img"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: [0.9, 0, 0.2, 1] }}
-            className={styles.banner}
-          >
-            <div className={styles.product}>
-              <div className={styles.soda}></div>
-            </div>
-          </motion.div>
-        )}
-
-        {activeProduct === "more" && (
-          <motion.div
-            key="more-img"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className={styles["product-image-2"]}
-          >
-            <Image
-              src="/assets/flavors.png"
-              alt="Coming Soon"
-              fill
-              style={{ objectFit: "contain" }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-        <div id="button-container">
-          <button className="text-white p-2 bg-[#51B150] ] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
-            Get Lucky!
-          </button>
-          <button className="text-white p-2  bg-[#51B150]  active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24" id="button-handle">
-              <a href="/ourproducts/honeygold">More Info</a>
-
-          </button>
-        </div>
-
-      {/* <AnimatePresence>
-        {activeProduct === "honeygold" && (
-          <motion.button
-            key="honeygold-btn"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            onClick={() =>
-              window.open(
-                "https://docs.google.com/forms/d/e/1FAIpQLSce9Aq-Lf26s4FfMOZkhPGPz8kzZ3gkFf8aS5yvZk1jYTdkTA/viewform?usp=header",
-                "_blank"
-              )
-            }
-            id="button-handle"
-            className="text-white p-2 border-2 border-gray-400 bg-[#51B150] active:bg-green-500 active:scale-95 focus:bg-green-900 rounded-md min-w-24"
-          >
-            <span>Get Lucky!</span>
-          </motion.button>
-          
-          
-        )}
-
-        {activeProduct === "more" && (
-          <motion.button
-            key="more-btn"
-            exit={{ opacity: 0, y: 20 }}
-            onClick={() => setter(!refNo)}
-            id="button-handle"
-            className={`text-white p-2 border-2 border-gray-400 ${
-              refNo ? "opacity-0" : "opacity-100"
-            } bg-[#51B150] active:bg-green-500 active:scale-95 rounded-md min-w-24`}
-          >
-            <span>Get Lucky!</span>
-          </motion.button>
         )}
       </AnimatePresence> */}
     </section>
