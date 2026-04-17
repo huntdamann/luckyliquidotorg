@@ -30,7 +30,7 @@ export default function Viewer({ modelSelect }: { modelSelect: string }) {
     return (
         <div style={{ width: '100%', height: '100%' }}>
             <Canvas camera={{ position: [0, 0, 5], fov: 20 }}>
-                <ambientLight intensity={1.8} />
+                <ambientLight intensity={4.8} />
                 <pointLight intensity={5} position={[0, 6, 0]} />
                 {/* <Float> */}
                     <Scene3D modelSelect={modelSelect} />

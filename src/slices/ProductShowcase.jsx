@@ -82,10 +82,10 @@ const ProductShowcase = ({ setter, refNo }) => {
       <AnimatePresence mode="wait">
       {activeProduct === "honeygold" && (
         <div className="product-selections">
-          <button className="product">
+          <motion.button initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="product">
              <span className="product-g">Honey Gold</span>
 
-          </button>
+          </motion.button>
          
          
         </div>
